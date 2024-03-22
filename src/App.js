@@ -13,14 +13,14 @@ import StartQuizPage, { updateQuizItemHandler } from './pages/StartPage/StartQui
 import ScorePage from './pages/Score/ScorePage';
 import QuizDetails from './pages/QuizDetails/QuizDetails';
 import Logout from './components/Logout/Logout';
-import Records from './pages/Records/Records';
+import RecordsPage from './pages/Records/RecordsPage';
 import { loginHandler } from './pages/Login/LoginPage';
 import { registerHandler } from './pages/Register/RegisterPage';
 import { fetchAuthProfile} from './store/auth-action';
 import { saveItemsForTheGameHandler } from './pages/Main/MainPage';
 import {useDispatch } from 'react-redux';
 import { fetchCurrentGameResults } from './pages/Score/ScorePage';
-
+import { getQuizHistoryHandler } from './pages/Records/RecordsPage';
 
 import './App.css';
 import { useEffect } from 'react';
@@ -71,7 +71,8 @@ const router = createBrowserRouter([
       element:<QuizDetails/>}
     ]},
     {path: 'records',
-  element: <Records/>},
+  element: <RecordsPage/>,
+  loader: getQuizHistoryHandler},
     {path:'logout',
     element:<Logout/>}
     ]

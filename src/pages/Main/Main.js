@@ -32,7 +32,7 @@ const Main = ()=>{
             <label htmlFor="difficulty">Difficulty</label>
                 <select name="difficulty" >
                 <option value=""></option>
-                    <option value="normal">
+                    <option value="easy">
                         Normal
                     </option>
                     <option value="medium">
@@ -47,7 +47,7 @@ const Main = ()=>{
             <div>
             <label htmlFor="item-total" >Item Total</label>
                 <select name="item-total" >
-                <option value=""></option>
+                <option value=""></option>oo
                     <option value="5">
                         5
                     </option>

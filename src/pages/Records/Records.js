@@ -1,8 +1,15 @@
 import React from "react";
 
-const Records = ()=>{
+const Records = ({data})=>{
+    console.log(data);
     return (
-        <h1>Records</h1>
+        <React.Fragment>
+            <h1>Records</h1>
+
+            <ul>
+               
+            </ul>
+        </React.Fragment>
     )
 }
 
