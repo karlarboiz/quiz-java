@@ -6,7 +6,7 @@ const RecordsPage = ()=>{
     return(
         <Records data={data}/>
     )
-}
+} 
    
 export default RecordsPage;
 
@@ -22,7 +22,6 @@ export async function getQuizHistoryHandler(){
                 "Authorization": `Bearer ${localStorage.getItem("token")}`
             }
         })
-
         if(!data.ok) {
             throw json({message: "Something went wrong"},
             {status: 500})
