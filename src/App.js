@@ -6,7 +6,7 @@ import Error from "./pages/Error/Error";
 import Home from "./pages/Home/Home";
 import LoginPage from './pages/Login/LoginPage';
 import About from './pages/About/About';
-import Users from './pages/Users/Users';
+import UsersPage from './pages/Users/UsersPage';
 import MainPage from './pages/Main/MainPage';
 import RegisterPage from './pages/Register/RegisterPage';
 import StartQuizPage, { updateQuizItemHandler } from './pages/StartPage/StartQuizPage';
@@ -21,7 +21,7 @@ import { saveItemsForTheGameHandler } from './pages/Main/MainPage';
 import {useDispatch } from 'react-redux';
 import { fetchCurrentGameResults } from './pages/Score/ScorePage';
 import { getQuizHistoryHandler } from './pages/Records/RecordsPage';
-
+import { getUsersGameRecords } from './pages/Users/UsersPage';
 import './App.css';
 import { useEffect } from 'react';
 
@@ -40,7 +40,8 @@ const router = createBrowserRouter([
       },
       {
         path:'users',
-        element: <Users/>
+        element: <UsersPage/>,
+        loader: getUsersGameRecords
       },
       {
         path:'about',

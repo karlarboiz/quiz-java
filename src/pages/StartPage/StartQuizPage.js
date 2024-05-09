@@ -18,7 +18,7 @@ const StartQuizPage = ()=>{
     
     },[dispatch,token,data])
  
- 
+
     return (
         <React.Fragment>
             {auth?.auth && <StartQuiz items={quizItems}/>}

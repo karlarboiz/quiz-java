@@ -1,7 +1,8 @@
 import React from "react";
 
 
-const Users = ()=>{
+const Users = ({data})=>{
+    console.log(data);
     return (
         <React.Fragment>
             <h1>Hello Users</h1>
