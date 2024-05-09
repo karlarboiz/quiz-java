@@ -3,7 +3,7 @@ import React from "react";
 const About= ()=>{
     return(
         <React.Fragment>
-            <h1>Hello about page</h1>
+            <p>This is a mini-project to master Java as back-end and React js as Front End</p>
         </React.Fragment>
     )
 }

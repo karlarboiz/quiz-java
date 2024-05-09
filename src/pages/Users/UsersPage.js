@@ -1,8 +1,9 @@
 import React from "react";
 import Users from "./Users";
-import { json,useRouteLoaderData } from "react-router";
+import { json,useLoaderData} from "react-router";
 const UsersPage = ()=>{
-    const data = useRouteLoaderData();
+    const data = useLoaderData();
+
     return (
         <React.Fragment>
             <Users data={data}/>
@@ -24,7 +25,7 @@ export async function getUsersGameRecords(){
 
         dataResult = await data.json();
 
-        console.log(dataResult);
+
     }catch(e){
         throw json({message: e.message},
         {status: 404})
