@@ -1,5 +1,5 @@
 
-import {createBrowserRouter,Navigate,RouterProvider} from 'react-router-dom';
+import {createBrowserRouter,RouterProvider} from 'react-router-dom';
 import AppGate from './components/AppGate/AppGate';
 
 import Error from "./pages/Error/Error";
@@ -14,14 +14,16 @@ import ScorePage from './pages/Score/ScorePage';
 import QuizDetails from './pages/QuizDetails/QuizDetails';
 import Logout from './components/Logout/Logout';
 import RecordsPage from './pages/Records/RecordsPage';
+import QuizModificationPage from './pages/QuizModificationPage/QuizModificationPage';
 import { loginHandler } from './pages/Login/LoginPage';
 import { registerHandler } from './pages/Register/RegisterPage';
 import { fetchAuthProfile} from './store/auth-action';
-import { saveItemsForTheGameHandler } from './pages/Main/MainPage';
+import { saveItemsForTheGameHandler } from './pages/QuizModificationPage/QuizModificationPage';
 import {useDispatch } from 'react-redux';
 import { fetchCurrentGameResults } from './pages/Score/ScorePage';
 import { getQuizHistoryHandler } from './pages/Records/RecordsPage';
 import { getUsersGameRecords } from './pages/Users/UsersPage';
+import { fetchIncompleteQuizzes } from './pages/Main/MainPage';
 import './App.css';
 import { useEffect } from 'react';
 
@@ -55,6 +57,11 @@ const router = createBrowserRouter([
       {
         path:'main',
         element: <MainPage/>,
+        loader: fetchIncompleteQuizzes
+      },
+      {
+        path: 'quiz-main',  
+        element: <QuizModificationPage/>,
         action:saveItemsForTheGameHandler
       },
       {
