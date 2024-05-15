@@ -15,10 +15,8 @@ const LoginPage = ()=>{
         dispatch(updateAuth(token));
 
         
-    },[dispatch,auth])
-    
+    },[dispatch,auth,token])
 
-    console.log(auth)
     return(
         <React.Fragment>
             {!auth.auth && <Login/>}
@@ -31,7 +29,7 @@ export default LoginPage;
 
 export async function loginHandler({request,params}){
     const data = await request.formData();
-    const errorResult = new Object();
+    const errorResult = {};
     const loginData = {
         email: data.get('email'),
         password: data.get('password')

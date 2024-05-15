@@ -1,12 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import QuizTakenCard from "../../components/QuizTakenCard/QuizTakenCard";
 const Main = ({data1})=>{
     const auth = useSelector(state => state.auth);  
-    console.log(data1);
 
     return(
         <React.Fragment>
-            <div>Hello, {auth.username}</div>            
+            <div>Hello, {auth.username}</div>
+            
+            <QuizTakenCard data={data1} title="Ïncomplete Quizzes"/>    
         </React.Fragment>
     )
 

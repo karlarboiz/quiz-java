@@ -15,6 +15,7 @@ import QuizDetails from './pages/QuizDetails/QuizDetails';
 import Logout from './components/Logout/Logout';
 import RecordsPage from './pages/Records/RecordsPage';
 import QuizModificationPage from './pages/QuizModificationPage/QuizModificationPage';
+import ResumeQuizPage from './pages/ResumeQuiz/ResumeQuizPage';
 import { loginHandler } from './pages/Login/LoginPage';
 import { registerHandler } from './pages/Register/RegisterPage';
 import { fetchAuthProfile} from './store/auth-action';
@@ -24,6 +25,7 @@ import { fetchCurrentGameResults } from './pages/Score/ScorePage';
 import { getQuizHistoryHandler } from './pages/Records/RecordsPage';
 import { getUsersGameRecords } from './pages/Users/UsersPage';
 import { fetchIncompleteQuizzes } from './pages/Main/MainPage';
+import { getResumeItems } from './pages/ResumeQuiz/ResumeQuizPage';
 import './App.css';
 import { useEffect } from 'react';
 
@@ -64,6 +66,15 @@ const router = createBrowserRouter([
         element: <QuizModificationPage/>,
         action:saveItemsForTheGameHandler
       },
+      {
+        path:'resume-quiz/:id',
+        id: 'resume',
+        loader:getResumeItems,children:[{
+          index: true,
+          element:<ResumeQuizPage/>
+        }]
+      }
+      ,
       {
         path: 'start-page',
         element: <StartQuizPage/>,

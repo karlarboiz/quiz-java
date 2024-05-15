@@ -18,7 +18,7 @@ const StartQuiz = ({items})=>{
 
     const quizAnswer = useSelector(state=> state.quizAnswer);
     
-    const changeItem = quizItems?.filter(val=>{
+    const changeItem = quizItems?.filter(val=>{ 
         if(val?.answered) return val;
     })
 
