@@ -4,10 +4,13 @@ import { useRouteLoaderData,json } from "react-router";
 
 const ResumeQuizPage = () =>{
     const data = useRouteLoaderData("resume");
-    console.log(data)
+    const bundledData = {
+        collected: true,
+        items:data
+    }
     return (
-        <div>Hello</div>
-        // <StartQuiz items={data}/>
+    
+        <StartQuiz items={bundledData}/>
     )
 }
 

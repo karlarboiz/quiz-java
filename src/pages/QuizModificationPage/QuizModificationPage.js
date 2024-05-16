@@ -12,17 +12,19 @@ export default QuizModificationPage;
 
 
 export async function saveItemsForTheGameHandler({request,param}) {
+    
     const data = await request.formData();
-    const category =  data.get("category");
+    const categories =data.getAll("topic"); 
+    const categoriesJoined =   categories.join(",");
     const difficulty = data.get("difficulty");
     const itemTotal = data.get("item-total")
-   
+
     let data1;
     let dataResult;
     let gotData = false;
     let error = {};
     try{
-        data1 = await fetch(`https://the-trivia-api.com/api/questions?categories=${category}&limit=${itemTotal}&region=PH&difficulty=${difficulty}`,{
+        data1 = await fetch(`https://the-trivia-api.com/api/questions?categories=${categoriesJoined}&limit=${itemTotal}&region=PH&difficulty=${difficulty}`,{
             headers: {
                 'Content-Type': 'application/json'
               }

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Score = ({data})=>{
     let filterCorrectItems = data?.filter(val =>val.correct);
-    console.log('karl')
+
     return(
     <React.Fragment>
         <h1>Your Score: {filterCorrectItems?.length} / {data?.length}</h1>
@@ -19,7 +19,7 @@ const Score = ({data})=>{
        ))}
 
 
-       <Link to="/main" replace="true">Try Again</Link>
+       <Link to="/quiz-main" replace="true">Try Again</Link>
     </React.Fragment>)
 }
 
