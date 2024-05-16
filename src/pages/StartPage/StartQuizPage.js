@@ -33,14 +33,18 @@ export default StartQuizPage;
 export async function updateQuizItemHandler({param,request}){
     const requestData = await request.formData();
 
+    const id = requestData.get("id");
     const quizIdTag = requestData.get("quiz-tag");
     const userAnswer = requestData.get("user-answer");
     
     let data;
     let dataResult;
 
+
+    const urlDecided = id ? "http://localhost:8080/main/user/game" : `http://localhost:8080/main/user/game-resume/${Number(id)}`;
+
     try {
-        data = await fetch("http://localhost:8080/main/user/game",{
+        data = await fetch(urlDecided,{
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json',

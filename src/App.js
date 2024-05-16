@@ -20,7 +20,7 @@ import { loginHandler } from './pages/Login/LoginPage';
 import { registerHandler } from './pages/Register/RegisterPage';
 import { fetchAuthProfile} from './store/auth-action';
 import { saveItemsForTheGameHandler } from './pages/QuizModificationPage/QuizModificationPage';
-import {useDispatch } from 'react-redux';
+
 import { fetchCurrentGameResults } from './pages/Score/ScorePage';
 import { getQuizHistoryHandler } from './pages/Records/RecordsPage';
 import { getUsersGameRecords } from './pages/Users/UsersPage';
@@ -28,6 +28,7 @@ import { fetchIncompleteQuizzes } from './pages/Main/MainPage';
 import { getResumeItems } from './pages/ResumeQuiz/ResumeQuizPage';
 import './App.css';
 import { useEffect } from 'react';
+import {useDispatch } from 'react-redux';
 
 const router = createBrowserRouter([
   {
@@ -67,11 +68,12 @@ const router = createBrowserRouter([
         action:saveItemsForTheGameHandler
       },
       {
-        path:'resume-quiz/:id',
+        path:'game-resume/:id',
         id: 'resume',
         loader:getResumeItems,children:[{
           index: true,
-          element:<ResumeQuizPage/>
+          element:<ResumeQuizPage/>,
+          action:updateQuizItemHandler
         }]
       }
       ,

@@ -4,8 +4,10 @@ import QuizItemPage from "../../components/QuizItemPage/QuizItemPage";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAuth } from "../../store/auth-action";
 
-const StartQuiz = ({items})=>{
+const StartQuiz = ({items,id})=>{
     const {collected,items:quizItems} = items;
+
+    console.log(quizItems);
     const token = localStorage.getItem("token");
     const dispatch = useDispatch();
     let quizItemsAnswered = quizItems?.filter(val=> {
@@ -46,7 +48,7 @@ const StartQuiz = ({items})=>{
            {(collected && !completedQuiz) &&  <main> 
                 <Form method="put">
                     <input type="hidden" value={valuePresented?.quizIdTag} name="quiz-tag"/>
-             
+                    <input type="hidden" value={id} name="id"/>
                     <input type="hidden" value={quizAnswer.userAnswer} name="user-answer"/>
                     {something}
              

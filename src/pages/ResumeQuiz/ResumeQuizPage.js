@@ -4,13 +4,15 @@ import { useRouteLoaderData,json } from "react-router";
 
 const ResumeQuizPage = () =>{
     const data = useRouteLoaderData("resume");
+
+    console.log(data);
     const bundledData = {
         collected: true,
-        items:data
+        items:data.dataResult
     }
     return (
     
-        <StartQuiz items={bundledData}/>
+        <StartQuiz items={bundledData} id={data.id}/>
     )
 }
 
@@ -19,10 +21,11 @@ export default ResumeQuizPage;
 export async function getResumeItems({request,params}){
     let data;
     let dataResult;
-
+    const id = Number(params.id);
+    const objReturn = {};
 
     try {
-        data = await fetch(`http://localhost:8080/main/user/resume-quiz/${params.id}`,{
+        data = await fetch(`http://localhost:8080/main/user/resume-quiz/${id}`,{
             headers: {
                 'Content-Type': 'application/json',
                 "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -43,5 +46,8 @@ export async function getResumeItems({request,params}){
         {status: 404})
     }
 
-    return dataResult;
+    objReturn.dataResult = dataResult;
+    objReturn.id = id;
+
+    return objReturn;
 }
