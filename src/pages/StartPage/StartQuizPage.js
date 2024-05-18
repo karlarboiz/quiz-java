@@ -41,7 +41,7 @@ export async function updateQuizItemHandler({param,request}){
     let dataResult;
 
 
-    const urlDecided = id ? "http://localhost:8080/main/user/game" : `http://localhost:8080/main/user/game-resume/${Number(id)}`;
+    const urlDecided = id ? `http://localhost:8080/main/user/game-resume/${Number(id)}` :  "http://localhost:8080/main/user/game";
 
     try {
         data = await fetch(urlDecided,{

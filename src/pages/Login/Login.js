@@ -2,16 +2,18 @@ import React, { useEffect } from "react";
 import { Form, Navigate, useActionData} from "react-router-dom";
 import Button from "../../components/Button/Button";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { updateAuth } from "../../store/auth-action";
 
 const Login = ()=>{
 
     const data = useActionData();
-    //const auth = useSelector(state => state.auth);
+    
     const dispatch = useDispatch();
     const token = localStorage.getItem("token");
     useEffect(()=>{
+
+        console.log(data)
         if(data?.token !== null ||
             token !== null ||
             token !== undefined) {

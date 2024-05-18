@@ -75,8 +75,7 @@ const router = createBrowserRouter([
           element:<ResumeQuizPage/>,
           action:updateQuizItemHandler
         }]
-      }
-      ,
+      },
       {
         path: 'start-page',
         element: <StartQuizPage/>,
