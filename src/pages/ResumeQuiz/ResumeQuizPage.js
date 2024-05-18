@@ -1,9 +1,9 @@
 import React from "react";
 import StartQuiz from "../StartPage/StartQuiz";
-import { useRouteLoaderData,json } from "react-router";
+import { useLoaderData,json } from "react-router";
 
 const ResumeQuizPage = () =>{
-    const data = useRouteLoaderData("resume");
+    const data = useLoaderData();
 
     console.log(data);
     const bundledData = {

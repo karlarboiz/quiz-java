@@ -20,7 +20,6 @@ import { loginHandler } from './pages/Login/LoginPage';
 import { registerHandler } from './pages/Register/RegisterPage';
 import { fetchAuthProfile} from './store/auth-action';
 import { saveItemsForTheGameHandler } from './pages/QuizModificationPage/QuizModificationPage';
-
 import { fetchCurrentGameResults } from './pages/Score/ScorePage';
 import { getQuizHistoryHandler } from './pages/Records/RecordsPage';
 import { getUsersGameRecords } from './pages/Users/UsersPage';
@@ -68,13 +67,16 @@ const router = createBrowserRouter([
         action:saveItemsForTheGameHandler
       },
       {
-        path:'game-resume/:id',
-        id: 'resume',
-        loader:getResumeItems,children:[{
-          index: true,
+        path:'resume-quiz/',
+        children:[{
+          path: ':id/',
           element:<ResumeQuizPage/>,
-          action:updateQuizItemHandler
-        }]
+          loader:getResumeItems,
+          action:updateQuizItemHandler,
+          
+        },{path: ':id/score',
+        element:<ScorePage/>,
+        loader: fetchCurrentGameResults}]
       },
       {
         path: 'start-page',

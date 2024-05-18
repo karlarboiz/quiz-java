@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-const Error = ({header,content,refRoute,buttonLabel})=>{
+const Banner = ({header,content,refRoute,buttonLabel})=>{
 
     <React.Fragment>
         <div>

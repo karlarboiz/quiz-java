@@ -21,7 +21,7 @@ const Error=() => {
     
           <h1>{title}</h1>
           <p>{content}</p>
-          <Link to="/main" replace 
+          <Link to="/" replace 
           variant="primary">Page Inaccessible</Link>
 			
     

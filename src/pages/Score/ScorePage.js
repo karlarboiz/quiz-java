@@ -8,6 +8,7 @@ const ScorePage = ()=>{
     const data = useLoaderData();
     const auth = useSelector(state=>state.auth);
 
+    console.log(data)
     return(
         <React.Fragment>
             {auth?.auth && <Score data={data}/>}
@@ -20,12 +21,18 @@ const ScorePage = ()=>{
 
 export default ScorePage;
 
-export async function fetchCurrentGameResults(){
+export async function fetchCurrentGameResults({request,params}){
         let data;
         let dataResult;
-    
+        console.log(request)
+        console.log(params)
+        const id = params?.id;
+
+        console.log(params)
+
+        const urlDecided = id ? `http://localhost:8080/main/user/fetch/game-result/${Number(id)}`: "http://localhost:8080/main/user/fetch/game-result";
         try{
-            data = await fetch("http://localhost:8080/main/user/fetch/game-result",{
+            data = await fetch(urlDecided,{
                 headers:{
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
                 }
@@ -42,7 +49,7 @@ export async function fetchCurrentGameResults(){
             throw json({message: e.message},
             {status: 404})
         }
-    
+        
         return dataResult;
     
     

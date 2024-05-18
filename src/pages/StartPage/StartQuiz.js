@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateAuth } from "../../store/auth-action";
 
 const StartQuiz = ({items,id})=>{
+
+    const isPathRelative = id ? <Link to="score" replace="true"> Score </Link> :<Link to="score" replace="true"> Score </Link>
     const {collected,items:quizItems} = items;
 
     console.log(quizItems);
@@ -61,8 +63,8 @@ const StartQuiz = ({items,id})=>{
             {completedQuiz && <>
 
                 <p>Quiz Completed</p>
-
-                <Link to="/score" replace="true"> Score </Link>
+                {isPathRelative}
+                
             </> }
             
             
