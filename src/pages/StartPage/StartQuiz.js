@@ -1,26 +1,24 @@
-import React,{useEffect,useRef} from "react";
+import React,{useEffect} from "react";
 import { Form, Link} from "react-router-dom";
 import QuizItemPage from "../../components/QuizItemPage/QuizItemPage";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAuth } from "../../store/auth-action";
-import useTimer from "../../hooks/useTimer";
-const StartQuiz = ({items,id})=>{
-
-    console.log(items);
-    const formRef = useRef();
+//import useTimer from "../../hooks/useTimer";
+const StartQuiz = ({items,id,returnedData})=>{
     
+    console.log(returnedData);
 
     const dispatch = useDispatch();
-
-    const isPathRelative = <Link to="score" replace="true"> Score </Link>;
     
     const {collected,items:quizItems} = items;
 
     const token = localStorage.getItem("token");
     
-    let quizItemsAnswered = quizItems?.filter(val=> {
+    let quizItemsAnswered = quizItems.filter(val=> {
         if(val?.answered) {
             return val
+        }else {
+            return null;
         };
     })
 
@@ -29,7 +27,11 @@ const StartQuiz = ({items,id})=>{
     const quizAnswer = useSelector(state=> state.quizAnswer);
     
     const changeItem = quizItems?.filter(val=>{ 
-        if(val?.answered) return val;
+        if(val?.answered) {
+            return val;
+        }else {
+            return null;
+        }
     })
 
     let valuePresented = reversedQuizItems[changeItem.length] || null;
@@ -49,13 +51,17 @@ const StartQuiz = ({items,id})=>{
         }
     },[dispatch,token])
 
-    const handleTimeUp = () => {
-        if (formRef.current) {
-          formRef.current.submit(); 
-        }
-      };
+    // will work with timer quiz once implementation I found a work around
 
-      const {timer}= useTimer(30,handleTimeUp);
+
+    // const handleTimeUp = () => {
+    //     if (nextBtnRef.current) {
+    //         console.log(nextBtnRef.current)
+    //       nextBtnRef.current.addEventListener('click', handleTimeUp); 
+    //     }
+    //   };
+
+    //   const {timer}= useTimer(10,handleTimeUp);
     
     
     return (
@@ -63,12 +69,14 @@ const StartQuiz = ({items,id})=>{
            {!collected && <p>Loading</p>}
 
            {(collected && !completedQuiz) &&  <main> 
-                <Form ref={formRef}>
-                <p>{timer}</p>
+                <Form method="put">
+        
                     <input type="hidden" value={valuePresented?.quizIdTag} name="quiz-tag"/>
                     <input type="hidden" value={id} name="id"/>
                     <input type="hidden" value={quizAnswer.userAnswer} name="user-answer"/>
                     {something}
+
+                    <button type="submit">Next</button>
                 
                 </Form>
                 
@@ -78,8 +86,7 @@ const StartQuiz = ({items,id})=>{
             {completedQuiz && <>
 
                 <p>Quiz Completed</p>
-                {isPathRelative}
-                
+                <Link to="score" replace="true"> Score </Link>
             </> }
             
             

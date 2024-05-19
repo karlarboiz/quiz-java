@@ -1,15 +1,13 @@
 import React,{useEffect} from "react";
 import { Form } from "react-router-dom";
+import { useActionData,useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Topic from "../../components/ChoiceGroup/TopicGroup/Topic";
 import Difficulty from "../../components/ChoiceGroup/DifficultyGroup/Difficulty";
-import useTimer from "../../hooks/useTimer";
-import { useActionData,useNavigate } from "react-router-dom";
+import ItemTotal from "../../components/ChoiceGroup/ItemTotalGroup/ItemTotal";
+import quiz from "./QuizModification.module.css";
 const QuizModification = ()=>{
-    
-    const timer = useTimer(5);
 
-    console.log(timer);
     const data = useActionData();
     const navigate = useNavigate();
 
@@ -20,48 +18,35 @@ const QuizModification = ()=>{
         }
     },[data,navigate])
 
+
+
+
     return (
         <React.Fragment>
           
-            <Form method="post">
-            
+            <Form method="post"  className={quiz['quiz-modification']}>
+                <Topic/>
+                <Difficulty/>
+                <ItemTotal/>
 
-            <Topic/>
-            <Difficulty/>
+                {/* <div>
+                    <label htmlFor="timer" >Timer:</label>
 
-            <div>
-            <label htmlFor="item-total" >Item Total</label>
-                <select name="item-total" >
-                <option value=""></option>
-                    <option value="5">
-                        5
-                    </option>
-                    <option value="10">
-                        10
-                    </option>
-                    <option value="15">
-                        15
-                    </option>
-                </select>
-            </div>
-
-            <div>
-            <label htmlFor="timer" >Timer:</label>
-                <select name="timer" >
-                <option value=""></option>
-                    <option value="5">
-                        5
-                    </option>
-                    <option value="10">
-                        10
-                    </option>
-                    <option value="15">
-                        15
-                    </option>
-                </select>
-            </div>
+                    <select name="timer" >
+                        <option value=""></option>
+                        <option value="5">
+                            5
+                        </option>
+                        <option value="10">
+                            10
+                        </option>
+                        <option value="15">
+                            15
+                        </option>
+                    </select>
+                </div> */}
            
-            <Button btnTitle="Submit" type="submit"/>
+                <Button btnTitle="Submit" type="submit"/>
 
             </Form>
         </React.Fragment>

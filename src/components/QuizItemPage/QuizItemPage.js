@@ -3,6 +3,8 @@ import { useDispatch,useSelector } from "react-redux";
 import { fetchQuizItem } from "../../store/quiz-item__action";
 import { fetchQuizAnswer } from "../../store/quiz-answer__action";
 import AnswerItem from "../AnswerItem/AnswerItem";
+import quiz from "./QuizItemPage.module.css";
+
 const QuizItemPage = ({quizIdTag}) =>{
     const dispatch = useDispatch();
     const quizItem = useSelector(state => state.quizItem);
@@ -28,16 +30,15 @@ const QuizItemPage = ({quizIdTag}) =>{
     }
 
     return (
-        <React.Fragment>
-            <section>
-                <p>{quizItem?.quizDetails?.question?.text}</p>
 
-                {choices.map(val =>{
-                    return(<AnswerItem text={val} key={val} getAnswer={getAnswer}/>)
-                })}
-            </section>
+        <section className={quiz['quiz-body']}>
+            <p>{quizItem?.quizDetails?.question?.text}</p>
 
-        </React.Fragment>
+            {choices.map(val =>{
+                return(<AnswerItem text={val} key={val} getAnswer={getAnswer}/>)
+            })}
+        </section>
+
     )
 }
 

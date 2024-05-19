@@ -1,4 +1,5 @@
-import React from "react"
+import React from "react";
+import quiz from "../ChoiceGroup.module.css";
 const categoriesArr = [{
     value: "geography",
     textValue: "Geography",   
@@ -42,14 +43,14 @@ const categoriesArr = [{
 
    const Topic = ()=>{
     return (
-        <aside>
+        <section>
              {categoriesArr.map(val=>(
               <div key={val.value}>
                     <label htmlFor="topic">{val.textValue}</label>
                     <input type="checkbox" name="topic" id={val.value} value={val.value}/>
               </div>  
             ))}
-        </aside>
+        </section>
     )
    }
 

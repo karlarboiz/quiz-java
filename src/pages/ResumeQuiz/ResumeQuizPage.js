@@ -1,18 +1,18 @@
 import React from "react";
 import StartQuiz from "../StartPage/StartQuiz";
-import { useLoaderData,json } from "react-router";
+import { useLoaderData,json,useActionData } from "react-router";
 
 const ResumeQuizPage = () =>{
+    const returnedData = useActionData();
     const data = useLoaderData();
-
-    console.log(data);
+    
     const bundledData = {
-        collected: true,
+        collected: data.isCollected,
         items:data.dataResult
     }
     return (
     
-        <StartQuiz items={bundledData} id={data.id}/>
+        <StartQuiz items={bundledData} id={data.id} returnedData={returnedData}/>
     )
 }
 
@@ -21,10 +21,12 @@ export default ResumeQuizPage;
 export async function getResumeItems({request,params}){
     let data;
     let dataResult;
+
     const id = Number(params.id);
     const objReturn = {};
-
+    objReturn.isCollected = false;
     try {
+        
         data = await fetch(`http://localhost:8080/main/user/resume-quiz/${id}`,{
             headers: {
                 'Content-Type': 'application/json',
@@ -39,7 +41,7 @@ export async function getResumeItems({request,params}){
         }
 
         dataResult = await data.json();
-
+        objReturn.isCollected = true;
 
     }catch(e){
         throw json({message: e.message},

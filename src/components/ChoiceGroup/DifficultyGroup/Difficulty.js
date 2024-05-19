@@ -14,7 +14,7 @@ import React from "react";
 const Difficulty = ()=>{
 
     return (
-        <aside>
+        <section>
            {
             difficultyArr.map(val=>(
                 <div key={val.value}>
@@ -23,7 +23,7 @@ const Difficulty = ()=>{
                 </div>
             ))
            }
-        </aside>
+        </section>
     )
 }
 
