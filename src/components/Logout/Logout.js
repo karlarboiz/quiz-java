@@ -14,7 +14,7 @@ const Logout = ()=>{
         dispatch(updateAuth(token));
     },[dispatch,token])
     return(
-        <Navigate to="/" />
+        <Navigate to="/login" replace="true" />
     )
     
 

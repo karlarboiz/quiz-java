@@ -4,7 +4,7 @@ import { NavLink} from "react-router-dom";
 import { IoClose, IoMenu } from "react-icons/io5";
 
 import { useDispatch, useSelector } from "react-redux";
-import { logoutHandler } from "../../store/auth-action";
+import { logoutHandler } from "../../store/auth-action"; 
 import "./NavBar.css";
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -20,19 +20,22 @@ const NavBar = () => {
 
 
   function navbarController(){
-    console.log('hello')
+    
+    setShowNav((val)=> val? false: true);
 
   }
+
+  console.log(showNav)
  return (
 
    <header className="header">
      <nav className="nav container">
        <NavLink to="/" className="nav__logo">
-         Navigation Bar
+         Trivia 
        </NavLink>
 
        <div
-         className={"nav__menu"}
+         className={showNav ? "nav__menu": "nav__menu-hide"}
          id="nav-menu"
        >
          <ul className="nav__list">
@@ -97,7 +100,7 @@ const NavBar = () => {
           
           
          </ul>
-         <div className="nav__close" id="nav-close" >
+         <div className="nav__close" id="nav-close" onClick={navbarController} >
            <IoClose />
          </div>
        </div>

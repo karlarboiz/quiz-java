@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { Form, Navigate, useActionData} from "react-router-dom";
 import Button from "../../components/Button/Button";
-
 import { useDispatch} from "react-redux";
 import { updateAuth } from "../../store/auth-action";
+
+import logincss from "./Login.module.css";
+
 
 const Login = ()=>{
 
@@ -13,7 +15,7 @@ const Login = ()=>{
     const token = localStorage.getItem("token");
     useEffect(()=>{
 
-        console.log(data)
+
         if(data?.token !== null ||
             token !== null ||
             token !== undefined) {
@@ -26,16 +28,16 @@ const Login = ()=>{
     
     return(
         <React.Fragment>
-            <Form method="post">
-                <div>
-                <label htmlFor="email">Email</label>
-                <input type="email"  name="email"/>
+            <Form method="post" className={logincss.form}>
+                <div className={logincss['form-group']}>
+                    <label htmlFor="email">Email</label>
+                    <input type="email"  name="email"/>
                
                 </div>
 
-                <div>
-                <label htmlFor="password">Password</label>
-                <input type="password"  name="password"/>
+                <div className={logincss['form-group']}>
+                    <label htmlFor="password">Password</label>
+                    <input type="password"  name="password"/>
                 </div>
 
                
