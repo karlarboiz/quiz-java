@@ -3,10 +3,13 @@ import { Form } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Topic from "../../components/ChoiceGroup/TopicGroup/Topic";
 import Difficulty from "../../components/ChoiceGroup/DifficultyGroup/Difficulty";
-
+import useTimer from "../../hooks/useTimer";
 import { useActionData,useNavigate } from "react-router-dom";
 const QuizModification = ()=>{
+    
+    const timer = useTimer(5);
 
+    console.log(timer);
     const data = useActionData();
     const navigate = useNavigate();
 

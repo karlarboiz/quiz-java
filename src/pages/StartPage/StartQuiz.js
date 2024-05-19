@@ -1,17 +1,23 @@
-import React,{useEffect} from "react";
+import React,{useEffect,useRef} from "react";
 import { Form, Link} from "react-router-dom";
 import QuizItemPage from "../../components/QuizItemPage/QuizItemPage";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAuth } from "../../store/auth-action";
-
+import useTimer from "../../hooks/useTimer";
 const StartQuiz = ({items,id})=>{
 
-    const isPathRelative = id ? <Link to="score" replace="true"> Score </Link> :<Link to="score" replace="true"> Score </Link>
+    console.log(items);
+    const formRef = useRef();
+    
+
+    const dispatch = useDispatch();
+
+    const isPathRelative = <Link to="score" replace="true"> Score </Link>;
+    
     const {collected,items:quizItems} = items;
 
-    console.log(quizItems);
     const token = localStorage.getItem("token");
-    const dispatch = useDispatch();
+    
     let quizItemsAnswered = quizItems?.filter(val=> {
         if(val?.answered) {
             return val
@@ -32,6 +38,7 @@ const StartQuiz = ({items,id})=>{
 
     let completedQuiz = quizItems?.length === quizItemsAnswered?.length;
 
+    
     useEffect(()=>{
     
         if(token !== null ||
@@ -41,6 +48,14 @@ const StartQuiz = ({items,id})=>{
         
         }
     },[dispatch,token])
+
+    const handleTimeUp = () => {
+        if (formRef.current) {
+          formRef.current.submit(); 
+        }
+      };
+
+      const {timer}= useTimer(30,handleTimeUp);
     
     
     return (
@@ -48,13 +63,13 @@ const StartQuiz = ({items,id})=>{
            {!collected && <p>Loading</p>}
 
            {(collected && !completedQuiz) &&  <main> 
-                <Form method="put">
+                <Form ref={formRef}>
+                <p>{timer}</p>
                     <input type="hidden" value={valuePresented?.quizIdTag} name="quiz-tag"/>
                     <input type="hidden" value={id} name="id"/>
                     <input type="hidden" value={quizAnswer.userAnswer} name="user-answer"/>
                     {something}
-             
-                    <button type="submit">Next</button>
+                
                 </Form>
                 
                         

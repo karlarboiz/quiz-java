@@ -23,7 +23,7 @@ const Login = ()=>{
             dispatch(updateAuth(data?.token || token));
             <Navigate to="/main"/>
         }
-    },[data,dispatch])
+    },[data,dispatch,token])
  
     
     return(

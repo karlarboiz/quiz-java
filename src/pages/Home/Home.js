@@ -7,9 +7,9 @@ export default function Home(){
     return (
         <React.Fragment>
                 <section className={home['home-page']}>
-                <h1>Welcome to Trivia API</h1>
-                <p>Ready for knowledge-check-game?  </p>
-                {auth?.auth && <Link to="/quiz-main" replace="true">Start Quiz</Link>}
+                    <h1 className={home['home-page__title']}>Welcome to Trivia APP</h1>
+                    <p>Ready for knowledge-check-game?</p>
+                    {auth?.auth && <Link to="/quiz-main" replace="true">Start Quiz</Link>}
                 </section>
         </React.Fragment>
            

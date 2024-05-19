@@ -1,4 +1,9 @@
 .home-page {
     text-align: center;
-    margin-top: 4.5rem;
+    margin: 4.5rem auto 0 auto;
+    max-width: fit-content;
+}
+
+.home-page__title {
+    font-size: 3.5rem;
 }

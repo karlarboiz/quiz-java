@@ -30,7 +30,7 @@ const StartQuizPage = ()=>{
 
 export default StartQuizPage;
 
-export async function updateQuizItemHandler({param,request}){
+export async function updateQuizItemHandler({request,params}){
     const requestData = await request.formData();
 
     const id = requestData.get("id");
