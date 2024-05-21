@@ -1,5 +1,6 @@
 import React from "react";
 import quiz from "../ChoiceGroup.module.css";
+import samplePic from "../../../pictures/arts_and_literature.jpg";
 const categoriesArr = [{
     value: "geography",
     textValue: "Geography",   
@@ -44,10 +45,12 @@ const categoriesArr = [{
    const Topic = ()=>{
     return (
         <section>
+            
              {categoriesArr.map(val=>(
-              <div key={val.value}>
+              <div key={val.value} className={quiz["multiple-choice__group"]}>
                     <label htmlFor="topic">{val.textValue}</label>
                     <input type="checkbox" name="topic" id={val.value} value={val.value}/>
+                    <img src={`../../../pictures/${val.value}.jpg`} className="img" alt={val.textValue}/>
               </div>  
             ))}
         </section>

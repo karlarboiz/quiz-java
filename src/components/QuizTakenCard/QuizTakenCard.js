@@ -1,8 +1,8 @@
 import React from "react";
-
+import quiz from "./QuizTakenCard.module.css";
 const QuizTakenCard = ({data,title}) =>{
     return(
-        <React.Fragment>
+        <section className={quiz['quiz-card']}>
              <div>{title}</div>
             <ul>    
                 
@@ -15,7 +15,7 @@ const QuizTakenCard = ({data,title}) =>{
                     </li>
                 ))}
             </ul>
-        </React.Fragment>
+        </section>
        
     )   
 }

@@ -24,14 +24,12 @@ const NavBar = () => {
     setShowNav((val)=> val? false: true);
 
   }
-
-  console.log(showNav)
  return (
 
    <header className="header">
      <nav className="nav container">
        <NavLink to="/" className="nav__logo">
-         Trivia 
+         trivia 
        </NavLink>
 
        <div
@@ -43,13 +41,13 @@ const NavBar = () => {
           <>
           <li className="nav__item">
              <NavLink to="/users" className="nav__link">
-               Users
+               users
              </NavLink>
            </li>
            
            <li className="nav__item">
              <NavLink to="/about" className="nav__link">
-               About
+               about
              </NavLink>
            </li>
            
@@ -62,7 +60,7 @@ const NavBar = () => {
                to="/login"
                className="nav__link"
              >
-               Login
+               login
              </NavLink>
            </li>
            }
@@ -73,7 +71,7 @@ const NavBar = () => {
                to="/register"
                className="nav__link"
              >
-               Register
+               register
              </NavLink>
            </li>}
 
@@ -81,10 +79,19 @@ const NavBar = () => {
             <li className="nav__item">
        
        <NavLink
+            to="/main"
+            className="nav__link"
+          >
+            main
+          </NavLink>
+        </li>
+            <li className="nav__item">
+       
+       <NavLink
             to="/records"
             className="nav__link"
           >
-            Records
+            records
           </NavLink>
         </li>
             <li className="nav__item">
@@ -93,7 +100,7 @@ const NavBar = () => {
                to="/logout"
                className="nav__link"
              >
-               Logout
+               logout
              </NavLink>
            </li>
           </>}

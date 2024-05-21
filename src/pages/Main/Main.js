@@ -6,16 +6,13 @@ import QuizTakenCard from "../../components/QuizTakenCard/QuizTakenCard";
 import quiz from "./Main.module.css";
 const Main = ({data1})=>{
     const auth = useSelector(state => state.auth);  
-
     return(
-        <main className={quiz['main-container']}>
+        <main className={quiz['main-container']}>   
             
-            <div className={quiz['main-container__title']}>Hello, {auth.username}</div>
-            
+            <div className={quiz['main-container__title']}>Hello, {auth.username}!</div>
+            <Link to="/quiz-main" replace="true" className={quiz['start-quiz__link']}>Start Quiz</Link>
             <QuizTakenCard data={data1} title="Ïncomplete Quizzes"/>    
             
-            <Link to="/quiz-main" replace="true">Start Quiz</Link>
-
         </main>
     )
 
