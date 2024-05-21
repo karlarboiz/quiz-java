@@ -1,21 +1,16 @@
-.form {
+.register-form {
     min-height: fit-content;
-    padding: 1.25rem;
     max-width: 30rem;
     margin: 0 auto;
+    padding: 1.25rem;
     text-align: center;
 }
 
 .form-group {
-    margin: .5rem auto;
+    margin: .25rem auto;
     height: 6.5rem;
     display: grid;
     grid-template-columns: 20% 75%;
     grid-template-rows: 2.5rem;
 
 }
-
-.form-group input {
-    padding: .5rem .75rem;
-}
-
