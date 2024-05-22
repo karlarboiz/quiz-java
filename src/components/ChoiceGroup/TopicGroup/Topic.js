@@ -1,29 +1,35 @@
 import React from "react";
 import quiz from "../ChoiceGroup.module.css";
-import samplePic from "../../../pictures/arts_and_literature.jpg";
+
 const categoriesArr = [{
     value: "geography",
-    textValue: "Geography",   
+    textValue: "Geography", 
+    pic: "geography.jpg",  
    },
    {
    value: "history",
-   textValue: "History",   
+   textValue: "History",
+   pic: "history.jpg"   
    },
    {
    value: "science",
-   textValue: "Science",   
+   textValue: "Science",
+   pic: "science.jpg"   
    },
    {
    value: "music",
-   textValue: "Music",   
+   textValue: "Music", 
+   pic: "music.jpg"  
    },
    {
    value: "sport_and_leisure",
    textValue: "Sport and Leisure",   
+   pic: "sport_and_leisure.jpg"
    }, 
    {
    value: "film_and_tv",
-   textValue: "Film and TV",   
+   textValue: "Film and TV", 
+   pic: "film_and_tv.jpg"  
    },
    {
    value: "arts_and_literature",
@@ -31,26 +37,29 @@ const categoriesArr = [{
    },
    {
    value: "society_and_culture",
-   textValue: "Society and Culture",   
+   textValue: "Society and Culture",
+   pic: "society_and_culture.jpg"   
    },
    {
    value: "food_and_drink",
-   textValue: "Food and Drink",   
+   textValue: "Food and Drink",
+   pic: "food_and_drink.jpg"   
    },
    {
    value: "general_knowledge",
-   textValue: "General Knowledge"
+   textValue: "General Knowledge",
+   pic: "general_knowledge.jpg"
    }]
 
-   const Topic = ()=>{
+   const Topic = ()=>{ 
     return (
         <section>
-            
+           
              {categoriesArr.map(val=>(
               <div key={val.value} className={quiz["multiple-choice__group"]}>
                     <label htmlFor="topic">{val.textValue}</label>
                     <input type="checkbox" name="topic" id={val.value} value={val.value}/>
-                    <img src={`../../../pictures/${val.value}.jpg`} className="img" alt={val.textValue}/>
+                    <img src={require(`../../../pictures/${val.value}.jpg`)} className={quiz['img']} alt={val.textValue}/>
               </div>  
             ))}
         </section>

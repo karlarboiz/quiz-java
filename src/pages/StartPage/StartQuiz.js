@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateAuth } from "../../store/auth-action";
 //import useTimer from "../../hooks/useTimer";
 const StartQuiz = ({items,id,returnedData})=>{
+
+    const scoreUrl = id ? "score": "/score";
     
     console.log(returnedData);
 
@@ -86,7 +88,7 @@ const StartQuiz = ({items,id,returnedData})=>{
             {completedQuiz && <>
 
                 <p>Quiz Completed</p>
-                <Link to="score" replace="true"> Score </Link>
+                <Link to={scoreUrl} replace="true"> Score </Link>
             </> }
             
             
