@@ -9,10 +9,12 @@ const Main = ({data1})=>{
     return(
         <main className={quiz['main-container']}>   
             
-            <div className={quiz['main-container__title']}>Hello, {auth.username}!</div>
-            <Link to="/quiz-main" replace="true" className={quiz['start-quiz__link']}>Start Quiz</Link>
-            <QuizTakenCard data={data1} title="Ïncomplete Quizzes"/>    
+            <section className={quiz['sub-container']}>
+                <div className={quiz['main-container__title']}>Hello, {auth.username}!</div>
+                <Link to="/quiz-main" replace="true" className={quiz['start-quiz__link']}>Start Quiz</Link>
+            </section>
             
+            <QuizTakenCard data={data1} title="Ïncomplete Quizzes"/>    
         </main>
     )
 

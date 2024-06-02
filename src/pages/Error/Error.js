@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 const Error=() => {
   
     const error = useRouteError();
-    console.log(error);
     let title = "An error occured";
     let content = "Something went wrong";
 
@@ -12,7 +11,7 @@ const Error=() => {
         title = "404- Page not found";
         content = "The page you are looking for cannot be found"
     }
-
+ 
     if(error.status  === '404'){
         content = error.data.message;
     }

@@ -3,8 +3,11 @@
     margin: 0 auto;
 }
 
-.main-container__title {
+.sub-container {
     text-align: center;
+}
+
+.main-container__title {
     font-size: 3.5rem;
     font-weight: 600;
     line-height: 3.75rem;
@@ -25,4 +28,5 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
 
     margin: 1.25rem auto;
+    text-align: center;
 }

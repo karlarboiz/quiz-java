@@ -3,11 +3,11 @@ import quiz from "./QuizTakenCard.module.css";
 const QuizTakenCard = ({data,title}) =>{
     return(
         <section className={quiz['quiz-card']}>
-             <div>{title}</div>
-            <ul>    
+             <span className={quiz['title']}>{title}</span>
+            <ul className={quiz['item-list']}>    
                 
                 {data.map((val,i)=>(
-                    <li key={i}>
+                    <li key={i} className={quiz['item']}>
                         <div>Date Started: {val.date}</div>
                         <div>Total Items: {val.incompleteQuizzes}</div>
 
