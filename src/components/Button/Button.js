@@ -1,9 +1,9 @@
 import React from "react";
-import './Button.css';
+import quiz from "./Button.module.css";
 
-const Button = ({btnTitle,type}) =>{
+const Button = (props) =>{
     return (
-        <button type={type}>{btnTitle}</button>
+        <button type={props.type} className={quiz['btn']}>{props.children}</button>
     )
 }
 

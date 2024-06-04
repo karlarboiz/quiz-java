@@ -25,18 +25,17 @@ const QuizItemPage = ({quizIdTag}) =>{
     },[dispatch,correctAns])
  
     function getAnswer(e){
+        console.log(e.target.tabIndex);
         dispatch(fetchQuizAnswer(e.target.textContent.trim(),correctAns));
-        
     }
 
     return (
-
         <aside className={quiz['quiz-body']}>
             <p className={quiz['quiz-question']}>{quizItem?.quizDetails?.question?.text}</p>
 
             <div className={quiz['quiz-body__selection']}>
-                {choices.map(val =>{
-                    return(<AnswerItem text={val} key={val} getAnswer={getAnswer} classId={quiz['quiz-question__answer']}/>)
+                {choices.map((val,i) =>{
+                    return(<AnswerItem text={val} key={val} getAnswer={getAnswer} dataValue={i}/>)
                 })}
             </div>
         </aside>
