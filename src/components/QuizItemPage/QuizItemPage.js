@@ -25,19 +25,21 @@ const QuizItemPage = ({quizIdTag}) =>{
     },[dispatch,correctAns])
  
     function getAnswer(e){
-        dispatch(fetchQuizAnswer(e.target.textContent,correctAns));
+        dispatch(fetchQuizAnswer(e.target.textContent.trim(),correctAns));
         
     }
 
     return (
 
-        <section className={quiz['quiz-body']}>
-            <p>{quizItem?.quizDetails?.question?.text}</p>
+        <aside className={quiz['quiz-body']}>
+            <p className={quiz['quiz-question']}>{quizItem?.quizDetails?.question?.text}</p>
 
-            {choices.map(val =>{
-                return(<AnswerItem text={val} key={val} getAnswer={getAnswer}/>)
-            })}
-        </section>
+            <div className={quiz['quiz-body__selection']}>
+                {choices.map(val =>{
+                    return(<AnswerItem text={val} key={val} getAnswer={getAnswer} classId={quiz['quiz-question__answer']}/>)
+                })}
+            </div>
+        </aside>
 
     )
 }

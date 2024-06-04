@@ -3,12 +3,11 @@ import { Form, Link} from "react-router-dom";
 import QuizItemPage from "../../components/QuizItemPage/QuizItemPage";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAuth } from "../../store/auth-action";
+import BodyComponent from "../../components/BodyComponent/BodyComponent";
 //import useTimer from "../../hooks/useTimer";
 const StartQuiz = ({items,id,returnedData})=>{
 
     const scoreUrl = id ? "score": "/score";
-    
-    console.log(returnedData);
 
     const dispatch = useDispatch();
     
@@ -37,8 +36,6 @@ const StartQuiz = ({items,id,returnedData})=>{
     })
 
     let valuePresented = reversedQuizItems[changeItem.length] || null;
-    
-    let something = collected && <QuizItemPage quizIdTag={valuePresented?.quizIdTag}/>
 
     let completedQuiz = quizItems?.length === quizItemsAnswered?.length;
 
@@ -67,32 +64,30 @@ const StartQuiz = ({items,id,returnedData})=>{
     
     
     return (
-        <React.Fragment>
-           {!collected && <p>Loading</p>}
 
-           {(collected && !completedQuiz) &&  <main> 
-                <Form method="put">
-        
-                    <input type="hidden" value={valuePresented?.quizIdTag} name="quiz-tag"/>
-                    <input type="hidden" value={id} name="id"/>
-                    <input type="hidden" value={quizAnswer.userAnswer} name="user-answer"/>
-                    {something}
+        <BodyComponent>
+                 {!collected && <p>Loading</p>}
 
-                    <button type="submit">Next</button>
-                
-                </Form>
-                
-                        
-            </main>}
+                {(collected && !completedQuiz) &&  
+                    <Form method="put">
 
-            {completedQuiz && <>
+                        <input type="hidden" value={valuePresented?.quizIdTag} name="quiz-tag"/>
+                        <input type="hidden" value={id} name="id"/>
+                        <input type="hidden" value={quizAnswer.userAnswer} name="user-answer"/>
+                        <QuizItemPage quizIdTag={valuePresented?.quizIdTag}/>
 
-                <p>Quiz Completed</p>
-                <Link to={scoreUrl} replace="true"> Score </Link>
-            </> }
-            
-            
-        </React.Fragment>
+                        <button type="submit">Next</button>
+                    
+                    </Form>
+                }
+
+                {completedQuiz && <>
+
+                    <p>Quiz Completed</p>
+                    <Link to={scoreUrl} replace="true"> Score </Link>
+                </> }
+        </BodyComponent>
+  
     )
 }
 
