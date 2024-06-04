@@ -1,8 +1,18 @@
 .svg  {
     position: absolute;
     top: 0;
-    left: 0;
+    left: calc(5rem + .75rem);
     height: 1.5rem;
+    z-index: 2;
+    animation: moveCheck .25s ease-out;
+}
+
+@keyframes moveCheck {
+    from {
+        top: .5rem;
+    }  to {
+        top: 0;
+    }
 }
 
 .quiz-question__answer {
@@ -15,11 +25,12 @@
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-
     font-size: .75rem;
-
     display: flex;
     align-items: center;
     justify-content: center;
+}
 
+.quiz-question__answer-active {
+    background-color: green;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { fetchQuizItem } from "../../store/quiz-item__action";
 import { fetchQuizAnswer } from "../../store/quiz-answer__action";
@@ -6,6 +6,8 @@ import AnswerItem from "../AnswerItem/AnswerItem";
 import quiz from "./QuizItemPage.module.css";
 
 const QuizItemPage = ({quizIdTag}) =>{
+    const [index,setIndex] = useState(null);
+    
     const dispatch = useDispatch();
     const quizItem = useSelector(state => state.quizItem);
 
@@ -25,7 +27,9 @@ const QuizItemPage = ({quizIdTag}) =>{
     },[dispatch,correctAns])
  
     function getAnswer(e){
-        console.log(e.target.tabIndex);
+        
+
+        setIndex(Number(e.target.tabIndex));
         dispatch(fetchQuizAnswer(e.target.textContent.trim(),correctAns));
     }
 
@@ -35,7 +39,7 @@ const QuizItemPage = ({quizIdTag}) =>{
 
             <div className={quiz['quiz-body__selection']}>
                 {choices.map((val,i) =>{
-                    return(<AnswerItem text={val} key={val} getAnswer={getAnswer} dataValue={i}/>)
+                    return(<AnswerItem text={val} key={val} getAnswer={getAnswer} dataValue={i} index={index}/>)
                 })}
             </div>
         </aside>
