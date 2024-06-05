@@ -6,6 +6,8 @@ import Topic from "../../components/ChoiceGroup/TopicGroup/Topic";
 import Difficulty from "../../components/ChoiceGroup/DifficultyGroup/Difficulty";
 import ItemTotal from "../../components/ChoiceGroup/ItemTotalGroup/ItemTotal";
 import quiz from "./QuizModification.module.css";
+import BodyComponent from "../../components/BodyComponent/BodyComponent";
+
 const QuizModification = ()=>{
 
     const data = useActionData();
@@ -22,7 +24,7 @@ const QuizModification = ()=>{
 
 
     return (
-        <React.Fragment>
+        <BodyComponent>
           
             <Form method="post"  className={quiz['quiz-modification']}>
                 <Topic/>
@@ -46,10 +48,10 @@ const QuizModification = ()=>{
                     </select>
                 </div> */}
            
-                <Button btnTitle="Submit" type="submit"/>
+                <Button type="submit"> Submit </Button>
 
             </Form>
-        </React.Fragment>
+        </BodyComponent>
     )
 }
 

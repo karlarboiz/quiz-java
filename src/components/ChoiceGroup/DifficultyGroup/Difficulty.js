@@ -1,5 +1,5 @@
 import React from "react";
-
+import quiz from "../ChoiceGroup.module.css";
   //arr for difficulty options
   const difficultyArr = [
     {value: "easy",
@@ -14,10 +14,10 @@ import React from "react";
 const Difficulty = ()=>{
 
     return (
-        <section>
+        <section className={quiz['difficulty-group']}>
            {
             difficultyArr.map(val=>(
-                <div key={val.value}>
+                <div key={val.value} className={quiz["multiple-choice__group"]}>
                     <label htmlFor="difficulty">{val.textValue}</label>
                     <input type="radio" id={val.value} name="difficulty" value={val.value}/>
                 </div>

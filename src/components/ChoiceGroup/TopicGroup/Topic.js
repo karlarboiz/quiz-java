@@ -53,7 +53,7 @@ const categoriesArr = [{
 
    const Topic = ()=>{ 
     return (
-        <section>
+        <section className={`${quiz['topic-group']} }`}>
            
              {categoriesArr.map(val=>(
               <div key={val.value} className={quiz["multiple-choice__group"]}>

@@ -1,7 +1,35 @@
+:root {
+    --spacer: .5rem;
+}
+
+.topic-group,.difficulty-group{
+    display: grid;
+    gap: var(--spacer);
+    grid-auto-flow: column;
+    grid-auto-columns: 25%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding: 0 var(--spacer) var(--spacer) var(--spacer);
+}
+
+.difficulty-group {
+    justify-content: space-around;
+}
+
 .multiple-choice__group {
-   width: 7.5rem;
-   height: 5rem;
+   height: 8.5rem;
    position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.topic-choices__group {
+    grid-auto-columns: 100%;
+} 
+
+label {
+    font-size: .85rem;
 }
 
 
