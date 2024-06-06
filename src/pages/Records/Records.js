@@ -1,9 +1,9 @@
 import React from "react";
-
+import BodyComponent from "../../components/BodyComponent/BodyComponent";
 const Records = ({data})=>{
   
     return (
-        <React.Fragment>
+        <BodyComponent>
             <h1>Your History</h1>
             <ul>
                {data?.map(val=>(
@@ -15,7 +15,7 @@ const Records = ({data})=>{
                 </li>
                ))}
             </ul>  
-        </React.Fragment>
+        </BodyComponent>
     )
 }
 

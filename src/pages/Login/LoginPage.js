@@ -11,6 +11,7 @@ const LoginPage = ()=>{
     const token = localStorage.getItem("token");
     const dispatch = useDispatch();
     
+    
     useEffect(()=>{
         dispatch(updateAuth(token));
 

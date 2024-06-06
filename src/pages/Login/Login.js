@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Form, Navigate, useActionData} from "react-router-dom";
+import { Form, Navigate, useActionData,useNavigation} from "react-router-dom";
 import Button from "../../components/Button/Button";
 import { useDispatch} from "react-redux";
 import { updateAuth } from "../../store/auth-action";
@@ -10,12 +10,13 @@ import logincss from "./Login.module.css";
 const Login = ()=>{
 
     const data = useActionData();
-    
+    const submit = useNavigation();
+    const state = submit.state;
+    console.log(data)
+    console.log("hello"+state);
     const dispatch = useDispatch();
     const token = localStorage.getItem("token");
     useEffect(()=>{
-
-
         if(data?.token !== null ||
             token !== null ||
             token !== undefined) {
@@ -24,10 +25,10 @@ const Login = ()=>{
             <Navigate to="/main"/>
         }
     },[data,dispatch,token])
- 
-    
+
     return(
         <React.Fragment>
+            {!data?.valid && <div>{data?.message}</div>}
             <Form method="post" className={logincss.form}>
                 <div className={logincss['form-group']}>
                     <label htmlFor="email">Email</label>
