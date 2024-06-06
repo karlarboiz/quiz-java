@@ -15,7 +15,8 @@ const QuizItemPage = ({quizIdTag,itemsLeft}) =>{
 
     let choices = !ready ? [] : [...quizDetails?.incorrectAnswers,quizDetails?.correctAnswer].sort();
     let correctAns = quizDetails?.correctAnswer
-    
+    let category = quizItem?.quizDetails?.category.split("_").map(val=>val.charAt(0).toUpperCase() + val.slice(1)).join(" ");
+    let difficulty = quizItem?.quizDetails?.difficulty.charAt(0).toUpperCase() + quizItem?.quizDetails?.difficulty.slice(1);
     useEffect(()=>{
         if(quizIdTag !== null ) {
             dispatch(fetchQuizItem(quizIdTag));
@@ -27,16 +28,21 @@ const QuizItemPage = ({quizIdTag,itemsLeft}) =>{
     },[dispatch,correctAns])
  
     function getAnswer(e){
-        
 
         setIndex(Number(e.target.tabIndex));
         dispatch(fetchQuizAnswer(e.target.textContent.trim(),correctAns));
     }
 
+    useEffect(()=>{ 
+        setIndex(null);
+    },[itemsLeft])
+
 
     return (
         <aside className={quiz['quiz-body']}>
             <div>Items Left: {itemsLeft}</div>
+            <div>Category: {category}</div>
+            <div>Difficulty: {difficulty}</div>
             <p className={quiz['quiz-question']}>{quizItem?.quizDetails?.question?.text}</p>
 
             <div className={quiz['quiz-body__selection']}>
