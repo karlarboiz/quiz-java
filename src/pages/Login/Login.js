@@ -41,7 +41,7 @@ const Login = ()=>{
                 </div>
 
                
-                <Button btnTitle="Submit" type="submit"/>
+                <Button type="submit"> Submit </Button>
             </Form>
         </React.Fragment>
     )
