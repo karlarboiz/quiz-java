@@ -1,6 +1,7 @@
 import React from "react";
 import Users from "./Users";
 import { json,useLoaderData} from "react-router";
+
 const UsersPage = ()=>{
     const data = useLoaderData();
 

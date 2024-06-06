@@ -1,14 +1,15 @@
 import React from "react";
 import UserCard from "../../components/UserCard/UserCard";
-const Users = ({data})=>{
-    console.log(data);
+import BodyComponent from "../../components/BodyComponent/BodyComponent";
+    const Users = ({data})=>{
+
     const mappedData = data.map(val=>(
         <UserCard username={val.username} completedQuizzes={val.completedQuizzes} key={val.id}/>
     ))
     return (
-        <React.Fragment>
+        <BodyComponent>
             {mappedData}
-        </React.Fragment>
+        </BodyComponent>
     )
 }
 

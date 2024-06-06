@@ -5,7 +5,7 @@ import { fetchQuizAnswer } from "../../store/quiz-answer__action";
 import AnswerItem from "../AnswerItem/AnswerItem";
 import quiz from "./QuizItemPage.module.css";
 
-const QuizItemPage = ({quizIdTag}) =>{
+const QuizItemPage = ({quizIdTag,itemsLeft}) =>{
     const [index,setIndex] = useState(null);
     
     const dispatch = useDispatch();
@@ -33,8 +33,10 @@ const QuizItemPage = ({quizIdTag}) =>{
         dispatch(fetchQuizAnswer(e.target.textContent.trim(),correctAns));
     }
 
+
     return (
         <aside className={quiz['quiz-body']}>
+            <div>Items Left: {itemsLeft}</div>
             <p className={quiz['quiz-question']}>{quizItem?.quizDetails?.question?.text}</p>
 
             <div className={quiz['quiz-body__selection']}>

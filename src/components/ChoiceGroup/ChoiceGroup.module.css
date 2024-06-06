@@ -19,7 +19,7 @@ label {
 }
 
 .topic-group,.difficulty-group{
-    margin: var(--spacer) 0 0 0;
+    margin:  0 0 var(--spacer) 0;
     display: grid;
     gap: var(--spacer);
     grid-auto-flow: column;
@@ -53,7 +53,7 @@ label {
 }
 
 .total-group{
-    margin: var(--spacer) 0 0 0;
+    margin: 0 0 var(--spacer) 0;
 }
 
 
