@@ -20,9 +20,6 @@ const QuizModification = ()=>{
         }
     },[data,navigate])
 
-
-
-
     return (
         <BodyComponent>
           
