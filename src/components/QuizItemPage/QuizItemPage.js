@@ -15,10 +15,12 @@ const QuizItemPage = ({quizIdTag,itemsLeft}) =>{
 
     let choices = !ready ? [] : [...quizDetails?.incorrectAnswers,quizDetails?.correctAnswer].sort();
     let correctAns = quizDetails?.correctAnswer
-    // let category = quizItem?.quizDetails?.category.split("_").map(val=>val.charAt(0).toUpperCase() + val.slice(1)).join(" ");
-    let category = "karl";
-    // let difficulty = quizItem?.quizDetails?.difficulty.charAt(0).toUpperCase() + quizItem?.quizDetails?.difficulty.slice(1);
-    let difficulty = "Simple";
+   
+    let difficulty = quizItem?.quizDetails?.difficulty ? quizItem?.quizDetails?.difficulty?.charAt(0).toUpperCase() + quizItem?.quizDetails?.difficulty?.slice(1) : "";
+
+    let category = quizItem?.quizDetails?.category ? (quizItem?.quizDetails?.category?.includes("_") ? quizItem?.quizDetails?.category?.split("_").map(val=>val?.charAt(0).toUpperCase() + val.slice(1)).join(" ") : 
+    quizItem?.quizDetails?.category.charAt(0).toUpperCase() + quizItem?.quizDetails?.category.slice(1)) : "";
+   
     useEffect(()=>{
         if(quizIdTag !== null ) {
             dispatch(fetchQuizItem(quizIdTag));
