@@ -6,7 +6,7 @@
   z-index: var(--z-fixed);
   background-color: #FFFFFF;
   margin: 0 auto;
-  border-radius: 2.05rem;
+  border-radius: 2.25rem;
 }
 
 .nav {
@@ -14,8 +14,7 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
-  height: var(--header-height);
-  margin: 1rem 0;
+  margin: 1rem;
 }
 
 .nav__logo {
@@ -46,7 +45,7 @@ svg {
 }
 
 .nav__link {
-  color: var(--title-color);
+
   font-weight: 600;
   transition: color 0.4s;
   display: flex;
@@ -54,11 +53,13 @@ svg {
 
 }
 
-.nav__item {
+.nav__link,
+.nav__link-active {
   padding: .75rem 1.05rem;
 }
 
-.nav__item:hover {
+.nav__link:hover,
+.nav__link-active {
   background-color: #37B7C3;
   color: white;
   border-radius: 1.55rem;
@@ -106,6 +107,8 @@ svg {
 
   .nav__list {
     flex-direction: row;
-    column-gap: 2.5rem;
+    column-gap: 1.5rem;
   }
+
+
 }

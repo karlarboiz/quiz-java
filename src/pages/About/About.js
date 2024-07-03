@@ -1,10 +1,10 @@
 import React from "react";
-
-const About= ()=>{
-    return(
-        <React.Fragment>
+import BodyComponent from "../../components/BodyComponent/BodyComponent";
+const About = () => {
+    return (
+        <BodyComponent>
             <p>This is a mini-project to master Java as back-end and React js as Front End</p>
-        </React.Fragment>
+        </BodyComponent>
     )
 }
 

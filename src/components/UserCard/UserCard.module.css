@@ -1,0 +1,6 @@
+.user-card {
+    max-width: 15rem;
+    min-height: 10rem;
+    background-color: white;
+    border-radius: .5rem;
+}
