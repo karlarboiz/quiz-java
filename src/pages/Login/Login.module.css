@@ -1,4 +1,4 @@
-.login-title {
+.title {
     font-size: 1.25rem;
     font-weight: 700;
 }
@@ -6,7 +6,7 @@
 .form {
     min-height: fit-content;
     padding: 1.25rem;
-    max-width: 18.5rem;
+    max-width: 24.5rem;
     margin: 0 auto;
     text-align: center;
     background-color: #ffff;

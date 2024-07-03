@@ -33,7 +33,7 @@ const Login = () => {
                     <LazyLoadImage src={require("../../pictures/trivia.png")}
                         alt="Brand Image" />
 
-                    <div className={logincss['login-title']}>Login</div>
+                    <div className={logincss['title']}>Login</div>
                 </section>
 
                 <section className={logincss['form--section-2']}>

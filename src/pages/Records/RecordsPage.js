@@ -1,38 +1,44 @@
 import React from "react";
 import Records from "./Records";
-import { useLoaderData,json } from "react-router";
-const RecordsPage = ()=>{
+import { useLoaderData, json, Navigate } from "react-router";
+import { useSelector } from "react-redux";
+
+const RecordsPage = () => {
     const data = useLoaderData();
-    return(
-        <Records data={data}/>
+    const auth = useSelector(state => state.auth);
+    return (
+        <React.Fragment>
+            {!auth?.auth && <Navigate to="/main" />}
+            {auth?.auth && <Records data={data} />}
+
+        </React.Fragment>
     )
-} 
-   
+}
 export default RecordsPage;
 
 
-export async function getQuizHistoryHandler(){
+export async function getQuizHistoryHandler() {
 
     let data;
     let dataResult;
 
-    try{
-        data = await fetch("http://localhost:8080/main/user/game-history",{
-            headers:{
+    try {
+        data = await fetch("http://localhost:8080/main/user/game-history", {
+            headers: {
                 "Authorization": `Bearer ${localStorage.getItem("token")}`
             }
         })
-        if(!data.ok) {
-            throw json({message: "Something went wrong"},
-            {status: 500})
+        if (!data.ok) {
+            throw json({ message: "Something went wrong" },
+                { status: 500 })
         }
 
         dataResult = await data.json();
-    }catch(e){
+    } catch (e) {
         console.log(e)
     }
 
-    
+
 
     return dataResult;
 

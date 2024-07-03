@@ -1,5 +1,5 @@
 
-import {createBrowserRouter,RouterProvider} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AppGate from './components/AppGate/AppGate';
 
 import Error from "./pages/Error/Error";
@@ -16,9 +16,10 @@ import Logout from './components/Logout/Logout';
 import RecordsPage from './pages/Records/RecordsPage';
 import QuizModificationPage from './pages/QuizModificationPage/QuizModificationPage';
 import ResumeQuizPage from './pages/ResumeQuiz/ResumeQuizPage';
+import ProfilePage from './pages/Profile/ProfilePage';
 import { loginHandler } from './pages/Login/LoginPage';
 import { registerHandler } from './pages/Register/RegisterPage';
-import { fetchAuthProfile} from './store/auth-action';
+import { fetchAuthProfile } from './store/auth-action';
 import { saveItemsForTheGameHandler } from './pages/QuizModificationPage/QuizModificationPage';
 import { fetchCurrentGameResults } from './pages/Score/ScorePage';
 import { getQuizHistoryHandler } from './pages/Records/RecordsPage';
@@ -27,88 +28,110 @@ import { fetchIncompleteQuizzes } from './pages/Main/MainPage';
 import { getResumeItems } from './pages/ResumeQuiz/ResumeQuizPage';
 import './App.css';
 import { useEffect } from 'react';
-import {useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AppGate/>,
-    errorElement: <Error/>,
-    children:[
-      {index:true,
-      element:<Home/>},
+    element: <AppGate />,
+    errorElement: <Error />,
+    children: [
       {
-        path:'login',
-        element: <LoginPage/>,
+        index: true,
+        element: <Home />
+      },
+      {
+        path: 'login',
+        element: <LoginPage />,
         action: loginHandler
       },
       {
-        path:'users',
-        element: <UsersPage/>,
+        path: 'users',
+        element: <UsersPage />,
         loader: getUsersGameRecords
       },
       {
-        path:'about',
-        element: <About/>
+        path: 'about',
+        element: <About />
       },
       {
-        path:'register',
-        element: <RegisterPage/>,
+        path: 'register',
+        element: <RegisterPage />,
         action: registerHandler
       },
       {
-        path:'main',
-        element: <MainPage/>,
+        path: 'main',
+        element: <MainPage />,
         loader: fetchIncompleteQuizzes
       },
       {
-        path: 'quiz-main',  
-        element: <QuizModificationPage/>,
-        action:saveItemsForTheGameHandler
+        path: 'quiz-main',
+        element: <QuizModificationPage />,
+        action: saveItemsForTheGameHandler
       },
       {
-        path:'resume-quiz/',
-        children:[{
+        path: 'resume-quiz/',
+        children: [{
           path: ':id/',
-          element:<ResumeQuizPage/>,
-          loader:getResumeItems,
-          action:updateQuizItemHandler,
-          
-        },{path: ':id/score',
-        element:<ScorePage/>,
-        loader: fetchCurrentGameResults}]
+          element: <ResumeQuizPage />,
+          loader: getResumeItems,
+          action: updateQuizItemHandler,
+
+        }, {
+          path: ':id/score',
+          element: <ScorePage />,
+          loader: fetchCurrentGameResults
+        }]
       },
       {
         path: 'start-page',
-        element: <StartQuizPage/>,
-        action:updateQuizItemHandler
+        element: <StartQuizPage />,
+        action: updateQuizItemHandler
       },
-      {path: 'score',
-        element: <ScorePage/>,
-        loader:fetchCurrentGameResults},
-    {path: 'detailed-item/:quizIdTag/:itemId',
-    id: 'quiz-item',
-    children:[
-      {index: true,
-      element:<QuizDetails/>}
-    ]},
-    {path: 'records',
-  element: <RecordsPage/>,
-  loader: getQuizHistoryHandler},
-    {path:'logout',
-    element:<Logout/>}
+      {
+        path: 'score',
+        element: <ScorePage />,
+        loader: fetchCurrentGameResults
+      },
+      {
+        path: 'detailed-item/:quizIdTag/:itemId',
+        id: 'quiz-item',
+        children: [
+          {
+            index: true,
+            element: <QuizDetails />
+          }
+        ]
+      },
+      {
+        path: 'records',
+        element: <RecordsPage />,
+        loader: getQuizHistoryHandler
+      }, {
+        path: 'profile',
+        element: <ProfilePage />
+      },
+      {
+        path: 'logout',
+        element: <Logout />
+      }
     ]
   },
 ]);
 
 function App() {
   const dispatch = useDispatch();
-  useEffect(()=>{
-    dispatch(fetchAuthProfile());
-  },[dispatch])
+  const token = localStorage.getItem("token");
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchAuthProfile());
+    } else {
+      return;
+    }
+  }, [dispatch])
 
   return (
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   );
 }
 
