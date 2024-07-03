@@ -1,6 +1,27 @@
 .user-card {
     max-width: 15rem;
-    min-height: 10rem;
     background-color: white;
     border-radius: .5rem;
+    position: relative;
+}
+
+.user-card::after {
+    --position: calc(.5rem + .25rem);
+    content: "";
+    height: .75rem;
+    width: .75rem;
+    border-radius: 50%;
+    position: absolute;
+    background-color: black;
+    top: var(--position);
+    left: var(--position);
+
+}
+
+.user-card svg {
+    height: 7.5rem;
+}
+
+.user-card--header {
+    text-align: center;
 }
