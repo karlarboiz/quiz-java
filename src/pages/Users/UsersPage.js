@@ -16,7 +16,7 @@ export async function getUsersGameRecords() {
     let data;
     let dataResult;
     try {
-        data = await fetch("http://localhost:8080/quiz/api/info/users/record")
+        data = await fetch("https://quiz-backend-production-4f1f.up.railway.app/quiz/api/info/users/record")
 
         if (!data.ok ||
             data.status === 500) {
