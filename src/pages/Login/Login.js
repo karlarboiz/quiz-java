@@ -14,16 +14,14 @@ const Login = () => {
     const state = submit.state;
 
     const dispatch = useDispatch();
-    const token = localStorage.getItem("token");
+
     useEffect(() => {
-        if (data?.token !== null ||
-            token !== null ||
-            token !== undefined) {
-            localStorage.setItem("token", data?.token || token)
-            dispatch(updateAuth(data?.token || token));
+        if (data?.token !== null) {
+            localStorage.setItem("token", data?.token)
+            dispatch(updateAuth(data?.token));
             <Navigate to="/main" />
         }
-    }, [data, dispatch, token])
+    }, [data, dispatch])
 
     return (
         <React.Fragment>

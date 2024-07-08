@@ -1,14 +1,5 @@
-.main-container {
-    max-width: 50rem;
-    margin: 0 auto;
-}
-
-.sub-container {
-    text-align: center;
-}
-
 .main-container__title {
-    font-size: 3.5rem;
+    font-size: 1.25rem;
     font-weight: 600;
     line-height: 3.75rem;
     margin: 1.25rem 0;

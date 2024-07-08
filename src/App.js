@@ -128,7 +128,7 @@ function App() {
     } else {
       return;
     }
-  }, [dispatch])
+  }, [dispatch,token])
 
   return (
     <RouterProvider router={router} />

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import { Navigate, json, redirect } from "react-router";
+import { Navigate, json} from "react-router";
 import { useSelector } from "react-redux";
 import { updateAuth } from "../../store/auth-action";
 import { useDispatch } from "react-redux";
@@ -44,10 +44,13 @@ export async function loginHandler({ request, params }) {
         body: JSON.stringify(loginData)
     })
 
-    if (result.status === 422 || result.status === 401) {
+    const resData = await result.json();
 
-        errorResult.valid = false;
-        errorResult.message = "Error with Credentials";
+
+    if (resData.isValid) {
+
+        errorResult.valid = resData.isValid;
+        errorResult.message = resData.message;
 
         return errorResult;
     }
@@ -57,10 +60,8 @@ export async function loginHandler({ request, params }) {
             { status: 500 })
     }
 
-    const resData = await result.json();
-
     localStorage.setItem("token", resData?.token);
-    return redirect("/main");
+    return resData;
 }
 
 
