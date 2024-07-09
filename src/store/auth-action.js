@@ -69,7 +69,7 @@ export const updateAuth = (token)=>{
       
         try{
             const authData = await fetchData();
-            console.log(authData)
+            
             if(authData?.status === 500){
                 localStorage.clear();
                 dispatch(authAction.authActive({

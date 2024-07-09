@@ -14,9 +14,10 @@ const Login = () => {
     const state = submit.state;
 
     const dispatch = useDispatch();
-
+    
     useEffect(() => {
-        if (data?.token !== null) {
+        if (data?.token !== null ||
+        data?.token !== undefined) {
             localStorage.setItem("token", data?.token)
             dispatch(updateAuth(data?.token));
             <Navigate to="/main" />

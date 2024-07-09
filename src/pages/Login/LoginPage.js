@@ -42,23 +42,16 @@ export async function loginHandler({ request, params }) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(loginData)
-    })
-
-    const resData = await result.json();
-
-
-    if (resData.isValid) {
-
-        errorResult.valid = resData.isValid;
-        errorResult.message = resData.message;
-
-        return errorResult;
-    }
-
-    else if (!result.ok) {
+    })   
+    if (!result.ok) {
         throw json({ message: "Something went wrong" },
             { status: 500 })
     }
+
+    const resData = await result.json();
+
+    errorResult.valid = resData.isValid;
+    errorResult.message = resData.message;
 
     localStorage.setItem("token", resData?.token);
     return resData;
