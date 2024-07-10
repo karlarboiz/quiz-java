@@ -28,7 +28,8 @@ export async function registerHandler({ request, params }) {
         lastName: data.get('last-name'),
         email: data.get('email'),
         username: data.get('username'),
-        password: data.get('password')
+        password: data.get('password'),
+        isUpdate: false
     }
 
     const result = await fetch("http://localhost:8080/quiz/api/register", {

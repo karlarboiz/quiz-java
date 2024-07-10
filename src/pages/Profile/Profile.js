@@ -1,6 +1,8 @@
 import React from "react";
 import BodyComponent from "../../components/BodyComponent/BodyComponent";
 import { Form } from "react-router-dom";
+
+import Button from "../../components/Button/Button";
 const Profile = ({data}) => {
     let {firstName, lastName,email, username} = data;
     
@@ -27,6 +29,9 @@ const Profile = ({data}) => {
                     <label>Email Addres</label>
                     <input value={email} name="email" onChange={(e)=>{console.log("hello")}}/>
                 </div>
+                
+                <Button >Update</Button>
+
             </Form>
         </BodyComponent>
     )
