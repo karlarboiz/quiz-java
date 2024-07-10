@@ -1,7 +1,7 @@
 .svg  {
     position: absolute;
     top: 0;
-    left: calc(5rem + .75rem);
+    left: calc(45% + .05rem);
     height: 1.5rem;
     z-index: 2;
     animation: moveCheck .25s ease-out;
@@ -16,8 +16,7 @@
 }
 
 .quiz-question__answer {
-    flex: 1;
-    max-width: 27.5rem;
+    width: 45%;
     min-height: 10rem;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
@@ -29,6 +28,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+   text-align: center;
 }
 
 .quiz-question__answer-active {

@@ -1,7 +1,8 @@
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import AppGate from './components/AppGate/AppGate';
-
 import Error from "./pages/Error/Error";
 import Home from "./pages/Home/Home";
 import LoginPage from './pages/Login/LoginPage';
@@ -16,7 +17,7 @@ import Logout from './components/Logout/Logout';
 import RecordsPage from './pages/Records/RecordsPage';
 import QuizModificationPage from './pages/QuizModificationPage/QuizModificationPage';
 import ResumeQuizPage from './pages/ResumeQuiz/ResumeQuizPage';
-import ProfilePage from './pages/Profile/ProfilePage';
+import ProfilePage, { getProfileDetails } from './pages/Profile/ProfilePage';
 import { loginHandler } from './pages/Login/LoginPage';
 import { registerHandler } from './pages/Register/RegisterPage';
 import { fetchAuthProfile } from './store/auth-action';
@@ -27,8 +28,7 @@ import { getUsersGameRecords } from './pages/Users/UsersPage';
 import { fetchIncompleteQuizzes } from './pages/Main/MainPage';
 import { getResumeItems } from './pages/ResumeQuiz/ResumeQuizPage';
 import './App.css';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+
 
 const router = createBrowserRouter([
   {
@@ -109,7 +109,8 @@ const router = createBrowserRouter([
         loader: getQuizHistoryHandler
       }, {
         path: 'profile',
-        element: <ProfilePage />
+        element: <ProfilePage />,
+        loader: getProfileDetails
       },
       {
         path: 'logout',

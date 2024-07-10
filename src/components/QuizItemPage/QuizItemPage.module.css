@@ -9,9 +9,12 @@
 }
 
 .quiz-body__selection {
+    width: 65%;
     display: flex;
     gap: .5rem;
     flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
 }
 
 
