@@ -63,7 +63,7 @@ export async function saveItemsForTheGameHandler({request,param}) {
     });
 
     try{
-        startData = await fetch("http://localhost:8080/main/user/start",{
+        startData = await fetch(`${process.env.REACT_APP_API_URL}/main/user/start`,{
             method: "post",
             headers: {
                 'Content-Type': 'application/json',

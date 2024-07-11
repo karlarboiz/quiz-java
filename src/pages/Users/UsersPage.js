@@ -4,7 +4,7 @@ import { json, useLoaderData } from "react-router";
 
 const UsersPage = () => {
     const data = useLoaderData();
-
+    
     return (
         <React.Fragment>
             <Users data={data} />
@@ -13,10 +13,11 @@ const UsersPage = () => {
 }
 
 export async function getUsersGameRecords() {
+
     let data;
     let dataResult;
     try {
-        data = await fetch("http://localhost:8080/quiz/api/info/users/record")
+        data = await fetch(`${process.env.REACT_APP_API_URL}/quiz/api/info/users/record`)
 
         if (!data.ok ||
             data.status === 500) {
@@ -31,6 +32,8 @@ export async function getUsersGameRecords() {
         throw json({ message: e.message },
             { status: 404 })
     }
+
+    console.log(dataResult)
 
     return dataResult;
 

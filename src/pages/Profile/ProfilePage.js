@@ -17,7 +17,7 @@ export async function getProfileDetails() {
     let data;
     let dataResult;
     try {
-        data = await fetch("http://localhost:8080/main/user/profile-details",{
+        data = await fetch(`${process.env.REACT_APP_API_URL}/main/user/profile-details`,{
             headers:{'Content-Type': 'application/json',
                 "Authorization": `Bearer ${localStorage.getItem("token")}`}
 
