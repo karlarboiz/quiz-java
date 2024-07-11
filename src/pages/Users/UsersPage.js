@@ -11,7 +11,7 @@ const UsersPage = () => {
         </React.Fragment>
     )
 }
-
+ 
 export async function getUsersGameRecords() {
 
     let data;
