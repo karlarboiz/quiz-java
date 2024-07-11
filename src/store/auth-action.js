@@ -52,7 +52,7 @@ export const fetchAuthProfile = ()=>{
 export const updateAuth = (token)=>{
     return async(dispatch)=>{
         const fetchData = async()=>{
-            const response =await fetch("http://localhost:8080/main/user/profile",{
+            const response =await fetch(`${process.env.REACT_APP_API_URL}/main/user/profile`,{
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }

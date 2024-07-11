@@ -3,7 +3,7 @@ import { quizItemsAction } from "."
 export const fetchQuizItems = (token)=>{
     return async(dispatch)=>{
         const fetchData = async()=>{
-            const response =await fetch("http://localhost:8080/main/user/quiz-items",{
+            const response =await fetch(`${process.env.REACT_APP_API_URL}/main/user/quiz-items`,{
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
