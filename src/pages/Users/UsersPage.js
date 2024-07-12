@@ -16,17 +16,17 @@ export async function getUsersGameRecords() {
 
     let data;
     let dataResult;
+
     try {
         data = await fetch(`${process.env.REACT_APP_API_URL}/quiz/api/info/users/record`)
-
+        console.log(await data.json());
         if (!data.ok ||
             data.status === 500) {
             throw new json({ message: "Something went wrong" },
                 { status: 404 })
         }
-
+        
         dataResult = await data.json();
-
 
     } catch (e) {
         throw json({ message: e.message },
