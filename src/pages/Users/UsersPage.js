@@ -11,29 +11,30 @@ const UsersPage = () => {
         </React.Fragment>
     )
 }
- 
+
+fetch(`${process.env.REACT_APP_API_URL}/quiz/api/info/users/record`)
 export async function getUsersGameRecords() {
 
     let data;
     let dataResult;
 
+    console.log()
     try {
         data = await fetch(`${process.env.REACT_APP_API_URL}/quiz/api/info/users/record`)
-        console.log(await data.json());
+        
         if (!data.ok ||
             data.status === 500) {
             throw new json({ message: "Something went wrong" },
                 { status: 404 })
         }
-        
-        dataResult = await data.json();
 
+        dataResult = await data.json();
+        
     } catch (e) {
         throw json({ message: e.message },
             { status: 404 })
     }
 
-    console.log(dataResult)
 
     return dataResult;
 
