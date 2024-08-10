@@ -4,7 +4,7 @@ import { fetchQuizItem } from "../../store/quiz-item__action";
 import { fetchQuizAnswer } from "../../store/quiz-answer__action";
 import AnswerItem from "../AnswerItem/AnswerItem";
 import quiz from "./QuizItemPage.module.css";
-
+import { motion } from "framer-motion";
 const QuizItemPage = ({quizIdTag,itemsLeft}) =>{
     const [index,setIndex] = useState(null);
     
@@ -20,6 +20,27 @@ const QuizItemPage = ({quizIdTag,itemsLeft}) =>{
 
     let category = quizItem?.quizDetails?.category ? (quizItem?.quizDetails?.category?.includes("_") ? quizItem?.quizDetails?.category?.split("_").map(val=>val?.charAt(0).toUpperCase() + val.slice(1)).join(" ") : 
     quizItem?.quizDetails?.category.charAt(0).toUpperCase() + quizItem?.quizDetails?.category.slice(1)) : "";
+
+    const container = {
+        hidden: { opacity: 1, scale: 0 },
+        visible: {
+          opacity: 1,
+          scale: 1,
+          transition: {
+            delayChildren: 0.3,
+            staggerChildren: 0.2
+          }
+        }
+      };
+      
+      const item = {
+        hidden: { y: 20, opacity: 0 },
+        visible: {
+          y: 0,
+          opacity: 1
+        }
+      };
+
    
     useEffect(()=>{
         if(quizIdTag !== null ) {
@@ -49,11 +70,16 @@ const QuizItemPage = ({quizIdTag,itemsLeft}) =>{
             <div>Difficulty: {difficulty}</div>
             <p className={quiz['quiz-question']}>{quizItem?.quizDetails?.question?.text}</p>
 
-            <div className={quiz['quiz-body__selection']}>
+            <motion.ul className={quiz['quiz-body__selection']}  
+            variants={container}
+            initial="hidden"
+            animate="visible">  
                 {choices.map((val,i) =>{
-                    return(<AnswerItem text={val} key={val} getAnswer={getAnswer} dataValue={i} index={index}/>)
+                    return(
+                        <AnswerItem text={val} key={val} getAnswer={getAnswer} dataValue={i} index={index} variants={item}/>
+                    )
                 })}
-            </div>
+            </motion.ul>
         </aside>
 
     )

@@ -15,7 +15,7 @@ const Login = () => {
     const state = submit.state;
 
     const dispatch = useDispatch();
-    
+    console.log(data);
     useEffect(() => {
         if (data?.token !== null ||
         data?.token !== undefined) {
