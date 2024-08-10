@@ -28,7 +28,7 @@ export async function fetchCurrentGameResults({request,params}){
         console.log(params)
         const id = params?.id;
 
-        const urlDecided = id ? `${process.env.REACT_APP_API_URL}/main/user/fetch/game-result/${Number(id)}`: `${process.env.REACT_APP_API_URL}/main/user/fetch/game-result`;
+        const urlDecided = id ? `${process.env.REACT_APP_API_URL}main/user/fetch/game-result/${Number(id)}`: `${process.env.REACT_APP_API_URL}main/user/fetch/game-result`;
         try{
             data = await fetch(urlDecided,{
                 headers:{

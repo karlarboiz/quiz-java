@@ -23,7 +23,7 @@ export async function getQuizHistoryHandler() {
     let dataResult;
 
     try {
-        data = await fetch(`${process.env.REACT_APP_API_URL}/main/user/game-history`, {
+        data = await fetch(`${process.env.REACT_APP_API_URL}main/user/game-history`, {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem("token")}`
             }

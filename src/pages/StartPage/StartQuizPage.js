@@ -41,7 +41,7 @@ export async function updateQuizItemHandler({request,params}){
     let dataResult;
 
 
-    const urlDecided = id ? `${process.env.REACT_APP_API_URL}/main/user/game-resume/${Number(id)}` :  `${process.env.REACT_APP_API_URL}/main/user/game`;
+    const urlDecided = id ? `${process.env.REACT_APP_API_URL}main/user/game-resume/${Number(id)}` :  `${process.env.REACT_APP_API_URL}main/user/game`;
 
     try {
         data = await fetch(urlDecided,{

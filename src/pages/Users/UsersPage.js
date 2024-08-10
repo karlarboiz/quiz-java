@@ -12,15 +12,13 @@ const UsersPage = () => {
     )
 }
 
-fetch(`${process.env.REACT_APP_API_URL}/quiz/api/info/users/record`)
+fetch(`${process.env.REACT_APP_API_URL}quiz/api/info/users/record`)
 export async function getUsersGameRecords() {
 
     let data;
     let dataResult;
-
-    console.log()
     try {
-        data = await fetch(`${process.env.REACT_APP_API_URL}/quiz/api/info/users/record`)
+        data = await fetch(`${process.env.REACT_APP_API_URL}quiz/api/info/users/record`)
         
         if (!data.ok ||
             data.status === 500) {

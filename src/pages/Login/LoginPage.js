@@ -36,7 +36,7 @@ export async function loginHandler({ request, params }) {
         password: data.get('password')
     }
 
-    const result = await fetch(`${process.env.REACT_APP_API_URL}/quiz/api/login`, {
+    const result = await fetch(`${process.env.REACT_APP_API_URL}quiz/api/login`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'

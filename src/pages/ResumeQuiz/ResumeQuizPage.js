@@ -27,7 +27,7 @@ export async function getResumeItems({request,params}){
     objReturn.isCollected = false;
     try {
         
-        data = await fetch(`${process.env.REACT_APP_API_URL}/main/user/resume-quiz/${id}`,{
+        data = await fetch(`${process.env.REACT_APP_API_URL}main/user/resume-quiz/${id}`,{
             headers: {
                 'Content-Type': 'application/json',
                 "Authorization": `Bearer ${localStorage.getItem("token")}`

@@ -22,7 +22,7 @@ export async function fetchIncompleteQuizzes(){
     let dataResult;
 
     try {
-        data = await fetch(`${process.env.REACT_APP_API_URL}/main/user/game-history/incomplete-quizzes`,{
+        data = await fetch(`${process.env.REACT_APP_API_URL}main/user/game-history/incomplete-quizzes`,{
             headers: {
                 'Content-Type': 'application/json',
                 "Authorization": `Bearer ${localStorage.getItem("token")}`

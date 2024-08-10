@@ -32,7 +32,7 @@ export async function registerHandler({ request, params }) {
         isUpdate: false
     }
 
-    const result = await fetch(`${process.env.REACT_APP_API_URL}/quiz/api/register`, {
+    const result = await fetch(`${process.env.REACT_APP_API_URL}quiz/api/register`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
