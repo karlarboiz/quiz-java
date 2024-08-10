@@ -32,3 +32,10 @@
 .form-group input {
     padding: .5rem .75rem;
 }
+
+.error {
+    margin: .75rem auto;
+    color: red;
+    font-size: 1.05rem;
+    font-weight: 700;
+}

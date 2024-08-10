@@ -37,8 +37,9 @@ const Login = () => {
                 y: -5
             }
         }}>
-            {!data?.valid && <div>{data?.message}</div>}
+           
             <Form method="post" className={logincss.form}>
+                {!data?.valid && <div className={logincss.error}>{data?.message}</div>}
                 <section className={logincss['form--section-1']}>
                     <LazyLoadImage src={require("../../pictures/trivia.png")}
                         alt="Brand Image" />
@@ -59,7 +60,7 @@ const Login = () => {
                     </div>
 
 
-                    <Button type="submit" btnState={state}> Submit </Button>
+                    <Button type="submit" btnState={state} > Submit </Button>
                 </section>
             </Form>
         </motion.div>

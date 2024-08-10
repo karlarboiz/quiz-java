@@ -45,7 +45,6 @@ svg {
 }
 
 .nav__link {
-
   font-weight: 600;
   transition: color 0.4s;
   display: flex;
@@ -82,7 +81,7 @@ svg {
     top: 0%;
     left: 0%;
     background-color: hsla(0, 0%, 6%, 0.2);
-    backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(16px);
     width: 100%;
     height: 100%;
@@ -93,12 +92,16 @@ svg {
   .nav__menu-hide {
     display: none;
   }
+
+  .nav__item {
+    max-width: 6.5rem;
+  }
+  .nav {
+    padding: .75rem 0;
+  }
 }
 
 @media screen and (min-width: 600px) {
-  .nav {
-    height: calc(var(--header-height) + 1rem);
-  }
 
   .nav__toggle,
   .nav__close {

@@ -41,7 +41,7 @@ const NavBar = () => {
           <ul className="nav__list">
             {!auth?.auth &&
               <>
-                <li className="nav__item">
+                <li className="nav__item" onClick={navbarController} >
                   <NavLink to="/users" className={({ isActive }) =>
                     isActive ? 'nav__link nav__link-active' : 'nav__link'}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-people" viewBox="0 0 16 16">
@@ -51,7 +51,7 @@ const NavBar = () => {
                   </NavLink>
                 </li>
 
-                <li className="nav__item">
+                <li className="nav__item" onClick={navbarController} >
                   <NavLink to="/about" className={({ isActive }) =>
                     isActive ? 'nav__link nav__link-active' : 'nav__link'}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-info-circle" viewBox="0 0 16 16">
@@ -66,7 +66,7 @@ const NavBar = () => {
 
             {!auth.auth &&
 
-              <li className="nav__item">
+              <li className="nav__item" onClick={navbarController} >
                 <NavLink
                   to="/login"
                   className={({ isActive }) =>
@@ -83,7 +83,7 @@ const NavBar = () => {
             }
 
             {!auth.auth &&
-              <li className="nav__item">
+              <li className="nav__item" onClick={navbarController} >
                 <NavLink
                   to="/register"
                   className={({ isActive }) =>
@@ -98,7 +98,7 @@ const NavBar = () => {
               </li>}
 
             {auth.auth && <>
-              <li className="nav__item">
+              <li className="nav__item" onClick={navbarController} >
 
                 <NavLink
                   to="/main"
@@ -111,7 +111,7 @@ const NavBar = () => {
                   main
                 </NavLink>
               </li>
-              <li className="nav__item">
+              <li className="nav__item" onClick={navbarController} >
 
                 <NavLink
                   to="/records"
@@ -126,7 +126,7 @@ const NavBar = () => {
                 </NavLink>
               </li>
 
-              <li className="nav__item">
+              <li className="nav__item" onClick={navbarController} >
 
                 <NavLink
                   to="/profile"
@@ -140,7 +140,7 @@ const NavBar = () => {
                   profile
                 </NavLink>
               </li>
-              <li className="nav__item">
+              <li className="nav__item" >
 
                 <NavLink
                   to="/logout"
