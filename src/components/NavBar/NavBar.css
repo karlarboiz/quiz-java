@@ -5,7 +5,7 @@
   background-color: transparent;
   z-index: var(--z-fixed);
   background-color: #FFFFFF;
-   margin: 0 auto;
+  margin: 0 auto;
   border-radius: 2.25rem;
 }
 
@@ -77,6 +77,10 @@ svg {
 }
 
 @media screen and (max-width: 600px) {
+  .nav {
+    width: 85%;
+    margin: .75rem auto;
+  }
   .nav__menu {
     position: fixed;
     top: 0%;

@@ -36,7 +36,7 @@ label {
 
 .multiple-choice__group {
    min-height: 9rem;
-   position: relative;
+   position: relative; 
    display: flex;
    align-items: center;
    justify-content: center;

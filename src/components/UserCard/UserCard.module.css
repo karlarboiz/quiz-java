@@ -3,6 +3,7 @@
     background-color: white;
     border-radius: .5rem;
     position: relative;
+    margin: 0 .5rem;
 }
 
 .user-card::after {
@@ -19,7 +20,7 @@
 }
 
 .user-card svg {
-    height: 7.5rem;
+    height: 5.5rem;
 }
 
 .user-card--header {

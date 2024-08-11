@@ -1,7 +1,14 @@
 .user-section {
     display: grid;
     grid-template-columns: repeat(3, 15rem);
-    justify-content: center;
     row-gap: .85rem;
-    column-gap: .85rem;
+    column-gap: 1.05rem;
+}
+
+@media screen and (max-width: 42rem) {
+    .user-section {
+        grid-template-columns: repeat(2, 15rem);
+
+    }
+    
 }
