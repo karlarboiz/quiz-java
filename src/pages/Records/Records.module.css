@@ -1,0 +1,10 @@
+.records-container {
+    display: grid;
+    grid-template-columns: repeat(3,min(17.5rem,50%));
+    justify-content: space-around;
+    gap: .75rem;
+}
+
+.record-item--container {
+    width: 80%;
+}
