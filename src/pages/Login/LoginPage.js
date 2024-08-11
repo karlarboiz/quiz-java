@@ -43,6 +43,8 @@ export async function loginHandler({ request, params }) {
         },
         body: JSON.stringify(loginData)
     })   
+
+
     if (!result.ok) {
         throw json({ message: "Something went wrong" },
             { status: 500 })

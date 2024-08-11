@@ -124,7 +124,7 @@ function App() {
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
   useEffect(() => {
-    if (token) {
+    if (token || token !== undefined) {
       dispatch(fetchAuthProfile());
     } else {
       return;
