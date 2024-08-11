@@ -40,5 +40,8 @@ export async function getProfileDetails() {
 
     return dataResult;
 
+}
 
+export async function updateProfileDetails({req,params}){
+    
 }

@@ -3,8 +3,6 @@ import { Form, Navigate, useActionData, useNavigation } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import { useDispatch } from "react-redux";
 import { updateAuth } from "../../store/auth-action";
-
-// import { postData } from "../../store/login-action";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { motion } from "framer-motion";
 import logincss from "./Login.module.css";
@@ -19,11 +17,8 @@ const Login = () => {
     const dispatch = useDispatch();
     
     useEffect(() => {
-        if (!data?.error) {
-            console.log(data)
+        if (data?.valid) {
             localStorage.setItem("token", data?.token)
-        
-         
             dispatch(updateAuth(data?.token));
             <Navigate to="/main" />
         }else {

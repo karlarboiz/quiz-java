@@ -45,7 +45,7 @@ const QuizModification = ()=>{
                     </select>
                 </div> */}
            
-                <Button type="submit"> Submit </Button>
+                <Button type="submit"> Begin</Button>
 
             </Form>
         </BodyComponent>

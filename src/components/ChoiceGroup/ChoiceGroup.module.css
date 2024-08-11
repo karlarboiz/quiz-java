@@ -1,5 +1,5 @@
 :root {
-    --spacer: .5rem;
+    --spacer: .75rem;
 }
 
 label {
@@ -23,7 +23,8 @@ label {
     display: grid;
     gap: var(--spacer);
     grid-auto-flow: column;
-    grid-auto-columns: 25%;
+    grid-auto-columns: 30%;
+
     overflow-x: auto;
     overscroll-behavior-inline: contain;
     padding: 0 var(--spacer) var(--spacer) var(--spacer);
@@ -34,7 +35,7 @@ label {
 }
 
 .multiple-choice__group {
-   height: 7.5rem;
+   min-height: 9rem;
    position: relative;
    display: flex;
    align-items: center;

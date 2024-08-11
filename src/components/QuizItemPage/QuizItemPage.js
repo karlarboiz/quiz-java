@@ -5,6 +5,9 @@ import { fetchQuizAnswer } from "../../store/quiz-answer__action";
 import AnswerItem from "../AnswerItem/AnswerItem";
 import quiz from "./QuizItemPage.module.css";
 import { motion } from "framer-motion";
+
+
+
 const QuizItemPage = ({quizIdTag,itemsLeft}) =>{
     const [index,setIndex] = useState(null);
     
@@ -20,27 +23,6 @@ const QuizItemPage = ({quizIdTag,itemsLeft}) =>{
 
     let category = quizItem?.quizDetails?.category ? (quizItem?.quizDetails?.category?.includes("_") ? quizItem?.quizDetails?.category?.split("_").map(val=>val?.charAt(0).toUpperCase() + val.slice(1)).join(" ") : 
     quizItem?.quizDetails?.category.charAt(0).toUpperCase() + quizItem?.quizDetails?.category.slice(1)) : "";
-
-    const container = {
-        hidden: { opacity: 1, scale: 0 },
-        visible: {
-          opacity: 1,
-          scale: 1,
-          transition: {
-            delayChildren: 0.3,
-            staggerChildren: 0.2
-          }
-        }
-      };
-      
-      const item = {
-        hidden: { y: 20, opacity: 0 },
-        visible: {
-          y: 0,
-          opacity: 1
-        }
-      };
-
    
     useEffect(()=>{
         if(quizIdTag !== null ) {
@@ -53,7 +35,7 @@ const QuizItemPage = ({quizIdTag,itemsLeft}) =>{
     },[dispatch,correctAns])
  
     function getAnswer(e){
-
+        console.log(e.target.tabIndex);
         setIndex(Number(e.target.tabIndex));
         dispatch(fetchQuizAnswer(e.target.textContent.trim(),correctAns));
     }
@@ -61,6 +43,29 @@ const QuizItemPage = ({quizIdTag,itemsLeft}) =>{
     useEffect(()=>{ 
         setIndex(null);
     },[itemsLeft])
+
+    // this is for animation
+const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.7,
+        staggerChildren: 0.2
+      }
+    }
+  };
+  
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
+
+//
 
 
     return (
@@ -76,7 +81,9 @@ const QuizItemPage = ({quizIdTag,itemsLeft}) =>{
             animate="visible">  
                 {choices.map((val,i) =>{
                     return(
-                        <AnswerItem text={val} key={val} getAnswer={getAnswer} dataValue={i} index={index} variants={item}/>
+                        <motion.li  className={quiz['quiz-question__answer']} variants={item} onClick={getAnswer} tabIndex={i} key={val} >
+                            <AnswerItem text={val} dataValue={i} index={index} />
+                        </motion.li>
                     )
                 })}
             </motion.ul>

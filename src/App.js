@@ -27,6 +27,7 @@ import { getQuizHistoryHandler } from './pages/Records/RecordsPage';
 import { getUsersGameRecords } from './pages/Users/UsersPage';
 import { fetchIncompleteQuizzes } from './pages/Main/MainPage';
 import { getResumeItems } from './pages/ResumeQuiz/ResumeQuizPage';
+import { updateProfileDetails } from './pages/Profile/ProfilePage';
 import './App.css';
 
 
@@ -110,7 +111,8 @@ const router = createBrowserRouter([
       }, {
         path: 'profile',
         element: <ProfilePage />,
-        loader: getProfileDetails
+        loader: getProfileDetails,
+        action: updateProfileDetails
       },
       {
         path: 'logout',
