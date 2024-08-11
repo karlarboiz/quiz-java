@@ -12,7 +12,7 @@
     }   
 }
 
-@media screen and (max-width: 21.875rem) {
+@media screen and (max-width: 30rem) {
     .user-section {
         grid-template-columns: 17.5rem;
         justify-content: center;
