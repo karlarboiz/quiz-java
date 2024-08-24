@@ -34,8 +34,9 @@
 }
 
 .error {
-    margin: .75rem auto;
+    margin: 0;
     color: red;
-    font-size: 1.05rem;
-    font-weight: 700;
+    font-size: .85rem;
+    font-weight: 500;
+    
 }

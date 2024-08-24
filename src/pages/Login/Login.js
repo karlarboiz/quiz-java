@@ -25,7 +25,7 @@ const Login = () => {
             return;
         }
     }, [data, dispatch])
-
+    console.log(data.responseAuthErrors);
     return (
         <motion.div animate={{
             x:0,
@@ -41,6 +41,12 @@ const Login = () => {
            
             <Form method="post" className={logincss.form}>
                 {!data?.valid && <div className={logincss.error}>{data?.message}</div>}
+                {data.responseAuthErrors.length > 0 &&
+                
+                data.responseAuthErrors.map(val=>{
+                    return (<div className={logincss.error}>{val}</div>)
+                })
+                }
                 <section className={logincss['form--section-1']}>
                     <LazyLoadImage src={require("../../pictures/trivia.png")}
                         alt="Brand Image" />
