@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 export default function useTimer(time,onTimeUp) {
   const [timespan, setTimespan] = useState(time);
-
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTimespan((prevTimespan) => {

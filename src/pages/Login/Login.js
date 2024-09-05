@@ -41,7 +41,7 @@ const Login = () => {
            
             <Form method="post" className={logincss.form}>
                 {!data?.valid && <div className={logincss.error}>{data?.message}</div>}
-                {(data?.responseAuthErrors.length > 0 || data?.responseAuthErrors) &&
+                {(data?.responseAuthErrors) &&
                 data?.responseAuthErrors.map(val=>{
                     return (<div className={logincss.error}>{val}</div>)
                 })

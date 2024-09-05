@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateAuth } from "../../store/auth-action";
 import BodyComponent from "../../components/BodyComponent/BodyComponent";
 import Button from "../../components/Button/Button";
-//import useTimer from "../../hooks/useTimer";
+import useTimer from "../../hooks/useTimer";
 const StartQuiz = ({items,id,returnedData})=>{
 
     const scoreUrl = id ? "score": "/score";
@@ -55,15 +55,15 @@ const StartQuiz = ({items,id,returnedData})=>{
     // will work with timer quiz once implementation I found a work around
 
 
-    // const handleTimeUp = () => {
-    //     if (nextBtnRef.current) {
-    //         console.log(nextBtnRef.current)
-    //       nextBtnRef.current.addEventListener('click', handleTimeUp); 
-    //     }
-    //   };
+    const handleTimeUp = () => {
+        console.log("somethign")
+      };
 
-    //   const {timer}= useTimer(10,handleTimeUp);
+    const {timer}= useTimer(10,handleTimeUp);
     
+    useEffect(()=>{
+        console.log(timer);
+    },[timer])
     
     return (
 
