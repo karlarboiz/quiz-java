@@ -4,6 +4,7 @@
     border-radius: .5rem;
     position: relative;
     margin: 0 .5rem;
+    padding: .75rem .5rem;
 }
 
 .user-card::after {
