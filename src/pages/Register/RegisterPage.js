@@ -1,14 +1,14 @@
 import React from "react";
 import Register from "./Register";
-import { Navigate, json, redirect } from "react-router";
-import { useSelector } from "react-redux";
+import { Navigate, json, redirect, useActionData } from "react-router";
+
 const RegisterPage = () => {
-    const auth = useSelector(state => state.auth);
-    console.log(auth)
+    const data = useActionData();
+    
     return (
         <React.Fragment>
-            {auth?.auth && <Navigate to="/main" />}
-            {!auth?.auth && <Register />}
+            {data?.success&& <Navigate to="/main" />}
+            {!data?.success && <Register />}
         </React.Fragment>
     )
 }
@@ -54,11 +54,14 @@ export async function registerHandler({ request, params }) {
     }
     const resData = await result.json();
 
+    console.log("registration ni cya");
+
+    console.log(resData.success);
     if (!resData?.success) {
-        return resData;
+        return redirect("/main");
 
     } else {
-        return redirect("/login");
+        return redirect("/register");
     }
 
 }

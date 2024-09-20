@@ -1,12 +1,25 @@
 import React from "react";
 import quiz from "./UserCard.module.css";
 import { returnEqualMonth } from "../../util/month-util";
+import { motion } from "framer-motion";
+
 const UserCard = ({ username, completedQuizzes, regDate }) => {
     let improveDate = new Date(regDate);
     let convertedDate = returnEqualMonth(improveDate.getMonth()) + ' ' + improveDate.getDate() + ', ' + improveDate.getFullYear();
-    
+
     return (
-        <div className={quiz['user-card']}>
+        <motion.div
+        whileHover={{
+            scale: 1.05,
+            
+          }}
+
+          transition={{
+            duration: .5,
+            type: 'spring',
+            stiffness: 300
+          }}
+        className={quiz['user-card']}>
             <div className={quiz['user-card--header']}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
@@ -17,7 +30,7 @@ const UserCard = ({ username, completedQuizzes, regDate }) => {
             <hr></hr>
             <p className={quiz['completed-quizzes']}>Quizzes Completed: {completedQuizzes}</p>
             <span className={quiz['register-date']}>Date Registered: {convertedDate}</span>
-        </div>
+        </motion.div>
     )
 
 }

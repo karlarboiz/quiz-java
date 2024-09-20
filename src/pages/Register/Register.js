@@ -22,9 +22,7 @@ const Register = () => {
         transition={{
             duration:.5,
             type: 'tween'
-        }}
-        
-        >
+        }}>
             <Form method="post" className={quiz['form']}>
             <section className={quiz['form--section-1']}>
                 <LazyLoadImage src={require("../../pictures/trivia.png")}

@@ -1,6 +1,6 @@
 .user-section {
     display: grid;
-    grid-template-columns: repeat(4, 17.5rem);
+    grid-template-columns: repeat(3, 17.5rem);
     row-gap: .85rem;
     column-gap: 1.05rem;
     justify-content: center;
