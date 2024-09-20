@@ -1,10 +1,11 @@
 import React from "react";
-import { Form, useNavigation } from "react-router-dom";
+import { Form, useNavigation,useActionData } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import quiz from "./Register.module.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { motion } from "framer-motion";
 const Register = () => {
+    const data = useActionData();
     const submit = useNavigation();
     const state = submit.state;
     return (
@@ -23,7 +24,14 @@ const Register = () => {
             duration:.5,
             type: 'tween'
         }}>
+
+            <div className={quiz.error}>{data?.message}</div>
             <Form method="post" className={quiz['form']}>
+                {(data?.responseAuthErrors || data?.responseAuthErrors.length > 0) &&
+                    data?.responseAuthErrors.map((item,i)=>(
+                        <div key={i } className={quiz.error}>{item}</div>
+                    ))
+                }
             <section className={quiz['form--section-1']}>
                 <LazyLoadImage src={require("../../pictures/trivia.png")}
                     alt="Brand Image" />

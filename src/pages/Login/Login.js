@@ -25,8 +25,7 @@ const Login = () => {
             return;
         }
     }, [data, dispatch])
-    
-    console.log(data);
+
     return (
         <motion.div 
         initial={{

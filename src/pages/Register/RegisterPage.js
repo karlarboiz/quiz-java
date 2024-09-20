@@ -1,14 +1,15 @@
 import React from "react";
 import Register from "./Register";
-import { Navigate, json, redirect, useActionData } from "react-router";
+import { Navigate, json, redirect} from "react-router";
+import { useSelector } from "react-redux";
 
 const RegisterPage = () => {
-    const data = useActionData();
-    
+
+    const auth = useSelector(state => state.auth);  
     return (
         <React.Fragment>
-            {data?.success&& <Navigate to="/main" />}
-            {!data?.success && <Register />}
+            {auth?.auth&& <Navigate to="/main" />}
+            {!auth?.auth && <Register />}
         </React.Fragment>
     )
 }
@@ -32,6 +33,8 @@ export async function registerHandler({ request, params }) {
         isUpdate: false
     }
 
+    console.log(registerData);
+
     const result = await fetch(`${process.env.REACT_APP_API_URL}quiz/api/register`, {
         method: "POST",
         headers: {
@@ -39,6 +42,8 @@ export async function registerHandler({ request, params }) {
         },
         body: JSON.stringify(registerData)
     })
+
+    console.log(result);
 
     if (result.status === 422 || result.status === 401) {
 
@@ -48,20 +53,19 @@ export async function registerHandler({ request, params }) {
         return errorResult;
     }
 
+
     else if (!result.ok) {
         throw json({ message: "Something went wrong" },
             { status: 500 })
     }
     const resData = await result.json();
 
-    console.log("registration ni cya");
 
-    console.log(resData.success);
-    if (!resData?.success) {
-        return redirect("/main");
+        if (!resData?.success) {
+            return resData;
 
-    } else {
-        return redirect("/register");
-    }
+        } else {
+            return redirect("/register");
+        }
 
 }
