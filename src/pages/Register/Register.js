@@ -3,13 +3,29 @@ import { Form, useNavigation } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import quiz from "./Register.module.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-
+import { motion } from "framer-motion";
 const Register = () => {
     const submit = useNavigation();
     const state = submit.state;
     return (
-
-        <Form method="post" className={quiz['form']}>
+        <motion.div
+        initial={{
+            opacity:0,
+            y: +25
+        }}
+        animate={{
+            opacity:1,
+            y: 0,
+       
+        }}
+        
+        transition={{
+            duration:.5,
+            type: 'tween'
+        }}
+        
+        >
+            <Form method="post" className={quiz['form']}>
             <section className={quiz['form--section-1']}>
                 <LazyLoadImage src={require("../../pictures/trivia.png")}
                     alt="Brand Image" />
@@ -49,6 +65,9 @@ const Register = () => {
 
         </Form>
 
+
+        </motion.div>
+        
     )
 }
 

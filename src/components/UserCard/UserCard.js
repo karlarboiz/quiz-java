@@ -4,6 +4,7 @@ import { returnEqualMonth } from "../../util/month-util";
 const UserCard = ({ username, completedQuizzes, regDate }) => {
     let improveDate = new Date(regDate);
     let convertedDate = returnEqualMonth(improveDate.getMonth()) + ' ' + improveDate.getDate() + ', ' + improveDate.getFullYear();
+    
     return (
         <div className={quiz['user-card']}>
             <div className={quiz['user-card--header']}>

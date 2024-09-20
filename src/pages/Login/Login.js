@@ -27,16 +27,21 @@ const Login = () => {
     }, [data, dispatch])
    
     return (
-        <motion.div animate={{
-            x:0,
+        <motion.div 
+        initial={{
+            opacity:0,
+            y: +25
+        }}
+        animate={{
+            opacity:1,
             y: 0,
-            transition: {
-                duration: 3,
-                type: 'spring'
-            },
-            transformOrigin: {
-                y: -5
-            }
+       
+        }}
+        
+        
+        transition={{
+            duration:.5,
+            type: 'tween'
         }}>
            
             <Form method="post" className={logincss.form}>

@@ -2,6 +2,7 @@ import React from "react";
 import UserCard from "../../components/UserCard/UserCard";
 import BodyComponent from "../../components/BodyComponent/BodyComponent";
 import quiz from "./Users.module.css";
+import { motion } from "framer-motion";
 const Users = ({ data }) => {
     
     const mappedData = data.map(val => (
@@ -9,9 +10,24 @@ const Users = ({ data }) => {
     ))
     return (
         <BodyComponent>
-            <section className={quiz['user-section']}>
+            <motion.section
+                 initial={{
+                    opacity:0,
+                    y: +25
+                }}
+                animate={{
+                    opacity:1,
+                    y: 0,
+               
+                }}
+                
+                transition={{
+                    duration:.5,
+                    type: 'tween'
+                }}
+            className={quiz['user-section']}>
                 {mappedData}
-            </section>
+            </motion.section>
         </BodyComponent>
     )
 }
