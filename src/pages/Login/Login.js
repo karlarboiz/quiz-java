@@ -47,9 +47,31 @@ const Login = () => {
             <Form method="post" className={logincss.form}>
                 {!data?.valid && <div className={logincss.error}>{data?.message}</div>}
                 {(data?.responseAuthErrors) &&
-                data?.responseAuthErrors.map(val=>{
-                    return (<div className={logincss.error}>{val}</div>)
-                })
+                    data?.responseAuthErrors.map((val,i)=>{
+                        return (
+                            <motion.li
+                            initial={{
+                                opacity:0,
+                                y: .5,
+                            }}
+    
+                            animate={{
+                                opacity:1,
+                                y: 0,
+                            
+                            }}
+    
+                            transition={{
+                                duration:.5,
+                                type: 'tween'
+                            }}
+
+                            key={i}
+                            
+                            className={logincss.error}>{val}</motion.li>
+                        )
+                    })
+           
                 }   
                 <section className={logincss['form--section-1']}>
                     <LazyLoadImage src={require("../../pictures/trivia.png")}
