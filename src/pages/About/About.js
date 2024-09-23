@@ -27,7 +27,8 @@ const About = () => {
                 Trivia Game
             </div>
             <div className={quiz['content']}>
-                This is a mini-project to master Java Spring Boot as back-end and React js as Front End. I figured it would be </div>
+                This is a mini-project to master Java Spring Boot as back-end and React js as Front End. 
+                I figured it would be nice to do something once in a while...</div>
 
         </BodyComponent>
 
