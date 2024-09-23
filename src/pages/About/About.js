@@ -23,8 +23,12 @@ const About = () => {
         >
 
         <BodyComponent>
-            <div className={quiz['content']}>This is a mini-project
-                to master Java as back-end and React js as Front End</div>
+            <div className={quiz['about-header']}>
+                Trivia Game
+            </div>
+            <div className={quiz['content']}>
+                This is a mini-project to master Java Spring Boot as back-end and React js as Front End. I figured it would be </div>
+
         </BodyComponent>
 
         </motion.div>

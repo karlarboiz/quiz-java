@@ -2,6 +2,7 @@
     text-align: center;
     margin: 2.5rem auto 0 auto;
     max-width: fit-content;
+    overflow: hidden;
 }
 
 .home-page__title {

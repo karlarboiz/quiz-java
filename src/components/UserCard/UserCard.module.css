@@ -1,10 +1,47 @@
+:root {
+    --common-font--size: .85rem;
+    --other-header--size: 1.05rem;
+    --common-padding--size: .75rem;
+    --main-color: #E5D9F2;
+    --secondary-color:  #F5EFFF;
+    --third-color: #CDC1FF;
+    --call-to--action-color:#A594F9;
+    --common-border--radius: .5rem;
+}
+
 .user-card {
-    width: 17.5rem;
-    background-color: white;
-    border-radius: .5rem;
+    width: 18.5rem;
+    max-width: 18.5rem;
+    border-radius: var(--common-border--radius);
     position: relative;
     margin: 0 .5rem;
     padding: .75rem .5rem;
+    background-color: white;
+}
+
+.user-card--header {
+    display: flex;
+    padding: 1.05rem 0;
+    justify-content: space-evenly   ;
+}
+
+.user-card--header-user--details {
+    flex: .7;
+}
+
+.username {
+    font-size: var(--other-header--size);
+    line-height: 2.25rem;
+}
+
+.register-date {
+    font-size: var(--common-font--size);
+    
+}
+
+.completed-quizzes {
+    font-size: var(--common-font--size);
+    padding: var(--common-padding--size) 0; 
 }
 
 .user-card::after {
@@ -14,7 +51,7 @@
     width: .75rem;
     border-radius: 50%;
     position: absolute;
-    background-color: black;
+    background-color:green;
     top: var(--position);
     left: var(--position);
 
@@ -22,8 +59,5 @@
 
 .user-card svg {
     height: 5.5rem;
-}
-
-.user-card--header {
-    text-align: center;
+    
 }

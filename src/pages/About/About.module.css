@@ -1,13 +1,26 @@
-.content {
-    font-size: 1.75rem;
+:root {
+    --common-font--size: .85rem;
+    --main-header--size: 4.25rem;
+    --other-header--size: 1.05rem;
+    --common-padding--size: .75rem;
+    --main-color: #E5D9F2;
+    --secondary-color:  #F5EFFF;
+    --third-color: #CDC1FF;
+    --call-to--action-color:#A594F9;
+    --common-border--radius: .5rem;
+}
+
+.about-header {
+    font-size: var(--main-header--size);
+    font-weight: 600;
     text-align: center;
+}
+
+.content {
+    font-size: var(--common-font--size);
     max-width: 45rem;
     margin: 0 auto;
 }
 
-.content img {
-    width: 7.5rem;
-    height: 7.5rem;
-    position: relative;
-    top: 1.25rem;
-}
+
+

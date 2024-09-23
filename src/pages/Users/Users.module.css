@@ -1,22 +1,22 @@
 .user-section {
     display: grid;
-    grid-template-columns: repeat(3, 17.5rem);
+    grid-template-columns: repeat(3, 18.5rem);
     row-gap: .85rem;
     column-gap: 1.05rem;
     justify-content: center;
 }
 
-@media screen and (max-width: 42rem) {
+@media screen and (max-width: 60rem) {
     .user-section {
-        grid-template-columns: repeat(2, 15rem);
+        grid-template-columns: repeat(2, 20rem);
     }   
 }
 
-@media screen and (max-width: 30rem) {
+@media screen and (max-width: 25rem) {
     .user-section {
-        grid-template-columns: 17.5rem;
+        grid-template-columns: 1fr;
         justify-content: center;
-
+        align-items: center ;
     }
 }
 
