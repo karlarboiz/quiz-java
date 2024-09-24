@@ -1,15 +1,19 @@
+:root {
+    --common-button: .65rem 1.05rem;
+}
+
 .main-container__title {
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 3.75rem;
     margin: 1.25rem 0;
 }
 
 .start-quiz__link {
     color: black;
-    padding: .75rem 1.25rem;
-    border-radius: 1.75rem;
-    font-size: 1.25rem;
+    padding: var(--common-button);
+    border-radius: 1.25rem;
+    font-size: 1.05rem;
 
     background: rgba(255, 255, 255, 0.2);
     border-radius: 1.75rem;
@@ -19,6 +23,8 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
 
     margin: 1.25rem auto;
-    text-align: center;
+    color: #ffff;
+    background-color: #37B7C3;
+    cursor: pointer;
 }
 

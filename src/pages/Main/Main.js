@@ -12,8 +12,7 @@ const Main = ({data1})=>{
         <BodyComponent>   
             
             <section className={quiz['sub-container']}>
-                <div className={quiz['main-container__title']}>Hello, {auth.username}!</div>
-               
+                <div className={quiz['main-container__title']}>Welcome User, {auth.username}!</div>
                 <Link to="/quiz-main" replace="true" className={quiz['start-quiz__link']}>Start Quiz</Link>
             </section>
             

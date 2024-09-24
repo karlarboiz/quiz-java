@@ -91,8 +91,6 @@ const Login = () => {
                         <label htmlFor="password">Password</label>
                         <input type="password" name="password" />
                     </div>
-
-
                     <Button type="submit" btnState={state} > Submit </Button>
                 </section>
             </Form>

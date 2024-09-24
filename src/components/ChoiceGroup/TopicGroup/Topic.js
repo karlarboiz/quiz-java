@@ -53,24 +53,27 @@ const categoriesArr = [{
     pic: "general_knowledge.jpg"
 }]
 
-const Topic = () => {
+const Topic = ({topicModalHandler}) => {
+
     return (
-        <section className={`${quiz['topic-group']} }`}>
+        <>
+            <div className={quiz['overlay']} onClick={topicModalHandler}></div>
+            <section className={quiz['topic-group']} >
+                {categoriesArr.map(val => (
+                    <div key={val.value} className={quiz["multiple-choice__group"]}>
+                        <label htmlFor="topic">{val.textValue}</label>
+                        <input type="checkbox" name="topic" id={val.value} value={val.value} />
 
-            {categoriesArr.map(val => (
-                <div key={val.value} className={quiz["multiple-choice__group"]}>
-                    <label htmlFor="topic">{val.textValue}</label>
-                    <input type="checkbox" name="topic" id={val.value} value={val.value} />
+                        <LazyLoadImage src={require(`../../../pictures/${val.value}.jpg`)}
+                            className={quiz['img']}
 
-                    <LazyLoadImage src={require(`../../../pictures/${val.value}.jpg`)}
-                        className={quiz['img']}
+                            alt={val.textValue}
+                        />
 
-                        alt={val.textValue}
-                    />
-
-                </div>
-            ))}
-        </section>
+                    </div>
+                ))} 
+            </section>
+        </>
     )
 }
 
