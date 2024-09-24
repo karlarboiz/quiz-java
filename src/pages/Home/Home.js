@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link} from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import home from "./Home.module.css";
-import { motion, transform } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function Home(){
     const auth = useSelector(state => state.auth);

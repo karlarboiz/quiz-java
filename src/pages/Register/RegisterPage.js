@@ -33,8 +33,6 @@ export async function registerHandler({ request, params }) {
         isUpdate: false
     }
 
-    console.log(registerData);
-
     const result = await fetch(`${process.env.REACT_APP_API_URL}quiz/api/register`, {
         method: "POST",
         headers: {
@@ -42,8 +40,6 @@ export async function registerHandler({ request, params }) {
         },
         body: JSON.stringify(registerData)
     })
-
-    console.log(result);
 
     if (result.status === 422 || result.status === 401) {
 

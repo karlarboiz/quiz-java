@@ -34,10 +34,17 @@
     padding: .5rem .75rem;
 }
 
-.error {
+
+.error,.success {
     margin: 0;
-    color: red;
     font-size: .85rem;
-    font-weight: 500;
-    
+    font-weight: 400;   
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
 }

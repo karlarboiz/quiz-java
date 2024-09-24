@@ -25,9 +25,10 @@ const Register = () => {
             type: 'tween'
         }}>
 
-            <div className={quiz.error}>{data?.message}</div>
+            
             <Form method="post" className={quiz['form']}>
-                {(data?.responseAuthErrors || data?.responseAuthErrors.length > 0) &&
+            <div className={data?.isValid ? quiz.success : quiz.error}>{data?.message}</div>
+                {(data?.responseAuthErrors || data?.responseAuthErrors?.length > 0) &&
                     data?.responseAuthErrors.map((item,i)=>(
                         <div key={i } className={quiz.error}>{item}</div>
                     ))
