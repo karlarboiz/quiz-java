@@ -7,11 +7,14 @@
     min-height: fit-content;
     padding: 1.25rem;
     max-width: 24.5rem;
-   
-    text-align: center;
+  
     background-color: #ffff;
     border-radius: .75rem;
     margin: 3rem auto;
+}
+
+.form--section-1 {
+    text-align: center;
 }
 
 .form--section-1 img {
@@ -22,7 +25,7 @@
 }
 
 .form-group {
-    margin: 1.25rem auto;
+    margin: 1.25rem auto 0 auto;
     display: flex;
     align-items: center;
     gap: .5rem;
@@ -34,6 +37,9 @@
     padding: .5rem .75rem;
 }
 
+.error-main {
+    text-align: center;
+}
 
 .error,.success {
     margin: 0;
@@ -47,4 +53,8 @@
 
 .success {
     color: green;
+}
+
+.footer {
+    margin: 1.75rem 0 0 0 ;
 }

@@ -1,0 +1,7 @@
+.error,.error-main {
+    margin: 0;
+    color: red;
+    font-size: .75rem;
+    font-weight: 500;
+    padding: 0;   
+}

@@ -45,34 +45,8 @@ const Login = () => {
         }}>
            
             <Form method="post" className={logincss.form}>
-                {!data?.valid && <div className={logincss.error}>{data?.message}</div>}
-                {(data?.responseAuthErrors) &&
-                    data?.responseAuthErrors.map((val,i)=>{
-                        return (
-                            <motion.li
-                            initial={{
-                                opacity:0,
-                                y: .5,
-                            }}
-    
-                            animate={{
-                                opacity:1,
-                                y: 0,
-                            
-                            }}
-    
-                            transition={{
-                                duration:.5,
-                                type: 'tween'
-                            }}
-
-                            key={i}
-                            
-                            className={logincss.error}>{val}</motion.li>
-                        )
-                    })
+                {!data?.valid && <div className={logincss["error-main"]}>{data?.message}</div>}
            
-                }   
                 <section className={logincss['form--section-1']}>
                     <LazyLoadImage src={require("../../pictures/trivia.png")}
                         alt="Brand Image" />
@@ -81,17 +55,76 @@ const Login = () => {
                 </section>
 
                 <section className={logincss['form--section-2']}>
-                    <div className={logincss['form-group']}>
+                    <div >
+                        <div className={logincss['form-group']}>
+
                         <label htmlFor="email">Email</label>
                         <input type="email" name="email" />
+                        </div>
+                         {data?.errorlist?.email.map((val,i)=>{
+                                return (
+                                    <motion.li
+                                    initial={{
+                                        opacity:0,
+                                        y: .5,
+                                    }}
+            
+                                    animate={{
+                                        opacity:1,
+                                        y: 0,
+                                    
+                                    }}
+            
+                                    transition={{
+                                        duration:.5,
+                                        type: 'tween'
+                                    }}
 
+                                    key={i}
+                                    
+                                    className={logincss.error}>{val}</motion.li>
+                                )
+                            })
+                
+                        }   
                     </div>
 
-                    <div className={logincss['form-group']}>
-                        <label htmlFor="password">Password</label>
-                        <input type="password" name="password" />
+                    <div >
+                        <div className={logincss['form-group']}>
+                            <label htmlFor="password">Password</label>
+                            <input type="password" name="password" />
+
+                        </div>
+                        {data?.errorlist?.password.map((val,i)=>{
+                                return (
+                                    <motion.li
+                                    initial={{
+                                        opacity:0,
+                                        y: .5,
+                                    }}
+            
+                                    animate={{
+                                        opacity:1,
+                                        y: 0,
+                                    
+                                    }}
+            
+                                    transition={{
+                                        duration:.5,
+                                        type: 'tween'
+                                    }}
+
+                                    key={i}
+                                    
+                                    className={logincss.error}>{val}</motion.li>
+                                )
+                            })
+                
+                        }   
                     </div>
-                    <Button type="submit" btnState={state} > Submit </Button>
+                   <div className={logincss["footer"]}>
+                   <Button type="submit" btnState={state} > Submit </Button>
+                   </div>
                 </section>
             </Form>
         </motion.div>

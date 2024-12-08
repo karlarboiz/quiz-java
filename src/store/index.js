@@ -3,7 +3,7 @@ import authSlice from './auth-slice';
 import quizItemsSlice from './quiz-items__slice';
 import quizItemSlice from './quiz-item__slice';
 import quizAnswerSlice from './quiz-answer__slice';
-import loginSlice from './login-slice';
+  import loginSlice from './login-slice';
 const store = configureStore({
   reducer: {
     auth: authSlice.reducer,
