@@ -11,7 +11,6 @@ const Register = () => {
     const submit = useNavigation();
     const state = submit.state;
 
-    console.log(data)
     return (
         <motion.div
         initial={{
@@ -29,9 +28,8 @@ const Register = () => {
             type: 'tween'
         }}>
 
-            
             <Form method="post" className={quiz['form']}>
-            <div className={data?.isValid ? quiz.success : `${quiz.error} ${quiz["error-main"]}`}>{data?.message}</div>
+            <div className={data?.valid ? quiz.success : `${quiz.error} ${quiz["error-main"]}`}>{data?.message}</div>
       
             <section className={quiz['form--section-1']}>
                 <LazyLoadImage src={require("../../pictures/trivia.png")}
@@ -46,7 +44,7 @@ const Register = () => {
                         <label htmlFor="first-name">First Name</label>
                         <input type="text" name="first-name" />
                     </div>
-                    {data?.errorlist?.firstName.map((val,i)=><ErrorItem key={i} message={val}/>)}   
+                    {!data?.valid && data?.errorlist?.firstName?.map((val,i)=><ErrorItem key={i} message={val}/>)}   
                 </div>
                 <div >
                     <div className={quiz['form-group']}>
@@ -54,7 +52,8 @@ const Register = () => {
                         <label htmlFor="last-name">Last Name </label>
                         <input type="text" name="last-name" />
                     </div>
-                    {data?.errorlist?.lastName.map((val,i)=><ErrorItem key={i} message={val}/>)} 
+                    {!data?.valid && data?.errorlist?.lastName?.map((val,i)=><ErrorItem key={i} message={val}/>)}   
+           
                 </div>
                 <div>
                     <div className={quiz['form-group']}>
@@ -62,21 +61,21 @@ const Register = () => {
                         <input type="email" name="email" />
                         
                     </div>
-                    {data?.errorlist?.email.map((val,i)=><ErrorItem key={i} message={val}/>)} 
+                    {!data?.valid && data?.errorlist?.email?.map((val,i)=><ErrorItem key={i} message={val}/>)} 
                 </div>
                 <div>
                     <div className={quiz['form-group']}>
                         <label htmlFor="username"> Username</label>
                         <input type="text" name="username" />
                     </div>
-                    {data?.errorlist?.username.map((val,i)=><ErrorItem key={i} message={val}/>)} 
+                    {!data?.valid && data?.errorlist?.username?.map((val,i)=><ErrorItem key={i} message={val}/>)} 
                 </div>
                 <div>
                     <div className={quiz['form-group']}>
                         <label htmlFor="password">Password</label>
                         <input type="password" name="password" />
                     </div>
-                    {data?.errorlist?.password.map((val,i)=><ErrorItem key={i} message={val}/>)} 
+                    {!data?.valid && data?.errorlist?.password?.map((val,i)=><ErrorItem key={i} message={val}/>)} 
                 </div>
                 <div className={quiz['form-group']}>
                     <label htmlFor="confirm-password">Confirm Password</label>
