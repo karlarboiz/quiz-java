@@ -6,6 +6,7 @@ import { updateAuth } from "../../store/auth-action";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { motion } from "framer-motion";
 import logincss from "./Login.module.css";
+import ErrorItem from "../../components/ErrorItem/ErrorItem";
 
 
 const Login = () => {
@@ -57,34 +58,10 @@ const Login = () => {
                 <section className={logincss['form--section-2']}>
                     <div >
                         <div className={logincss['form-group']}>
-
-                        <label htmlFor="email">Email</label>
-                        <input type="email" name="email" />
+                            <label htmlFor="email">Email</label>
+                            <input type="email" name="email"  />
                         </div>
-                         {data?.errorlist?.email.map((val,i)=>{
-                                return (
-                                    <motion.li
-                                    initial={{
-                                        opacity:0,
-                                        y: .5,
-                                    }}
-            
-                                    animate={{
-                                        opacity:1,
-                                        y: 0,
-                                    
-                                    }}
-            
-                                    transition={{
-                                        duration:.5,
-                                        type: 'tween'
-                                    }}
-
-                                    key={i}
-                                    
-                                    className={logincss.error}>{val}</motion.li>
-                                )
-                            })
+                         {data?.errorlist?.email.map((val,i)=><ErrorItem key={i} message={val}/>)
                 
                         }   
                     </div>
@@ -95,30 +72,7 @@ const Login = () => {
                             <input type="password" name="password" />
 
                         </div>
-                        {data?.errorlist?.password.map((val,i)=>{
-                                return (
-                                    <motion.li
-                                    initial={{
-                                        opacity:0,
-                                        y: .5,
-                                    }}
-            
-                                    animate={{
-                                        opacity:1,
-                                        y: 0,
-                                    
-                                    }}
-            
-                                    transition={{
-                                        duration:.5,
-                                        type: 'tween'
-                                    }}
-
-                                    key={i}
-                                    
-                                    className={logincss.error}>{val}</motion.li>
-                                )
-                            })
+                        {data?.errorlist?.password.map((val,i)=><ErrorItem key={i} message={val}/>)
                 
                         }   
                     </div>
