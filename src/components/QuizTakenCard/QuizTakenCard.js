@@ -11,7 +11,7 @@ const QuizTakenCard = ({data,title}) =>{
                         <div>Date Started: {val.date}</div>
                         <div>Total Items: {val.incompleteQuizzes}</div>
 
-                        <a href={`/resume-quiz/${val.idPk}`}>Resume Quiz</a>
+                        <a href={`/resume-quiz/${val.encryptedIdPk}`}>Resume Quiz</a>
                     </li>
                 ))}
             </ul>

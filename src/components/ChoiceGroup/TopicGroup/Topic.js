@@ -2,7 +2,6 @@ import React from "react";
 import quiz from "../ChoiceGroup.module.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-
 const categoriesArr = [{
     value: "geography",
     textValue: "Geography",
@@ -59,6 +58,7 @@ const Topic = ({topicModalHandler}) => {
         <>
             <div className={quiz['overlay']} onClick={topicModalHandler}></div>
             <section className={quiz['topic-group']} >
+
                 {categoriesArr.map(val => (
                     <div key={val.value} className={quiz["multiple-choice__group"]}>
                         <label htmlFor="topic">{val.textValue}</label>
