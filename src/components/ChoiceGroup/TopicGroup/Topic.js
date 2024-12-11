@@ -1,6 +1,8 @@
 import React from "react";
 import quiz from "../ChoiceGroup.module.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import CloseButton from "../../CloseButton/CloseButton";
+
 
 const categoriesArr = [{
     value: "geography",
@@ -52,13 +54,13 @@ const categoriesArr = [{
     pic: "general_knowledge.jpg"
 }]
 
-const Topic = ({topicModalHandler}) => {
+const Topic = () => {
 
     return (
-        <>
-            <div className={quiz['overlay']} onClick={topicModalHandler}></div>
+        <React.Fragment>
+            
             <section className={quiz['topic-group']} >
-
+                <CloseButton/>
                 {categoriesArr.map(val => (
                     <div key={val.value} className={quiz["multiple-choice__group"]}>
                         <label htmlFor="topic">{val.textValue}</label>
@@ -73,7 +75,7 @@ const Topic = ({topicModalHandler}) => {
                     </div>
                 ))} 
             </section>
-        </>
+        </React.Fragment>
     )
 }
 

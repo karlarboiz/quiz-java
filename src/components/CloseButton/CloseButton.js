@@ -1,5 +1,5 @@
 import React from "react";
-
+import quiz from "./CloseButton.module.css";
 const CloseButton = (props)=>{
     return (
         <button {...props}> 
