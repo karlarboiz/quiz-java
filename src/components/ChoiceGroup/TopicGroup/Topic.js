@@ -62,7 +62,7 @@ const Topic = () => {
             <section className={quiz['topic-group']} >
                 <CloseButton/>
                 {categoriesArr.map(val => (
-                    <div key={val.value} className={quiz["multiple-choice__group"]}>
+                    <div key={val.value} className={`${quiz["multiple-choice__group"]} ${quiz["multiple-choice__group-topic"]}`}>
                         <label htmlFor="topic">{val.textValue}</label>
                         <input type="checkbox" name="topic" id={val.value} value={val.value} />
 
