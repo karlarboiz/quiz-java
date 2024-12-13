@@ -1,3 +1,11 @@
 .close {
+    fill: aliceblue;
+    z-index: 20;
+    position: absolute;
+    top: 0;
+    justify-content: end;
+    height: 3.5rem;
     background-color: black;
+    border-radius: 50%;
+    padding: .75rem;
 }

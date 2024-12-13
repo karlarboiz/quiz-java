@@ -2,6 +2,7 @@ import React from "react";
 import quiz from "../ChoiceGroup.module.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import CloseButton from "../../CloseButton/CloseButton";
+import { createPortal } from "react-dom";
 
 
 const categoriesArr = [{
@@ -54,13 +55,13 @@ const categoriesArr = [{
     pic: "general_knowledge.jpg"
 }]
 
-const Topic = () => {
+const Topic = ({topicModalHandler}) => {
 
-    return (
+    return createPortal(
         <React.Fragment>
-            
+            <CloseButton closeTopicHandler={topicModalHandler}/>
             <section className={quiz['topic-group']} >
-                <CloseButton/>
+                
                 {categoriesArr.map(val => (
                     <div key={val.value} className={`${quiz["multiple-choice__group"]} ${quiz["multiple-choice__group-topic"]}`}>
                         <label htmlFor="topic">{val.textValue}</label>
@@ -75,7 +76,8 @@ const Topic = () => {
                     </div>
                 ))} 
             </section>
-        </React.Fragment>
+        </React.Fragment>,
+        document.querySelector("#modal")
     )
 }
 

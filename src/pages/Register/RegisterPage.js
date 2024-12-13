@@ -30,13 +30,15 @@ export async function registerHandler({ request, params }) {
         email: data.get('email'),
         username: data.get('username'),
         password: data.get('password'),
-        isUpdate: false
+        isUpdate: false,
+        image: data.get("image")
     }
+  
 
     const result = await fetch(`${process.env.REACT_APP_API_URL}quiz/api/register`, {
         method: "POST",
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'multipart/form-data'
         },
         body: JSON.stringify(registerData)
     })
@@ -57,11 +59,51 @@ export async function registerHandler({ request, params }) {
     const resData = await result.json();
 
 
-        if (!resData?.success) {
-            return resData;
+    if (!resData?.success) {
+        return resData;
 
-        } else {
-            return redirect("/register");
-        }
+    } else {
+        return redirect("/register");
+    }
+    
 
+}
+
+export async function process(e){
+    const errorResult = {};
+    const resultData = new FormData(e.target);
+    const data = await resultData;
+    const registerData = {
+        firstName: data.get('first-name'),
+        lastName: data.get('last-name'),
+        email: data.get('email'),
+        username: data.get('username'),
+        password: data.get('password'),
+        isUpdate: false,
+        image: data.get("image")
+    }
+  
+
+    const result = await fetch(`${process.env.REACT_APP_API_URL}quiz/api/register`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        },
+        body: JSON.stringify(registerData)
+    })
+
+    if (result.status === 422 || result.status === 401) {
+
+        errorResult.success = false;
+        errorResult.message = "Error/s with Input Fields";
+
+        return errorResult;
+    }
+
+
+    else if (!result.ok) {
+        throw json({ message: "Something went wrong" },
+            { status: 500 })
+    }
+    const resData = await result.json();
 }
