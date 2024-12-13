@@ -133,7 +133,7 @@ const Register = () => {
                 </div>
                 <div>
                     <div className={quiz['form-group']}>
-                        <img src={`${image}`} alt="This is a sample profile imagee"/>
+                        <img src={`${image}`} alt="This is a sample profile image"/>
                         <label htmlFor="image">Profile Image</label>
                         <input type="file" name="image" 
                         accept="image/png, image/jpeg" onChange={(e)=>{
