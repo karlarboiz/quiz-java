@@ -10,13 +10,13 @@ const Profile = ({data}) => {
     const [userLastName,setUserLastName] = useState(lastName);
     const [userEmail,setUserEmail] = useState(email);
     const [userUsername, setUserUsername] = useState(username);
-
+ 
     return (
         <BodyComponent>
             <Form method="put" className={profile['profile-form']}>
                 <div className={profile['form-group']}>
-                    <label htmlFor="first-name">First Name</label>
-                    <img src={`D:\\Projects\\images\\testinguser1.jpg`} alt="Hello there" />
+                    <label htmlFor="profile-image">Profile Image</label>
+                    <img src={`${process.env.REACT_APP_API_URL}quiz/api/info${displayPicture}`} alt="Hello there" />
                 </div>
                 <div className={profile['form-group']}>
                     <label htmlFor="first-name">First Name</label>
