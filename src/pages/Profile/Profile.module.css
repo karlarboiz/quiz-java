@@ -1,6 +1,18 @@
+.background {
+    width: 100%;
+    max-width: 100%;
+    height: 15rem;
+    background-color: black;
+    border-radius: .5rem .5rem 0 0 ;
+    
+}
+
 .profile-form {
     max-width: 100%;
     text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .form-group {

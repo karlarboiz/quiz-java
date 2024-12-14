@@ -13,6 +13,9 @@ const Profile = ({data}) => {
  
     return (
         <BodyComponent>
+            <div className={profile["background"]}>
+                karl
+            </div>
             <Form method="put" className={profile['profile-form']}>
                 <div className={profile['form-group']}>
                     <label htmlFor="profile-image">Profile Image</label>
@@ -38,6 +41,19 @@ const Profile = ({data}) => {
                     <input value={userEmail} name="email" id="email" onChange={(e)=>{setUserEmail(e.target.value)}}/>
                 </div>
                 
+                <div className={profile["form-group"]}>
+                    <label htmlFor="password">New Password</label>
+                    <input value={userEmail} name="password" 
+                    id="password" onChange={(e)=>{setUserEmail(e.target.value)}}/>
+ 
+                </div>
+
+                <div className={profile["form-group"]}>
+                    <label htmlFor="confirm-password">Confirm New Password</label>
+                    <input value={userEmail} name="confirm-password" 
+                    id="password" onChange={(e)=>{setUserEmail(e.target.value)}}/>
+ 
+                </div>
                 <Button type="submit">Update</Button>
 
             </Form>

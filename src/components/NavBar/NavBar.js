@@ -14,8 +14,7 @@ const NavBar = () => {
 
   const auth = useSelector(state => state.auth);
   let token;
-
-
+  
   useEffect(() => {
     dispatch(logoutHandler);
   }, [dispatch, token])

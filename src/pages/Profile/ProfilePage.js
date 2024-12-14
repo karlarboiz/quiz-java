@@ -13,7 +13,7 @@ const ProfilePage = () => {
 
 export default ProfilePage;
 
-    export async function getProfileDetails() {
+    export async function getProfileDetails({requests,params}) {
     let data;
     let dataResult;
     try {
