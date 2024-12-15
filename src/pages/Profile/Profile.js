@@ -3,6 +3,9 @@ import BodyComponent from "../../components/BodyComponent/BodyComponent";
 import { Form } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import profile from "./Profile.module.css";
+import ToggleButton from "../../components/ToggleButton/ToggleButton";
+
+
 const Profile = ({data}) => {
 
     const {firstName, lastName,email, username,displayPicture} = data;
@@ -14,12 +17,13 @@ const Profile = ({data}) => {
     return (
         <BodyComponent>
             <div className={profile["background"]}>
-                karl
+            <ToggleButton/>
             </div>
             <Form method="put" className={profile['profile-form']}>
                 <div className={profile['form-group']}>
-                    <label htmlFor="profile-image">Profile Image</label>
-                    <img src={`${process.env.REACT_APP_API_URL}quiz/api/info${displayPicture}`} alt="Hello there" />
+               
+                    <img src={`${process.env.REACT_APP_API_URL}quiz/api/info${displayPicture}`} 
+                    className={profile["profile-image"]} alt="Hello there" />
                 </div>
                 <div className={profile['form-group']}>
                     <label htmlFor="first-name">First Name</label>
