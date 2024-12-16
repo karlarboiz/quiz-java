@@ -15,7 +15,7 @@ const QuizModification = ()=>{
     const navigate = useNavigate();
 
     function openTopic(){
-        console.log("hello hello")
+       
         setTopic(val=>!val ? true: false);
     }
 

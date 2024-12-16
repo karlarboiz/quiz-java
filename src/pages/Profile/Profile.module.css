@@ -33,8 +33,9 @@
     margin: 1.05rem auto;
 }
 
-.form-group label {
+.label {
     display: block;
+    font-size: .85rem;
 }
 
 .form-group input {
