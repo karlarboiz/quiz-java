@@ -1,0 +1,22 @@
+.preference-list__container {
+
+    margin: 0 auto;
+}
+
+.preference-list {
+    --width-spec: 30rem;
+    --height-spec: 7.5rem;
+    width: var(--width-spec);
+    height: var(--height-spec);
+    margin: .75rem auto 0 auto;
+    text-align: center;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preference {
+    font-family: "Playwrite AU QLD Guides", cursive;
+    font-size: 3.5rem;
+}

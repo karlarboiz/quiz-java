@@ -29,6 +29,7 @@ import { fetchIncompleteQuizzes } from './pages/Main/MainPage';
 import { getResumeItems } from './pages/ResumeQuiz/ResumeQuizPage';
 import { updateProfileDetails } from './pages/Profile/ProfilePage';
 import './App.css';
+import QuizPreference from './pages/QuizPreference/QuizPreference';
 
 
 const router = createBrowserRouter([
@@ -64,6 +65,14 @@ const router = createBrowserRouter([
         path: 'main',
         element: <MainPage />,
         loader: fetchIncompleteQuizzes
+      },{path:'quiz-preference',
+        children:[
+          {
+            index: true,
+            element: <QuizPreference/>
+          }
+        ]
+        
       },
       {
         path: 'quiz-main',
