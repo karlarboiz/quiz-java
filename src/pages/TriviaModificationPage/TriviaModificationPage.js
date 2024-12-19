@@ -1,14 +1,15 @@
 import React from "react";
-import QuizModification from "./QuizModification";
-const QuizModificationPage = () =>{
+import TriviaModification from "./TriviaModification";
+
+const TriviaModificationPage = () =>{
     return (
         <React.Fragment>
-            <QuizModification/>
+            <TriviaModification/>
         </React.Fragment>
     )
 }
 
-export default QuizModificationPage;
+export default TriviaModificationPage;
 
 
 export async function saveItemsForTheGameHandler({request,param}) {

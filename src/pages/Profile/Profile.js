@@ -82,7 +82,7 @@ const Profile = ({data}) => {
                        {toggled && <>
                         <label htmlFor="password" className={profile["label"]}>New Password</label>
                         <input  name="password" 
-                        id="password" onChange={(e)=>{setUserEmail(e.target.value)}}/>
+                        id="password" />
                         </>}
         
                 </div>
@@ -90,8 +90,8 @@ const Profile = ({data}) => {
                 <div className={profile["form-group"]}>
                         {toggled && <>
                             <label htmlFor="confirm-password" className={profile["label"]}>Confirm New Password</label>
-                    <input value={userEmail} name="confirm-password" 
-                    id="password" onChange={(e)=>{setUserEmail(e.target.value)}}/></>}
+                    <input name="confirm-password" 
+                    id="password" /></>}
  
                 </div>
                 <Button type="submit">Update</Button>

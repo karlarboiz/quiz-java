@@ -5,11 +5,11 @@ import Button from "../../components/Button/Button";
 import Topic from "../../components/ChoiceGroup/TopicGroup/Topic";
 import Difficulty from "../../components/ChoiceGroup/DifficultyGroup/Difficulty";
 import ItemTotal from "../../components/ChoiceGroup/ItemTotalGroup/ItemTotal";
-import quiz from "./QuizModification.module.css";
+import quiz from "./TriviaModification.module.css";
 import BodyComponent from "../../components/BodyComponent/BodyComponent";
 import Modal from "../../components/Modal/Modal";
 
-const QuizModification = ()=>{
+const TriviaModification = ()=>{
     const [topic,setTopic] = useState(false);
     const data = useActionData();
     const navigate = useNavigate();
@@ -67,4 +67,4 @@ const QuizModification = ()=>{
     )
 }
 
-export default QuizModification;
+export default TriviaModification;

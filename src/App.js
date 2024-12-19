@@ -2,7 +2,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import AppGate from './components/AppGate/AppGate';
+import AppGate from './components/AppGate/AppGate';   
 import Error from "./pages/Error/Error";
 import Home from "./pages/Home/Home";
 import LoginPage from './pages/Login/LoginPage';
@@ -15,19 +15,20 @@ import ScorePage from './pages/Score/ScorePage';
 import QuizDetails from './pages/QuizDetails/QuizDetails';
 import Logout from './components/Logout/Logout';
 import RecordsPage from './pages/Records/RecordsPage';
-import QuizModificationPage from './pages/QuizModificationPage/QuizModificationPage';
 import ResumeQuizPage from './pages/ResumeQuiz/ResumeQuizPage';
 import ProfilePage, { getProfileDetails } from './pages/Profile/ProfilePage';
+import TriviaModificationPage from './pages/TriviaModificationPage/TriviaModificationPage';
 import { loginHandler } from './pages/Login/LoginPage';
 import { registerHandler } from './pages/Register/RegisterPage';
 import { fetchAuthProfile } from './store/auth-action';
-import { saveItemsForTheGameHandler } from './pages/QuizModificationPage/QuizModificationPage';
+import { saveItemsForTheGameHandler } from './pages/TriviaModificationPage/TriviaModificationPage';
 import { fetchCurrentGameResults } from './pages/Score/ScorePage';
 import { getQuizHistoryHandler } from './pages/Records/RecordsPage';
 import { getUsersGameRecords } from './pages/Users/UsersPage';
 import { fetchIncompleteQuizzes } from './pages/Main/MainPage';
 import { getResumeItems } from './pages/ResumeQuiz/ResumeQuizPage';
 import { updateProfileDetails } from './pages/Profile/ProfilePage';
+
 import './App.css';
 import QuizPreference from './pages/QuizPreference/QuizPreference';
 
@@ -65,20 +66,25 @@ const router = createBrowserRouter([
         path: 'main',
         element: <MainPage />,
         loader: fetchIncompleteQuizzes
-      },{path:'quiz-preference',
+      },{path:'quiz-preference/',
         children:[
           {
             index: true,
-            element: <QuizPreference/>
+            element: <QuizPreference/>,
+          
+          },{
+            path: "trivia",
+            element: <TriviaModificationPage/>,
+            action: saveItemsForTheGameHandler
           }
         ]
         
       },
-      {
-        path: 'quiz-main',
-        element: <QuizModificationPage />,
-        action: saveItemsForTheGameHandler
-      },
+      // {
+      //   path: 'quiz-main',
+      //   element: <QuizModificationPage />,
+      //   action: saveItemsForTheGameHandler
+      // },
       {
         path: 'resume-quiz/',
         children: [{
