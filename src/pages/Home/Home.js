@@ -50,7 +50,7 @@ export default function Home(){
                
                 <motion.p 
                 >Ready for knowledge-check-game?</motion.p>
-                {auth?.auth && <Link to="/quiz-main" replace="true">Start Quiz</Link>}
+                {auth?.auth && <Link to="/quiz-preference" replace="true">Start Quiz</Link>}
                 {!auth?.auth && <Link to="/login" replace="true">Login</Link>}
             </motion.section>
         </React.Fragment>

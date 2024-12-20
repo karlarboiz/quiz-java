@@ -5,6 +5,7 @@ import Button from "../../components/Button/Button";
 import profile from "./Profile.module.css";
 import ToggleButton from "../../components/ToggleButton/ToggleButton";
 import {useSelector} from "react-redux";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Profile = ({data}) => {
 
@@ -22,12 +23,13 @@ const Profile = ({data}) => {
     return (
         <BodyComponent>
             <div className={profile["background"]}>
-          
+            <span className={profile["floating-edit__button-span"]}><ToggleButton/></span>
+            <LazyLoadImage src={require(`../../../src/pictures/circle-scatter-haikei.png`)}
+            className={profile["background-profile__img"]}/>
             </div>
             <Form method="put" className={profile['profile-form']}>
-                <ToggleButton/>
-                <div className={profile['form-group']}>
-               
+                
+                <div className={`${profile['form-group']} ${profile['form-group__1']}`}>
                     <img src={`${process.env.REACT_APP_API_URL}quiz/api/info${displayPicture}`} 
                     className={profile["profile-image"]} alt="Hello there" />
                 </div>
@@ -94,7 +96,8 @@ const Profile = ({data}) => {
                     id="password" /></>}
  
                 </div>
-                <Button type="submit">Update</Button>
+                {toggled && <>
+                    <Button type="submit">Update</Button></>}
                 
             </Form>
         </BodyComponent>

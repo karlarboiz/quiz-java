@@ -1,9 +1,10 @@
+:root {
+    --common-border: .5rem .5rem 0 0 ;
+}
+
 .background {
     width: 100%;
-    max-width: 100%;
     height: 15rem;
-    background-color: rgb(112, 77, 77);
-    border-radius: .5rem .5rem 0 0 ;
     
 }
 
@@ -15,23 +16,36 @@
     top: 0;
     left: 50%;
     transform: translate(-50%, 12.5%);
-    background: rgba(255, 255, 255, 0.7);
+    border-radius: var(--common-border);
+    background: rgba(255, 255, 255, 255);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.background-profile__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--common-border);
+    object-position: center;
 }
 
 .profile-image {
     width: 7.5rem;
     height: 7.5rem;
     border-radius: 50%;
+    position: relative;
+    top: -1.5rem;
 }
 
 .form-group {
     margin: 1.05rem auto;
 }
+
+
 
 .label {
     display: block;
