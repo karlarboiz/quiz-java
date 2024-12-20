@@ -7,16 +7,19 @@ import Difficulty from "../../components/ChoiceGroup/DifficultyGroup/Difficulty"
 import ItemTotal from "../../components/ChoiceGroup/ItemTotalGroup/ItemTotal";
 import quiz from "./TriviaModification.module.css";
 import BodyComponent from "../../components/BodyComponent/BodyComponent";
-import Modal from "../../components/Modal/Modal";
 
 const TriviaModification = ()=>{
     const [topic,setTopic] = useState(false);
+    const [diff,setDiff] = useState(false);
     const data = useActionData();
     const navigate = useNavigate();
 
     function openTopic(){
-       
         setTopic(val=>!val ? true: false);
+    }
+
+    function openDiff(){
+        setDiff(val=>!val);
     }
 
     useEffect(()=>{
@@ -31,17 +34,27 @@ const TriviaModification = ()=>{
 
     return (
         <BodyComponent>
-            {topic && <Modal closeTopic={openTopic}/>}
+            {/* {topic && <Modal closeTopic={openTopic}/>} */}
             <Form method="post"  className={quiz['quiz-modification']}>
-                <Button type="button" onClick={openTopic}>Topic <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-card-text" viewBox="0 0 16 16">
-  <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
-  <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8m0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5"/>
-</svg></Button>
+                <div onClick={openTopic} className={`${quiz["topic-trigger"]} ${quiz["trigger"]}`}> 
+                    <span>Topic</span> 
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-arrows-angle-contract" viewBox="0 0 16 16">
+                        <path fillRule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707M15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707"/>
+                    </svg>
+                </div>
+                {topic && <Topic topicModalHandler={openTopic}/>}
 
-                <Difficulty/>
+                <div onClick={openDiff} className={`${quiz["difficulty-trigger"]} ${quiz["trigger"]}`}> 
+                    <span>Difficulty</span> 
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-arrows-angle-contract" viewBox="0 0 16 16">
+                        <path fillRule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707M15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707"/>
+                    </svg>
+                </div>
+                {diff && <Difficulty/>}
                 <ItemTotal/>
-                {topic && <Topic topicModalHandler={openTopic}/>
-                    }
+                
 
                 {/* <div>
                     <label htmlFor="timer" >Timer:</label>

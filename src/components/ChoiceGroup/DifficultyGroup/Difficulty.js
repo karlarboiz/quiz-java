@@ -17,8 +17,8 @@ const Difficulty = ()=>{
         <section className={quiz['difficulty-group']}>
            {
             difficultyArr.map(val=>(
-                <div key={val.value} className={quiz["multiple-choice__group"]}>
-                    <label htmlFor="difficulty">{val.textValue}</label>
+                <div key={val.value} className={`${quiz["multiple-choice__group"]} ${quiz["multiple-choice__group-difficulty"]}`}>
+                    <label htmlFor="difficulty" className={quiz["label"]}>{val.textValue}</label>
                     <input type="radio" id={val.value} name="difficulty" value={val.value}/>
                 </div>
             ))

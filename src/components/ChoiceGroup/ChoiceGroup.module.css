@@ -1,10 +1,16 @@
 :root {
     --spacer: .75rem;
+    --label-font--size: 1.25rem;
+    --label-font--weight: 600;
+    --label-color:#A594F9;
+    --border-radius:.75rem;
 }
 
-label {
-    font-size: 1.05rem;
-
+.label {
+    font-size: var(--label-font--size);
+    font-weight: var(--label-font--weight);
+    color: var(--label-color);
+    z-index: 2;
 }
 
 .img {
@@ -15,9 +21,22 @@ label {
     top: 0;
     left: 0;
     z-index: -1;
+    border-radius: var(--border-radius);
 }
 
-
+.topic-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    border-radius: var(--border-radius);
+    background-color: hsla(0, 0%, 6%, 0.2);
+   backdrop-filter: blur(10px);
+   -webkit-backdrop-filter: blur(10px);
+    z-index: 1;
+}
 
 .topic-group {
     display: grid;
@@ -25,14 +44,16 @@ label {
     gap: 1.25rem;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     overflow-x: scroll;
     scroll-padding: 2.5rem;
+    margin-top: 1.25rem;
+    padding: 0 0 .75rem 0;
+    font-weight: 800;
 }
+
+
 
 .difficulty-group{
     margin:  0 0 var(--spacer) 0;
@@ -46,12 +67,13 @@ label {
     padding: 0 var(--spacer) var(--spacer) var(--spacer);
 }
 
-.difficulty-group {
-    justify-content: space-around;
+input[type="checkbox"] {
+    z-index: 2;
+    margin: 0 var(--spacer);
 }
 
+
 .multiple-choice__group {
-    
     height: 12.5rem;
     min-height: 12.5rem;
     position: relative; 
@@ -59,11 +81,23 @@ label {
     align-items: center;
     justify-content: center;
     border-radius: 16px;
-    
+    padding: .5rem .75rem;    
 }
-.multiple-choice__group-topic {
-    z-index: 20;
+
+.multiple-choice__group-difficulty {
+
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
+
+.multiple-choice__group-difficulty label {
+    margin: 0 .5rem;
+}
+
 
 .topic-choices__group {
     grid-auto-columns: 100%;
