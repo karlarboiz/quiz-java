@@ -7,6 +7,7 @@ import Difficulty from "../../components/ChoiceGroup/DifficultyGroup/Difficulty"
 import ItemTotal from "../../components/ChoiceGroup/ItemTotalGroup/ItemTotal";
 import quiz from "./TriviaModification.module.css";
 import BodyComponent from "../../components/BodyComponent/BodyComponent";
+import BarIndicator from "../../components/BarIndicator/BarIndicator";
 
 const TriviaModification = ()=>{
     const [topic,setTopic] = useState(false);
@@ -23,19 +24,56 @@ const TriviaModification = ()=>{
     }
 
     useEffect(()=>{
-
         if(data?.success) {
             navigate("/start-page");
         }
     },[data,navigate])
 
+    async function generateQuestions(){
+        // const data = await request.formData();
+        // const categories =data.getAll("topic"); 
+        // const categoriesJoined =  categories.join(",");
+        // const difficulty = data.get("difficulty");
+        // const itemTotal = data.get("item-total")
 
+        // let data1;
+        // let dataResult;
+        // let gotData = false;
+        // let error = {};
+        // try{
+        //     data1 = await fetch(`https://the-trivia-api.com/api/questions?categories=${categoriesJoined}&limit=${itemTotal}&region=PH&difficulty=${difficulty}`,{
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         }
+        //     });
 
+        //     if(!data1.ok || data1.status === 422 
+        //         || data1.status === 401 || data1.status === 501) {
+        //             error.message = "Something went wrong!"
+        //             error.success = false;
+        //             gotData = false;
+        //     }
+
+        //     dataResult = await data1.json();
+        //     gotData = true
+        // }catch(e){
+        //     error.message = "Something went wrong!"
+        //     error.success = false;
+        //     gotData = false;
+        // }
+    
+
+        // if(!gotData) {
+
+        //     return error;
+        // }
+
+    }
 
     return (
         <BodyComponent>
-            {/* {topic && <Modal closeTopic={openTopic}/>} */}
-            <Form method="post"  className={quiz['quiz-modification']}>
+            <BarIndicator/>
+            <section className={quiz['quiz-modification']}>
                 <div onClick={openTopic} className={`${quiz["topic-trigger"]} ${quiz["trigger"]}`}> 
                     <span>Topic</span> 
                     
@@ -45,7 +83,7 @@ const TriviaModification = ()=>{
                 </div>
                 {topic && <Topic topicModalHandler={openTopic}/>}
 
-                <div onClick={openDiff} className={`${quiz["difficulty-trigger"]} ${quiz["trigger"]}`}> 
+                <div onClick={openDiff} className={quiz["trigger"]  }> 
                     <span>Difficulty</span> 
                     
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-arrows-angle-contract" viewBox="0 0 16 16">
@@ -56,7 +94,7 @@ const TriviaModification = ()=>{
                 <ItemTotal/>
                 
 
-                {/* <div>
+                <div>
                     <label htmlFor="timer" >Timer:</label>
 
                     <select name="timer" >
@@ -71,11 +109,11 @@ const TriviaModification = ()=>{
                             15
                         </option>
                     </select>
-                </div> */}
+                </div>
            
                 <Button type="submit"> Begin</Button>
 
-            </Form>
+            </section>
         </BodyComponent>
     )
 }

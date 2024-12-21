@@ -55,7 +55,15 @@ const categoriesArr = [{
 const Topic = () => {
     const [topicArr,setTopicArr] = useState(new Array(0));
 
+    /**
+     * 
+     * @param {*} e
+     * this function is used to pick at least 
+     * 5 topics
+     */
     function selectTopicHandler(e){
+
+        
         const clickedTab = e.target.tabIndex;
         const value = e.target.value;
         const indexCheckArr = topicArr.filter((val)=>val?.index === clickedTab);
@@ -72,8 +80,6 @@ const Topic = () => {
 
     const isTopicArrFull = topicArr.length === 5;
 
-    console.log(isTopicArrFull);
-    console.log(topicArr)
     return (
         <React.Fragment>
             
@@ -84,8 +90,9 @@ const Topic = () => {
                         <div className={quiz["topic-modal"]}></div>
                         <label htmlFor="topic" className={quiz["label"]}>{val.textValue}</label>
             
-                         {(!isTopicArrFull && topicArr.filter(val1=> val1.value === val.value).length===0) && <input type="checkbox" tabIndex={i} name="topic"
-                         id={val.value} value={val.value} onClick={selectTopicHandler} />}
+                         {(!isTopicArrFull ) && <input type="checkbox" tabIndex={i} name="topic"
+                         id={val.value} value={val.value} onClick={selectTopicHandler} 
+                         checked={topicArr.find(valIn=>valIn.value === val.value)}/>}
                         <LazyLoadImage src={require(`../../../pictures/${val.value}.jpg`)}
                             className={quiz['img']}
 
@@ -100,7 +107,7 @@ const Topic = () => {
             <ul>
                     {topicArr.map((val,i)=>
                     <li key={i} onClick={selectTopicHandler} value={val.value}
-                    tabIndex={val.index}>
+                    tabIndex={val.index} title="child-topic">
                         {categoriesArr.find(val2=>val2.value === val.value)["textValue"]}
                     </li>)}
                 </ul>
