@@ -25,5 +25,5 @@ export const quizItemAction = quizItemSlice.actions;
 export const quizAnswerAction = quizAnswerSlice.actions;
 export const loginAction = loginSlice.actions;
 export const toggleAction = toggleSlice.actions;
-export const topisAction = topicsSlice.actions;
+export const topicsAction = topicsSlice.actions;
 export default store;

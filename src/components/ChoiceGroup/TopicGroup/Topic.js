@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import quiz from "../ChoiceGroup.module.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useDispatch } from "react-redux";
+import { addTopicBitByBitHandler } from "../../../store/topics-action";
+
 
 const categoriesArr = [{
     value: "geography",
@@ -54,6 +57,7 @@ const categoriesArr = [{
 
 const Topic = () => {
     const [topicArr,setTopicArr] = useState(new Array(0));
+    const dispatch = useDispatch();
 
     /**
      * 
@@ -68,14 +72,17 @@ const Topic = () => {
         const value = e.target.value;
         const indexCheckArr = topicArr.filter((val)=>val?.index === clickedTab);
 
-        if(indexCheckArr.length > 0){
-            const newArr = topicArr.filter(val=> val.index !== clickedTab)                   
-            setTopicArr(newArr)
-        }else {
+        // if(indexCheckArr.length > 0){
+        //     const newArr = topicArr.filter(val=> val.index !== clickedTab)                   
+        //     setTopicArr(newArr)
+        // }else {
 
-            setTopicArr(previousArr=>[...previousArr,{index:clickedTab,value: value}])
+        //     setTopicArr(previousArr=>[...previousArr,{index:clickedTab,value: value}])
     
-        }         
+        // }         
+
+        addTopicBitByBitHandler(clickedTab,value);
+
     }
 
     const isTopicArrFull = topicArr.length === 5;

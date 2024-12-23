@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from "react";
-import { Form } from "react-router-dom";
+// import { Form } from "react-router-dom";
 import { useActionData,useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Topic from "../../components/ChoiceGroup/TopicGroup/Topic";
@@ -8,13 +8,15 @@ import ItemTotal from "../../components/ChoiceGroup/ItemTotalGroup/ItemTotal";
 import quiz from "./TriviaModification.module.css";
 import BodyComponent from "../../components/BodyComponent/BodyComponent";
 import BarIndicator from "../../components/BarIndicator/BarIndicator";
+import { useSelector } from "react-redux";
 
 const TriviaModification = ()=>{
     const [topic,setTopic] = useState(false);
     const [diff,setDiff] = useState(false);
     const data = useActionData();
     const navigate = useNavigate();
-
+    const topics = useSelector(state=>state.topics);
+   
     function openTopic(){
         setTopic(val=>!val ? true: false);
     }
@@ -28,6 +30,10 @@ const TriviaModification = ()=>{
             navigate("/start-page");
         }
     },[data,navigate])
+
+    useEffect(()=>{
+        console.log(topics)
+    },[topics])
 
     async function generateQuestions(){
         // const data = await request.formData();
