@@ -65,24 +65,11 @@ const Topic = () => {
      * this function is used to pick at least 
      * 5 topics
      */
-    function selectTopicHandler(e){
-
-        
+    function selectTopicHandler(e){    
         const clickedTab = e.target.tabIndex;
         const value = e.target.value;
-        const indexCheckArr = topicArr.filter((val)=>val?.index === clickedTab);
-
-        // if(indexCheckArr.length > 0){
-        //     const newArr = topicArr.filter(val=> val.index !== clickedTab)                   
-        //     setTopicArr(newArr)
-        // }else {
-
-        //     setTopicArr(previousArr=>[...previousArr,{index:clickedTab,value: value}])
     
-        // }         
-
-        addTopicBitByBitHandler(clickedTab,value);
-
+       dispatch( addTopicBitByBitHandler(clickedTab,value))
     }
 
     const isTopicArrFull = topicArr.length === 5;

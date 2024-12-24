@@ -8,9 +8,11 @@ export const addTopicsHandler=(state)=>{
 }
 
 export const addTopicBitByBitHandler=(clickedTab,value)=>{
-    
-    topicsAction.addTopicBitByBit({
-        clickedTab:clickedTab,
-        value:value
-    })   
+       
+    return async(dispatch)=>{
+        dispatch(topicsAction.addTopicBitByBit({
+            clickedTab:clickedTab,
+            value:value
+        }))
+    }
 }

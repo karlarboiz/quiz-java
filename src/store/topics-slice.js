@@ -10,11 +10,11 @@ const topicsSlice = createSlice({
             state.topics = action.payload.topics;
         },
         addTopicBitByBit(state,action) {
+            
             const clickedTab = action.payload.clickedTab;
             const value = action.payload.value;
             const indexCheckArr = state.topics.filter((val)=>val?.index === clickedTab);
 
-            console.log(action )
             if(indexCheckArr.length > 0){
                 const newArr = state.topics.filter(val=> val.index !== clickedTab)                   
                 state.topics = newArr;
