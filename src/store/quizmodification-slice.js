@@ -1,16 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const topicsSlice = createSlice({
+const quizModificationSlice = createSlice({
     name: 'topics',
     initialState: {
-        topics:[]
+        topics:[],
+        difficulty: null,
+        itemTotal: 0,
+        timer:0
     },
     reducers: {
-        addTopics(state,action){
-            state.topics = action.payload.topics;
-        },
         addTopicBitByBit(state,action) {
-            
             const clickedTab = action.payload.clickedTab;
             const value = action.payload.value;
             const indexCheckArr = state.topics.filter((val)=>val?.index === clickedTab);
@@ -22,9 +21,13 @@ const topicsSlice = createSlice({
                 state.topics.push({index:clickedTab,value: value})
             }        
             
-        }
+        },
+        addDifficulty(state,action){
+            state.difficulty = action.payload.difficulty
+        },
+
     }
   
 })
 
-export default topicsSlice;
+export default quizModificationSlice;

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import quiz from "../ChoiceGroup.module.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { useDispatch } from "react-redux";
-import { addTopicBitByBitHandler } from "../../../store/topics-action";
+import { useDispatch, useSelector } from "react-redux";
+import { addTopicBitByBitHandler } from "../../../store/quizmodification-action";
 
 
 const categoriesArr = [{
@@ -56,7 +56,9 @@ const categoriesArr = [{
 }]
 
 const Topic = () => {
-    const [topicArr,setTopicArr] = useState(new Array(0));
+    const {topics} = useSelector(state=>state.quizModification);
+ 
+    const topicArr = topics; 
     const dispatch = useDispatch();
 
     /**
@@ -69,7 +71,7 @@ const Topic = () => {
         const clickedTab = e.target.tabIndex;
         const value = e.target.value;
     
-       dispatch( addTopicBitByBitHandler(clickedTab,value))
+       dispatch(addTopicBitByBitHandler(clickedTab,value))
     }
 
     const isTopicArrFull = topicArr.length === 5;

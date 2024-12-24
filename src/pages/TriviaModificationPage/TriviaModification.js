@@ -16,7 +16,7 @@ const TriviaModification = ()=>{
     const data = useActionData();
     const navigate = useNavigate();
     const topics = useSelector(state=>state.topics);
-   
+
     function openTopic(){
         setTopic(val=>!val ? true: false);
     }
@@ -30,10 +30,6 @@ const TriviaModification = ()=>{
             navigate("/start-page");
         }
     },[data,navigate])
-
-    useEffect(()=>{
-        console.log(topics)
-    },[topics])
 
     async function generateQuestions(){
         // const data = await request.formData();

@@ -5,7 +5,8 @@ import quizItemSlice from './quiz-item__slice';
 import quizAnswerSlice from './quiz-answer__slice';
 import loginSlice from './login-slice';
 import toggleSlice from './toggle-slice';
-import topicsSlice from './topics-slice';
+import quizModificationSlice from './quizmodification-slice';
+
 
 const store = configureStore({
   reducer: {
@@ -15,7 +16,7 @@ const store = configureStore({
     quizAnswer: quizAnswerSlice.reducer,
     login: loginSlice.reducer,
     toggle: toggleSlice.reducer,
-    topics: topicsSlice.reducer
+    quizModification: quizModificationSlice.reducer
   }
 })
 
@@ -25,5 +26,5 @@ export const quizItemAction = quizItemSlice.actions;
 export const quizAnswerAction = quizAnswerSlice.actions;
 export const loginAction = loginSlice.actions;
 export const toggleAction = toggleSlice.actions;
-export const topicsAction = topicsSlice.actions;
+export const quizModificationAction = quizModificationSlice.actions;
 export default store;
