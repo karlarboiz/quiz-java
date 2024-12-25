@@ -4,7 +4,7 @@ const quizModificationSlice = createSlice({
     name: 'topics',
     initialState: {
         topics:[],
-        difficulty: null,
+        difficulty: "",
         itemTotal: 0,
         timer:0
     },

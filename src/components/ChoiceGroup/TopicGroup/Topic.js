@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import quiz from "../ChoiceGroup.module.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useDispatch, useSelector } from "react-redux";
 import { addTopicBitByBitHandler } from "../../../store/quizmodification-action";
-
+import { motion,AnimatePresence} from "framer-motion";
 
 const categoriesArr = [{
     value: "geography",
@@ -55,6 +55,25 @@ const categoriesArr = [{
     pic: "general_knowledge.jpg"
 }]
 
+
+const listVariants = {
+    hidden: { height: 0, opacity: 0 },
+    visible: {
+      height: "auto",
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut",
+        staggerChildren: 0.1, // Each child will animate one after another
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+  };
+
 const Topic = () => {
     const {topics} = useSelector(state=>state.quizModification);
  
@@ -79,34 +98,70 @@ const Topic = () => {
     return (
         <React.Fragment>
             
-            <section className={quiz['topic-group']} >
+            <motion.section
+            className={quiz["topic-group"]}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={listVariants}
+          >
+            {categoriesArr.map((val, i) => (
+              <motion.div
+                key={val.value}
+                className={`${quiz["multiple-choice__group"]} ${quiz["multiple-choice__group-topic"]}`}
+                variants={itemVariants}
+              >
+
+                <AnimatePresence>
+                    {!topicArr.find((valIn) => valIn.value == val.value) &&
+                <motion.div className={quiz["topic-modal"]}
+                key="modal"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                ></motion.div>
+                }
+                </AnimatePresence>
                 
-                {categoriesArr.map((val,i) => (
-                    <div key={val.value} className={`${quiz["multiple-choice__group"]} ${quiz["multiple-choice__group-topic"]}`}>
-                        <div className={quiz["topic-modal"]}></div>
-                        <label htmlFor="topic" className={quiz["label"]}>{val.textValue}</label>
-            
-                         {(!isTopicArrFull ) && <input type="checkbox" tabIndex={i} name="topic"
-                         id={val.value} value={val.value} onClick={selectTopicHandler} 
-                         checked={topicArr.find(valIn=>valIn.value === val.value)}/>}
-                        <LazyLoadImage src={require(`../../../pictures/${val.value}.jpg`)}
-                            className={quiz['img']}
+                <label htmlFor="topic" className={quiz["label"]}>
+                  {val.textValue}
+                </label>
 
-                            alt={val.textValue}
-                        />
-                    </div>
-                ))} 
+                {!isTopicArrFull && (
+                  <input
+                    type="checkbox"
+                    tabIndex={i}
+                    name="topic"
+                    id={val.value}
+                    value={val.value}
+                    onChange={selectTopicHandler}
+                    checked={!!topicArr?.find((valIn) => valIn.value === val.value)} 
+                  />
+                )}
+                <LazyLoadImage
+                  src={require(`../../../pictures/${val.value}.jpg`)}
+                  className={quiz["img"]}
+                  alt={val.textValue}
+                  effect="blur"
+                />
+              </motion.div>
+            ))}
+          </motion.section>
 
-                
-            </section>
-
-            <ul>
-                    {topicArr.map((val,i)=>
-                    <li key={i} onClick={selectTopicHandler} value={val.value}
-                    tabIndex={val.index} title="child-topic">
-                        {categoriesArr.find(val2=>val2.value === val.value)["textValue"]}
-                    </li>)}
-                </ul>
+        <ul>
+            {topicArr.map((val,i)=>
+            <motion.li key={i} 
+            onClick={selectTopicHandler} 
+            value={val.value}
+            tabIndex={val.index} 
+            title="child-topic"
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={listVariants}>
+                {categoriesArr.find(val2=>val2.value === val.value)["textValue"]}
+            </motion.li>)}
+        </ul>
         </React.Fragment>
     )
 }
