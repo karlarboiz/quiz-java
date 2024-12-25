@@ -7,6 +7,8 @@
 .trigger {
     width: 6.5rem;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
 }
 
 

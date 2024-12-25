@@ -9,7 +9,7 @@ import quiz from "./TriviaModification.module.css";
 import BodyComponent from "../../components/BodyComponent/BodyComponent";
 import BarIndicator from "../../components/BarIndicator/BarIndicator";
 import { useSelector } from "react-redux";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import Timer from "../../components/ChoiceGroup/TimerGroup/Timer";
 import SVGQuizIndicator from "../../components/SVGQuizIndicator/SVGQuizindicator";
 
@@ -79,6 +79,10 @@ const TriviaModification = ()=>{
 
     }
 
+    const topicValue = topic? 'active': 'inactive';
+
+    const diffValue = diff? 'active': 'inactive';
+
     return (
         <BodyComponent>
             <BarIndicator/>
@@ -87,7 +91,7 @@ const TriviaModification = ()=>{
                 <div onClick={openTopic} className={`${quiz["topic-trigger"]} ${quiz["trigger"]}`}> 
                     <span className={quiz["choice-title"]}>Topic</span> 
                     
-                    <SVGQuizIndicator isExpanded={topic}/>
+                    <SVGQuizIndicator quizModifiedValue={topicValue.toString()}/>
                 </div>
                 <AnimatePresence>
                 {topic && <Topic topicModalHandler={openTopic}/>}
@@ -95,13 +99,13 @@ const TriviaModification = ()=>{
 
                 <div onClick={openDiff} className={quiz["trigger"]  }> 
                     <span className={quiz["choice-title"]}>Difficulty</span> 
-                    <SVGQuizIndicator isExpanded={diff}/>
+                    <SVGQuizIndicator quizModifiedValue={diffValue}/>
                 </div>
                 {diff && <Difficulty/>}
 
                 <div onClick={()=>setItemTotal(val=>val ? false: true)} className={quiz["trigger"]  }> 
                     <span className={quiz["choice-title"]}>ItemTotal</span> 
-                    <SVGQuizIndicator isExpanded={itemTotal}/>
+                    <SVGQuizIndicator quizModifiedValue={itemTotal === true ? 'active': 'inactive'}/>
                 </div>
 
                 <AnimatePresence>
@@ -111,7 +115,7 @@ const TriviaModification = ()=>{
 
                 <div onClick={()=>setTimer(val=>val ? false: true)} className={quiz["trigger"]  }> 
                     <span className={quiz["choice-title"]}>Timer </span> 
-                    <SVGQuizIndicator isExpanded={timer}/>
+                    <SVGQuizIndicator quizModifiedValue={timer === true ? 'active': 'inactive'}/>
                 </div>
 
                 <AnimatePresence>

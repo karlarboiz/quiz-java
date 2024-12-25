@@ -4,9 +4,9 @@ const quizModificationSlice = createSlice({
     name: 'topics',
     initialState: {
         topics:[],
-        difficulty: "",
-        itemTotal: 0,
-        timer:0
+        difficulty: "easy",
+        itemTotal: 5,
+        timer:5
     },
     reducers: {
         addTopicBitByBit(state,action) {
