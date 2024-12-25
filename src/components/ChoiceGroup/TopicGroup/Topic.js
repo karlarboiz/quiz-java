@@ -113,7 +113,7 @@ const Topic = () => {
               >
 
                 <AnimatePresence>
-                    {!topicArr.find((valIn) => valIn.value == val.value) &&
+                    {!topicArr.find((valIn) => valIn.value === val.value) &&
                 <motion.div className={quiz["topic-modal"]}
                 key="modal"
                 initial={{ opacity: 0 }}

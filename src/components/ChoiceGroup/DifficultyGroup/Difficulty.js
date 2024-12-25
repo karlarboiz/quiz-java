@@ -18,8 +18,7 @@ textValue: "Hard"}
 const Difficulty = ()=>{
     const dispatch = useDispatch();
     function handleDifficultyChoice(e){
-        console.log(e.target.value)
-        // dispatch(addDifficultyHandler(e.target.value))
+        dispatch(addDifficultyHandler(e.target.value))
     }   
         
     return (
