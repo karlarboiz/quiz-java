@@ -55,7 +55,7 @@
 
 
 
-.difficulty-group{
+.choice-group{
     margin:  0 0 var(--spacer) 0;
     display: grid;
     gap: var(--spacer);

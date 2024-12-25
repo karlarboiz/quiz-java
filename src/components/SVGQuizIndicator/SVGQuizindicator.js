@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+
 const SVGQuizIndicator = ({isExpanded})=>{
     return(
         <React.Fragment>

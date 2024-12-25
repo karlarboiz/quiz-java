@@ -25,6 +25,12 @@ const quizModificationSlice = createSlice({
         addDifficulty(state,action){
             state.difficulty = action.payload.difficulty
         },
+        addItemTotal(state,action){
+            state.itemTotal = action.payload.itemTotal
+        },
+        addTimer(state,action){
+            state.timer = action.payload.timer
+        }
 
     }
   

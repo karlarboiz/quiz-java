@@ -22,7 +22,7 @@ const Difficulty = ()=>{
     }   
         
     return (
-        <section className={quiz['difficulty-group']}>
+        <section className={quiz['choice-group']}>
            {
             difficultyArr.map(val=>(
                 <div key={val.value} className={`${quiz["multiple-choice__group"]} ${quiz["multiple-choice__group-difficulty"]}`}>

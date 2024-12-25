@@ -18,3 +18,15 @@ export const addDifficultyHandler=(value)=>{
     }
 }
 
+export const addItemTotalHandler=(value)=>{
+    quizModificationAction.addItemTotal({
+        itemTota:value
+    })
+}
+
+export const addTimerHandler=(value)=>{
+    quizModificationAction.addTimer({
+        timer:value
+    })
+}
+

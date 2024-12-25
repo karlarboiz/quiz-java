@@ -9,17 +9,4 @@
     margin: 0 auto;
 }
 
-.topic-trigger {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
 
-.topic-trigger span {
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
-.trigger svg {
-    font-size: 1.75rem;
-}   
