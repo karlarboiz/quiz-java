@@ -18,6 +18,9 @@ import RecordsPage from './pages/Records/RecordsPage';
 import ResumeQuizPage from './pages/ResumeQuiz/ResumeQuizPage';
 import ProfilePage, { getProfileDetails } from './pages/Profile/ProfilePage';
 import TriviaModificationPage from './pages/TriviaModificationPage/TriviaModificationPage';
+import QuizPreference from './pages/QuizPreference/QuizPreference';
+import ForgotPasswordPage from './pages/ForgotPassword/ForgotPasswordPage';
+
 import { loginHandler } from './pages/Login/LoginPage';
 import { registerHandler } from './pages/Register/RegisterPage';
 import { fetchAuthProfile } from './store/auth-action';
@@ -30,7 +33,6 @@ import { getResumeItems } from './pages/ResumeQuiz/ResumeQuizPage';
 import { updateProfileDetails } from './pages/Profile/ProfilePage';
 
 import './App.css';
-import QuizPreference from './pages/QuizPreference/QuizPreference';
 
 
 const router = createBrowserRouter([
@@ -46,7 +48,8 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <LoginPage />,
-        action: loginHandler
+        action: loginHandler,
+        
       },
       {
         path: 'users',
@@ -80,11 +83,7 @@ const router = createBrowserRouter([
         ]
         
       },
-      // {
-      //   path: 'quiz-main',
-      //   element: <QuizModificationPage />,
-      //   action: saveItemsForTheGameHandler
-      // },
+  
       {
         path: 'resume-quiz/',
         children: [{
@@ -132,6 +131,10 @@ const router = createBrowserRouter([
       {
         path: 'logout',
         element: <Logout />
+      },
+      {
+        path:"forgot-password",
+        element:<ForgotPasswordPage/>
       }
     ]
   },

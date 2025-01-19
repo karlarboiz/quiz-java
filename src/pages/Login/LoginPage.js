@@ -14,8 +14,6 @@ const LoginPage = () => {
 
     useEffect(() => {
         dispatch(updateAuth(token));
-
-
     }, [dispatch, auth, token])
 
     return (
@@ -44,16 +42,12 @@ export async function loginHandler({ request, params }) {
         body: JSON.stringify(loginData)
     })   
 
- 
-
-
     if (!result.ok) {
         throw json({ message: "Something went wrong" },
             { status: 500 })
     }
 
     const resData = await result.json();
-    console.log(resData)
     errorResult.valid = resData.isValid;
     errorResult.message = resData.message;
 

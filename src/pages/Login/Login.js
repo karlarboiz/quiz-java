@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Form, Navigate, useActionData, useNavigation } from "react-router-dom";
+import { Form, Link, Navigate, useActionData, useNavigation } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import { useDispatch } from "react-redux";
 import { updateAuth } from "../../store/auth-action";
@@ -78,6 +78,7 @@ const Login = () => {
                     </div>
                    <div className={logincss["footer"]}>
                    <Button type="submit" btnState={state} > Submit </Button>
+                   <Link to="/forgot-password" relative="false">Forgot Password</Link>
                    </div>
                 </section>
             </Form>
