@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./ForgotPassword.module.css";
 import { Form, useActionData, useNavigation } from "react-router-dom";
+import Button from "../../components/Button/Button";
 
 const ForgotPassword = () => {
  
@@ -16,7 +17,7 @@ const ForgotPassword = () => {
       <div className={styles.formWrapper}>
         <h2 className={styles.title}>Forgot Password</h2>
         <Form method="post">
-          <div className={styles.inputGroup}>
+          <div className={styles["form-group"]}>
             <label htmlFor="email" className={styles.label}>Email Address</label>
             <input
               type="email"
@@ -25,13 +26,12 @@ const ForgotPassword = () => {
               className={styles.input}
             />
           </div>
-          <button
+          <Button
             type="submit"
-            className={styles.button}
             disabled={loading}
           >
-          
-          </button>
+            Send
+          </Button>
         </Form>
        
       </div>
