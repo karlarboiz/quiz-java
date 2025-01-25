@@ -1,9 +1,10 @@
 import React from 'react'
 const Sphere=()=> {
   return (
-    <mesh>
-        <sphereBufferGeometry attach='geometry' args={[2,32]} />
-    </mesh>
+    <div></div>
+    // <mesh>
+    //     <sphereBufferGeometry attach='geometry' args={[2,32]} />
+    // </mesh>
   )
 }
 

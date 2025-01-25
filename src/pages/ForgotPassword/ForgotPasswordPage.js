@@ -1,7 +1,5 @@
-import React,{useEffect} from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import { updateAuth } from "../../store/auth-action";
-import { useDispatch } from "react-redux";
 import ForgotPassword from "./ForgotPassword";
 import { json, Navigate } from "react-router";
 
@@ -9,12 +7,7 @@ import { json, Navigate } from "react-router";
 const ForgotPasswordPage = ()=>{
 
        const auth = useSelector(state => state.auth);
-        const token = localStorage.getItem("token");
-        const dispatch = useDispatch();
 
-        useEffect(() => {
-            dispatch(updateAuth(token));
-        }, [dispatch, auth, token])
 
     return (
         <React.Fragment>
@@ -25,11 +18,17 @@ const ForgotPasswordPage = ()=>{
 }
 
 
+export default ForgotPasswordPage;
+
+
+
 export async function forgotPasswordHandler({request,params}){
+    
     const data = await request.formData();
+
     const errorResult = {};
     const loginData = {
-        email: data.get('email'),
+        email: await data.get('email'),
 
     }  
 
@@ -41,18 +40,18 @@ export async function forgotPasswordHandler({request,params}){
         body: JSON.stringify(loginData)
     })   
 
+
     if (!result.ok) {
         throw json({ message: "Something went wrong" },
             { status: 500 })
     }
 
-    const resData = await result.json();
-    errorResult.valid = resData.isValid;
-    errorResult.message = resData.message;
+    console.log(await result.json());
 
-    localStorage.setItem("token", resData?.token);
-    return resData;
+    // const resData = await result.json();
+
+    // console.log(resData)
+    
+    return {kwan:"Kwan"};
 
 }
-
-export default ForgotPasswordPage;

@@ -8,9 +8,7 @@ const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
     const data = useActionData();
     const submit = useNavigation();
-    const state = submit.state;
-
-    console.log(data);
+    // const state = submit.state;
 
   return (
     <div className={styles.container}>
@@ -22,6 +20,7 @@ const ForgotPassword = () => {
             <input
               type="email"
               id="email"
+              name="email"
               placeholder="Enter your email"
               className={styles.input}
             />

@@ -19,7 +19,7 @@ import ResumeQuizPage from './pages/ResumeQuiz/ResumeQuizPage';
 import ProfilePage, { getProfileDetails } from './pages/Profile/ProfilePage';
 import TriviaModificationPage from './pages/TriviaModificationPage/TriviaModificationPage';
 import QuizPreference from './pages/QuizPreference/QuizPreference';
-import ForgotPasswordPage from './pages/ForgotPassword/ForgotPasswordPage';
+import ForgotPasswordPage, { forgotPasswordHandler } from './pages/ForgotPassword/ForgotPasswordPage';
 
 import { loginHandler } from './pages/Login/LoginPage';
 import { registerHandler } from './pages/Register/RegisterPage';
@@ -134,7 +134,8 @@ const router = createBrowserRouter([
       },
       {
         path:"forgot-password",
-        element:<ForgotPasswordPage/>
+        element:<ForgotPasswordPage/>,
+        action:forgotPasswordHandler
       }
     ]
   },
