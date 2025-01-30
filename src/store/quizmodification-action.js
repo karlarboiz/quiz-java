@@ -22,7 +22,7 @@ export const addItemTotalHandler=(value)=>{
    return async(dispatch)=>{
     dispatch( 
         quizModificationAction.addItemTotal({
-        itemTota:value
+        itemTotal:value
     }))
    }
 }

@@ -34,7 +34,7 @@ const BarIndicator=({})=>{
             </div>
 
            
-          </div>
+        </div>
         {/* {steps.map((step, index) => (
           <div key={index} className={styles.stepContainer}>
             <div

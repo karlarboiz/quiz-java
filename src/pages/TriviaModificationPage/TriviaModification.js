@@ -17,7 +17,7 @@ const TriviaModification = ()=>{
     const [diff,setDiff] = useState(false);
     const [itemTotal,setItemTotal] = useState(false);
     const [timer,setTimer] = useState(false);
-
+    const [playerReady,setPlayerReady] = useState(false);
     const data = useActionData();
     const navigate = useNavigate();
     const {topics,difficulty,
@@ -25,9 +25,7 @@ const TriviaModification = ()=>{
         = useSelector(state=>state.quizModification);
     
     const isBarIndicatorShown = topics.length > 0 || 
-    difficulty || itemTotalUpdated >0;
-    
-    
+    difficulty || itemTotalUpdated >0;    
 
     function openTopic(){
         setTopic(val=>!val ? true: false);
@@ -43,6 +41,16 @@ const TriviaModification = ()=>{
         }
     },[data,navigate])
 
+    useEffect(()=>{
+        
+        console.log(topics.length);
+        console.log(difficulty);
+        console.log(itemTotalUpdated);
+        setPlayerReady(topics.length > 0 && 
+            difficulty && itemTotalUpdated >0)
+    },[topics,difficulty,timerUpdated,itemTotalUpdated])
+
+    console.log(playerReady);
 
     async function generateQuestions(){
         // const data = await request.formData();
@@ -132,7 +140,9 @@ const TriviaModification = ()=>{
                 </AnimatePresence>
                 
 
-                <Button type="submit"> Begin</Button>
+                <AnimatePresence>
+                    {playerReady && <Button type="submit"> Begin</Button>}
+                </AnimatePresence>
 
             </section>
         </BodyComponent>

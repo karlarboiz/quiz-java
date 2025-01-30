@@ -19,7 +19,6 @@ const ItemTotal = ()=>{
     const dispatch = useDispatch();
 
     function getItemTotalValueHandler(e){
-        
         dispatch(addItemTotalHandler(e.target.value))
     }
     return (
