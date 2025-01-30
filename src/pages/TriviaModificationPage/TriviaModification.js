@@ -20,7 +20,14 @@ const TriviaModification = ()=>{
 
     const data = useActionData();
     const navigate = useNavigate();
-    const topics = useSelector(state=>state.quizModification);
+    const {topics,difficulty,
+        itemTotal:itemTotalUpdated,timer:timerUpdated} 
+        = useSelector(state=>state.quizModification);
+    
+    const isBarIndicatorShown = topics.length > 0 || 
+    difficulty || itemTotalUpdated >0;
+    
+    
 
     function openTopic(){
         setTopic(val=>!val ? true: false);
@@ -84,7 +91,10 @@ const TriviaModification = ()=>{
 
     return (
         <BodyComponent>
-            <BarIndicator/>
+              <AnimatePresence>
+              {isBarIndicatorShown && <BarIndicator/>}
+              </AnimatePresence>
+            
             <section className={quiz['quiz-modification']}>
                 
                 <div onClick={openTopic} className={`${quiz["topic-trigger"]} ${quiz["trigger"]}`}> 

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./BarIndicator.module.css";
 import { useSelector } from "react-redux";
 
 const BarIndicator=({})=>{
-      const {topics,difficulty} = useSelector(state=>state.quizModification);
-     console.log(topics,difficulty);
+        const arr = useState([]);
+
+      const {topics,difficulty,itemTotal,timer} = useSelector(state=>state.quizModification);
+     
     // const {topics,difficulty,itemTotal,timer} = useSelector(state => state.quizModification);
     // return(
     //     <section className={br["bar-indicator__container"]}>
@@ -16,7 +18,24 @@ const BarIndicator=({})=>{
 
     return (
       <div className={styles.progressBarContainer}>
-        {steps.map((step, index) => (
+        <div className={styles.stepContainer}>
+            <div
+              className={
+                styles.activeStep
+              }
+            >
+              <span>
+              {topics.length}
+              </span>
+
+              <div>
+                Topics
+            </div>
+            </div>
+
+           
+          </div>
+        {/* {steps.map((step, index) => (
           <div key={index} className={styles.stepContainer}>
             <div
               className={
@@ -26,7 +45,7 @@ const BarIndicator=({})=>{
               {step}
             </div>
           </div>
-        ))}
+        ))} */}
       </div>
     );
 }
