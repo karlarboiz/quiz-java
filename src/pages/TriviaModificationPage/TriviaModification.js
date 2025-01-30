@@ -89,7 +89,7 @@ const TriviaModification = ()=>{
                 
                 <div onClick={openTopic} className={`${quiz["topic-trigger"]} ${quiz["trigger"]}`}> 
                     <span className={quiz["choice-title"]}>Topic</span>                 
-                    <SVGQuizIndicator quizModifiedValue={topicValue.toString()}/>
+                    <SVGQuizIndicator quizModifiedValue={topicValue}/>
                 </div>
                 <AnimatePresence>
                 {topic && <Topic topicModalHandler={openTopic}/>}
@@ -121,9 +121,7 @@ const TriviaModification = ()=>{
                 
                 </AnimatePresence>
                 
-                
-                
-           
+
                 <Button type="submit"> Begin</Button>
 
             </section>
