@@ -82,7 +82,7 @@ const Topic = () => {
 
     /**
      * 
-     * @param {*} e
+     * @param {*} 
      * this function is used to pick at least 
      * 5 topics
      */
@@ -148,7 +148,7 @@ const Topic = () => {
             ))}
           </motion.section>
 
-        <ul>
+        {/* <ul>
             {topicArr.map((val,i)=>
             <motion.li key={i} 
             onClick={selectTopicHandler} 
@@ -161,7 +161,7 @@ const Topic = () => {
             variants={listVariants}>
                 {categoriesArr.find(val2=>val2.value === val.value)["textValue"]}
             </motion.li>)}
-        </ul>
+        </ul> */}
         </React.Fragment>
     )
 }
