@@ -19,8 +19,8 @@ const ItemTotal = ()=>{
     const dispatch = useDispatch();
 
     function getItemTotalValueHandler(e){
-        console.log(e.target.value)
-        // dispatch(addItemTotalHandler(e.target.value))
+        
+        dispatch(addItemTotalHandler(e.target.value))
     }
     return (
         <section className={quiz['choice-group']}>
@@ -28,8 +28,15 @@ const ItemTotal = ()=>{
             {itemTotalArr.map(val=>
 
             <div key={val.value} className={`${quiz["multiple-choice__group"]} ${quiz["multiple-choice__group-difficulty"]}`}>
-            <label htmlFor="item-total" className={quiz["label"]}>{val.textValue}</label>
-            <input type="radio" id={val.value} name="difficulty" value={val.value}
+            <label 
+            htmlFor="item-total" 
+            className={quiz["label"]}>
+                {val.textValue}</label>
+            
+            <input 
+            type="radio" 
+            id={val.value} 
+            name="item-total" value={val.value}
             onChange={getItemTotalValueHandler}/>
             </div>
             )}

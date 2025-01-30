@@ -25,10 +25,9 @@ const Timer = ()=>{
         <section className={quiz['choice-group']}>
             
             {TIMER_SELECTIONS.map(val=>
-
             <div key={val.value} className={`${quiz["multiple-choice__group"]} ${quiz["multiple-choice__group-difficulty"]}`}>
             <label htmlFor="item-total" className={quiz["label"]}>{val.textValue}</label>
-            <input type="radio" id={val.value} name="difficulty" value={val.value}
+            <input type="radio" id={val.value} name="timer" value={val.value}
             onChange={getTimerValueHandler}/>
             </div>
             )}
