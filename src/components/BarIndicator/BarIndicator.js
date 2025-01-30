@@ -3,8 +3,8 @@ import styles from "./BarIndicator.module.css";
 import { useSelector } from "react-redux";
 
 const BarIndicator=({})=>{
-      const {topics} = useSelector(state=>state.quizModification);
-     
+      const {topics,difficulty} = useSelector(state=>state.quizModification);
+     console.log(topics,difficulty);
     // const {topics,difficulty,itemTotal,timer} = useSelector(state => state.quizModification);
     // return(
     //     <section className={br["bar-indicator__container"]}>

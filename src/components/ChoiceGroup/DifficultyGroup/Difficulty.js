@@ -12,9 +12,6 @@ textValue: "Medium"},
 {value: "hard",
 textValue: "Hard"}
 ]
-
-
-
 const Difficulty = ()=>{
     const dispatch = useDispatch();
     function handleDifficultyChoice(e){

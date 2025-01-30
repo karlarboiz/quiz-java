@@ -19,14 +19,21 @@ export const addDifficultyHandler=(value)=>{
 }
 
 export const addItemTotalHandler=(value)=>{
-    quizModificationAction.addItemTotal({
+   return async(dispatch)=>{
+    dispatch( 
+        quizModificationAction.addItemTotal({
         itemTota:value
-    })
+    }))
+   }
 }
 
 export const addTimerHandler=(value)=>{
-    quizModificationAction.addTimer({
-        timer:value
-    })
+
+    return async(dispatch)=>{
+        dispatch(quizModificationAction.addTimer({
+            timer:value
+        }))
+    }
+    
 }
 
