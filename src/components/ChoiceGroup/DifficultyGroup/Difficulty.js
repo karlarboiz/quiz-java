@@ -1,7 +1,7 @@
 import React from "react";
 import quiz from "../ChoiceGroup.module.css";
 import { addDifficultyHandler } from "../../../store/quizmodification-action";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 //arr for difficulty options
 const difficultyArr = [
@@ -17,6 +17,11 @@ const Difficulty = ()=>{
     function handleDifficultyChoice(e){
         dispatch(addDifficultyHandler(e.target.value))
     }   
+
+    const {difficulty} =useSelector(state=>state.quizModification);
+
+    console.log(difficulty)
+     
         
     return (
         <section className={quiz['choice-group']}>
@@ -25,9 +30,10 @@ const Difficulty = ()=>{
                 <div key={val.value} className={`${quiz["multiple-choice__group"]} ${quiz["multiple-choice__group-difficulty"]}`}>
                     <label htmlFor="difficulty" className={quiz["label"]}>{val.textValue}</label>
                     <input type="radio" id={val.value} name="difficulty" value={val.value}
-                    onChange={handleDifficultyChoice}/>
+                    onChange={handleDifficultyChoice}
+                    />
                 </div>
-            ))
+            ))  
            }
         </section>
     )
