@@ -19,7 +19,7 @@ const Timer = ()=>{
     const dispatch = useDispatch();
 
     function getTimerValueHandler(e){
-        dispatch(addTimerHandler(e.target.value));
+        // dispatch(addTimerHandler(e.target.value));
     }
     return (
         <section className={quiz['choice-group']}>

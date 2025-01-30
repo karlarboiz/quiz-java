@@ -1,14 +1,25 @@
+:root {
+    --general-margin--design: .5rem auto 0 auto;
+}
+
 .quiz-modification {
     max-width: 65rem;
-    margin: .5rem auto 0 auto;
+    margin: var(--general-margin--design);
     text-align: center;
 }
 
 .trigger {
-    width: 6.5rem;
-    margin: 0 auto;
+    max-width: 20.5rem;
+    margin: var(--general-margin--design);
     display: flex;
     align-items: center;
+    padding: .75rem 1.25rem;
+    border: 1px solid black;  
+    border-radius: .75rem;  
+
+
+    display: flex;
+    justify-content:space-between;
 }
 
 

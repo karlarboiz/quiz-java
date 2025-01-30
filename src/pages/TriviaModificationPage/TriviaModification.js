@@ -88,8 +88,7 @@ const TriviaModification = ()=>{
             <section className={quiz['quiz-modification']}>
                 
                 <div onClick={openTopic} className={`${quiz["topic-trigger"]} ${quiz["trigger"]}`}> 
-                    <span className={quiz["choice-title"]}>Topic</span> 
-                    
+                    <span className={quiz["choice-title"]}>Topic</span>                 
                     <SVGQuizIndicator quizModifiedValue={topicValue.toString()}/>
                 </div>
                 <AnimatePresence>
