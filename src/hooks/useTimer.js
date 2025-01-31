@@ -7,7 +7,6 @@ export default function useTimer(time,onTimeUp) {
       setTimespan((prevTimespan) => {
         if (prevTimespan <= 1) {
           clearInterval(intervalId);
-
           if (onTimeUp) onTimeUp();
           return 0;
         }

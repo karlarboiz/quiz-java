@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./BarIndicator.module.css";
 import { useSelector } from "react-redux";
+import { AnimatePresence } from "framer-motion";
 
 const BarIndicator=({})=>{
         const arr = useState([]);
@@ -14,7 +15,7 @@ const BarIndicator=({})=>{
     //     </section>
     // )
 
-    const steps = ["Introduction", "Questions", "Review", "Completion"];
+    // const steps = ["Introduction", "Questions", "Review", "Completion"];
 
     return (
       <div className={styles.progressBarContainer}>
