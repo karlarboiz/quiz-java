@@ -1,13 +1,15 @@
 import React from "react";
 import Users from "./Users";
 import { json, useLoaderData } from "react-router";
+import NoRecords from "../../components/NoRecords/NoRecords";
 
 const UsersPage = () => {
     const data = useLoaderData();
     
     return (
         <React.Fragment>
-            <Users data={data} />
+            {data?.length > 0 && <Users data={data} />}
+            {data?.length === 0 && <NoRecords />}
         </React.Fragment>
     )
 }

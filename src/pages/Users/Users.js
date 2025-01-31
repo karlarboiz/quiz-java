@@ -5,7 +5,7 @@ import quiz from "./Users.module.css";
 import { motion } from "framer-motion";
 const Users = ({ data }) => {
     
-    const mappedData = data.map(val => (
+    const mappedData = data?.map(val => (
         <UserCard username={val.username} completedQuizzes={val.completedQuizzes} key={val.id} regDate={val.registrationDate} />
     ))
     return (
