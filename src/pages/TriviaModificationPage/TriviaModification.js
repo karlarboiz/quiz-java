@@ -8,9 +8,10 @@ import quiz from "./TriviaModification.module.css";
 import BodyComponent from "../../components/BodyComponent/BodyComponent";
 import BarIndicator from "../../components/BarIndicator/BarIndicator";
 import { useSelector } from "react-redux";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Timer from "../../components/ChoiceGroup/TimerGroup/Timer";
 import SVGQuizIndicator from "../../components/SVGQuizIndicator/SVGQuizindicator";
+import { useQuery } from '@tanstack/react-query';
 
 const TriviaModification = ()=>{
     const [topic,setTopic] = useState(false);
@@ -50,52 +51,25 @@ const TriviaModification = ()=>{
             difficulty && itemTotalUpdated >0)
     },[topics,difficulty,timerUpdated,itemTotalUpdated])
 
-    console.log(playerReady);
 
-    async function generateQuestions(){
-        // const data = await request.formData();
-        // const categories =data.getAll("topic"); 
-        // const categoriesJoined =  categories.join(",");
-        // const difficulty = data.get("difficulty");
-        // const itemTotal = data.get("item-total")
+    const { data: quizzes, isLoading, error } = useQuery({
+        queryKey: ["questions", topics, itemTotal, difficulty], // Include dependencies
+        queryFn: async () => {
+          const response = await fetch(
+            `https://the-trivia-api.com/api/questions?categories=${topics.join(",")}&limit=${itemTotal}&region=PH&difficulty=${difficulty}`
+          );
+          return response.json(); // Properly return parsed JSON
+        },
+        enabled: topics.length > 0, // Prevent fetching when topics array is empty
+      });
+      
 
-        // let data1;
-        // let dataResult;
-        // let gotData = false;
-        // let error = {};
-        // try{
-        //     data1 = await fetch(`https://the-trivia-api.com/api/questions?categories=${categoriesJoined}&limit=${itemTotal}&region=PH&difficulty=${difficulty}`,{
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         }
-        //     });
-
-        //     if(!data1.ok || data1.status === 422 
-        //         || data1.status === 401 || data1.status === 501) {
-        //             error.message = "Something went wrong!"
-        //             error.success = false;
-        //             gotData = false;
-        //     }
-
-        //     dataResult = await data1.json();
-        //     gotData = true
-        // }catch(e){
-        //     error.message = "Something went wrong!"
-        //     error.success = false;
-        //     gotData = false;
-        // }
-    
-
-        // if(!gotData) {
-
-        //     return error;
-        // }
-
-    }
+    console.log(quizzes);
 
     const topicValue = topic? 'active': 'inactive';
 
     const diffValue = diff? 'active': 'inactive';
+
 
     return (
         <BodyComponent>
@@ -136,12 +110,18 @@ const TriviaModification = ()=>{
 
                 <AnimatePresence>
                 {timer && <Timer/>}
-                
                 </AnimatePresence>
                 
 
                 <AnimatePresence>
-                    {playerReady && <Button type="submit"> Begin</Button>}
+                    {playerReady && 
+                        <motion.div
+                        className={quiz["button-section"]}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}>
+                            <Button type="submit"> Begin</Button>
+                        </motion.div>}
                 </AnimatePresence>
 
             </section>

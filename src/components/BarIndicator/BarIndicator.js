@@ -8,14 +8,7 @@ import { motion } from "framer-motion";
 const BarIndicator=()=>{
         
       const {topics,difficulty,itemTotal,timer} = useSelector(state=>state.quizModification);
-     
-    // const {topics,difficulty,itemTotal,timer} = useSelector(state => state.quizModification);
-    // return(
-    //     <section className={br["bar-indicator__container"]}>
-    //         <div>Hello Indicator</div>
-    //     </section>
-    // )
-
+      
     const INDICATORS = [
       {name:"Topics",
       value: topics.length
@@ -39,19 +32,17 @@ const BarIndicator=()=>{
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             >
-            <div
-              className={
-                styles.activeStep
-              }
-            >
-              <span>
-              {val.value === "" ? "Nothing" : val.value}
+        
+              <span className={styles["value"]}>
+              {val.value === "" ? "(No Value)" : val.value}
               </span>
 
-              <div>
+              <div className={
+                styles.activeStep
+              }>
                 {val.name}
-            </div>
-            </div>
+              </div>
+           
         </motion.div>))}
         
         

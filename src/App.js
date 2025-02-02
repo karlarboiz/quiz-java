@@ -31,6 +31,7 @@ import { getUsersGameRecords } from './pages/Users/UsersPage';
 import { fetchIncompleteQuizzes } from './pages/Main/MainPage';
 import { getResumeItems } from './pages/ResumeQuiz/ResumeQuizPage';
 import { updateProfileDetails } from './pages/Profile/ProfilePage';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import './App.css';
 
@@ -144,6 +145,7 @@ const router = createBrowserRouter([
 function App() {
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
+  const queryClient = new QueryClient();
   useEffect(() => {
     if (token || token !== undefined) {
       dispatch(fetchAuthProfile());
@@ -153,7 +155,9 @@ function App() {
   }, [dispatch,token])
 
   return (
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   );
 }
 
