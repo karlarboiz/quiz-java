@@ -18,7 +18,8 @@ import RecordsPage from './pages/Records/RecordsPage';
 import ResumeQuizPage from './pages/ResumeQuiz/ResumeQuizPage';
 import ProfilePage, { getProfileDetails } from './pages/Profile/ProfilePage';
 import TriviaModificationPage from './pages/TriviaModificationPage/TriviaModificationPage';
-import QuizPreference from './pages/QuizPreference/QuizPreference';
+import QuizPreferencePage from './pages/QuizPreference/QuizPreferencePage';
+
 import ForgotPasswordPage, { forgotPasswordHandler } from './pages/ForgotPassword/ForgotPasswordPage';
 
 import { loginHandler } from './pages/Login/LoginPage';
@@ -74,7 +75,7 @@ const router = createBrowserRouter([
         children:[
           {
             index: true,
-            element: <QuizPreference/>,
+            element: <QuizPreferencePage/>,
           
           },{
             path: "trivia",

@@ -8,25 +8,26 @@ import { motion } from "framer-motion";
 const BarIndicator=()=>{
         
       const {topics,difficulty,itemTotal,timer} = useSelector(state=>state.quizModification);
-      
-    const INDICATORS = [
-      {name:"Topics",
-      value: topics.length
-      }, 
-      {name:"Difficulty",
-      value:difficulty}, 
-      {name:"Item Total",
-        value: itemTotal
-      }, 
-      {
-        name:"Timer",
-        value:timer
-      }];
+
+      const INDICATORS = [
+        {name:"Topics",
+        value: topics.length
+        }, 
+        {name:"Difficulty",
+        value:difficulty}, 
+        {name:"Item Total",
+          value: itemTotal
+        }, 
+        {
+          name:"Timer",
+          value:timer
+        }];
 
     return (
       <div className={styles.progressBarContainer}>
-        {INDICATORS.map(val=>(
+        {INDICATORS.map((val,i)=>(
           <motion.div 
+            key={i}
             className={styles.stepContainer}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

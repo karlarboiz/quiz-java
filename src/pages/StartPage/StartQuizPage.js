@@ -1,19 +1,38 @@
 import React from "react";
 import StartQuiz from "./StartQuiz";
 import { useSelector } from "react-redux";
-// import { fetchQuizItems } from "../../store/quiz-items__action";
 import { Navigate, json,redirect} from "react-router";
+import { useQuery } from '@tanstack/react-query';
 
 const StartQuizPage = ()=>{
+    const {topics,difficulty,itemTotal} = useSelector(state=>state.quizModification);
     
-    const auth = useSelector(state=>state.auth);
+    const isPageReady = topics.length > 0 && 
+    difficulty && itemTotal >0;    
+
+    const auth = useSelector(state => state.auth);  
+
+
+     const { data: quizzes, isLoading, error } = useQuery({
+        queryKey: ["questions", topics, itemTotal, difficulty], // Include dependencies
+        queryFn: async () => {
+          const response = await fetch(
+            `https://the-trivia-api.com/api/questions?categories=${topics.join(",")}&limit=${itemTotal}&region=PH&difficulty=${difficulty}`
+          );
+          return response.json(); // Properly return parsed JSON
+        },
+        enabled: topics.length > 0, // Prevent fetching when topics array is empty
+      });
+
+
+      console.log(quizzes)
 
     return (
         
         <React.Fragment>
-  
-            {auth.loading !== undefined && !auth.loading && auth?.auth && <StartQuiz />}
-            {auth.loading !== undefined && !auth.loading && !auth?.auth  && <Navigate to="/login" replace="true"/>}           
+            {!isPageReady && <Navigate to="/login" replace="true"/>}
+            { !auth.loading && auth?.auth && <StartQuiz />}
+            {  !auth.loading && !auth?.auth  && <Navigate to="/login" replace="true"/>}           
         </React.Fragment>
     )
 }
@@ -63,30 +82,6 @@ export async function updateQuizItemHandler({request,params}){
 
 }
 
-export async function fetchResultQuizData(){
 
-    let data;
-    let dataResult;
-
-    try{
-        data = await fetch("http://localhost:8080/main/user/fetch/game-items",{
-            headers:{
-                "Authorization": `Bearer ${localStorage.getItem("token")}`
-            }
-        })
-
-        if(!data.ok) {
-            throw json({message: "Something went wrong"},
-            {status: 500})
-        }
-
-        dataResult = await data.json();
-    }catch(e){
-        console.log(e)
-    }
-
-    return dataResult;
-
-}
 
 

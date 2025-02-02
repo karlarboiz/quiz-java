@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import qp from "./QuizPreference.module.css";
 import BodyComponent from "../../components/BodyComponent/BodyComponent";
 
@@ -17,6 +17,8 @@ const QuizPreference = ()=>{
                 className={qp["preference"]}>Custom
                 </Link>
             </li>
+
+
         </ul>
         </BodyComponent>
         
