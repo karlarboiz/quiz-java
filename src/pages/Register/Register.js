@@ -10,7 +10,7 @@ const Register = () => {
     
     const [data,setData] = useState(null)
 
-    const [image,setImage]= useState("");
+    const [imageHere,setImage]= useState("");
     const [imageFile,setImageFile] = useState(null);
 
     async function process(e){
@@ -41,7 +41,6 @@ const Register = () => {
             body: newForm,
         })
 
-        console.log(result.status)
     
         if (result.status === 422 || result.status === 401) {
     
@@ -130,10 +129,10 @@ const Register = () => {
                 <div className={quiz['form-group']}>
                     <label htmlFor="confirm-password">Confirm Password</label>
                     <input type="password" name="confirm-password" />
-                </div>
+                </div> 
                 <div>
                     <div className={quiz['form-group']}>
-                        <img src={`${image}`} alt="This is a sample profile image"/>
+                        <img src={`${imageHere}`} alt="This is the profile"/>
                         <label htmlFor="image">Profile Image</label>
                         <input type="file" name="image" 
                         accept="image/png, image/jpeg" onChange={(e)=>{

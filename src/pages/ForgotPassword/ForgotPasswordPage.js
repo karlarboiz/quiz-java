@@ -25,8 +25,6 @@ export default ForgotPasswordPage;
 export async function forgotPasswordHandler({request,params}){
     
     const data = await request.formData();
-
-    const errorResult = {};
     const loginData = {
         email: await data.get('email'),
 
@@ -46,7 +44,7 @@ export async function forgotPasswordHandler({request,params}){
             { status: 500 })
     }
 
-    console.log(await result.json());
+    // console.log(await result.json());
 
     // const resData = await result.json();
 

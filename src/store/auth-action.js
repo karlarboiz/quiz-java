@@ -23,10 +23,12 @@ export const fetchAuthProfile = () => {
         const data = await response.json();
         return data;
       };
+
+   
   
       try {
         const authData = await fetchData();
-  
+     
         if (authData?.status === 500) {
           localStorage.clear();
           dispatch(
@@ -34,6 +36,7 @@ export const fetchAuthProfile = () => {
               auth: false,
               username: "",
               message: authData?.message,
+              loading: false
             })
           );
         } else {
@@ -42,6 +45,7 @@ export const fetchAuthProfile = () => {
               auth: authData.auth,
               username: authData.username,
               message: authData.message,
+              loading: false
             })
           );
         }
@@ -51,6 +55,7 @@ export const fetchAuthProfile = () => {
             auth: false,
             username: "",
             message: error.message,
+            loading: false
           })
         );
       }

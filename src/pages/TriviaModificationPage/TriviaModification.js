@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 import { AnimatePresence, motion } from "framer-motion";
 import Timer from "../../components/ChoiceGroup/TimerGroup/Timer";
 import SVGQuizIndicator from "../../components/SVGQuizIndicator/SVGQuizindicator";
-import { useQuery } from '@tanstack/react-query';
+// import { useQuery } from '@tanstack/react-query';
 
 const TriviaModification = ()=>{
     const [topic,setTopic] = useState(false);
@@ -43,28 +43,22 @@ const TriviaModification = ()=>{
     },[data,navigate])
 
     useEffect(()=>{
-        
-        console.log(topics.length);
-        console.log(difficulty);
-        console.log(itemTotalUpdated);
+    
         setPlayerReady(topics.length > 0 && 
             difficulty && itemTotalUpdated >0)
     },[topics,difficulty,timerUpdated,itemTotalUpdated])
 
 
-    const { data: quizzes, isLoading, error } = useQuery({
-        queryKey: ["questions", topics, itemTotal, difficulty], // Include dependencies
-        queryFn: async () => {
-          const response = await fetch(
-            `https://the-trivia-api.com/api/questions?categories=${topics.join(",")}&limit=${itemTotal}&region=PH&difficulty=${difficulty}`
-          );
-          return response.json(); // Properly return parsed JSON
-        },
-        enabled: topics.length > 0, // Prevent fetching when topics array is empty
-      });
-      
-
-    console.log(quizzes);
+    // const { data: quizzes, isLoading, error } = useQuery({
+    //     queryKey: ["questions", topics, itemTotal, difficulty], // Include dependencies
+    //     queryFn: async () => {
+    //       const response = await fetch(
+    //         `https://the-trivia-api.com/api/questions?categories=${topics.join(",")}&limit=${itemTotal}&region=PH&difficulty=${difficulty}`
+    //       );
+    //       return response.json(); // Properly return parsed JSON
+    //     },
+    //     enabled: topics.length > 0, // Prevent fetching when topics array is empty
+    //   });
 
     const topicValue = topic? 'active': 'inactive';
 

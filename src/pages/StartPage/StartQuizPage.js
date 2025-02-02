@@ -1,28 +1,19 @@
-import React, { useEffect} from "react";
+import React from "react";
 import StartQuiz from "./StartQuiz";
-import { useDispatch,useSelector } from "react-redux";
-import { fetchQuizItems } from "../../store/quiz-items__action";
-import { Navigate, json,redirect,useActionData } from "react-router";
+import { useSelector } from "react-redux";
+// import { fetchQuizItems } from "../../store/quiz-items__action";
+import { Navigate, json,redirect} from "react-router";
 
 const StartQuizPage = ()=>{
-
-    const data = useActionData();
-    const dispatch = useDispatch();
-    const quizItems = useSelector(state=> state.quizItems);
-    const token = localStorage.getItem("token");
+    
     const auth = useSelector(state=>state.auth);
 
-    useEffect(()=>{ 
-
-        dispatch(fetchQuizItems(token));
-    
-    },[dispatch,token,data])
- 
-
     return (
+        
         <React.Fragment>
-            {auth?.auth && <StartQuiz items={quizItems}/>}
-            {!auth?.auth && <Navigate to="/login" replace="true"/>}           
+  
+            {auth.loading !== undefined && !auth.loading && auth?.auth && <StartQuiz />}
+            {auth.loading !== undefined && !auth.loading && !auth?.auth  && <Navigate to="/login" replace="true"/>}           
         </React.Fragment>
     )
 }

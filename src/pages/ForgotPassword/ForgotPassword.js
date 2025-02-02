@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./ForgotPassword.module.css";
-import { Form, useActionData, useNavigation } from "react-router-dom";
+import { Form } from "react-router-dom";
 import Button from "../../components/Button/Button";
 
 const ForgotPassword = () => {
  
-  const [loading, setLoading] = useState(false);
-    const data = useActionData();
-    const submit = useNavigation();
+  // const [loading, setLoading] = useState(false);
+    // const data = useActionData();
+    // const submit = useNavigation();
     // const state = submit.state;
 
   return (
@@ -27,7 +27,7 @@ const ForgotPassword = () => {
           </div>
           <Button
             type="submit"
-            disabled={loading}
+       
           >
             Send
           </Button>
