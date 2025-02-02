@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./BarIndicator.module.css";
 import { useSelector } from "react-redux";
+import { motion } from "framer-motion";
+
 // import { AnimatePresence } from "framer-motion";
 
 const BarIndicator=()=>{
@@ -30,21 +32,27 @@ const BarIndicator=()=>{
 
     return (
       <div className={styles.progressBarContainer}>
-        {INDICATORS.map(val=>(<div className={styles.stepContainer}>
+        {INDICATORS.map(val=>(
+          <motion.div 
+            className={styles.stepContainer}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            >
             <div
               className={
                 styles.activeStep
               }
             >
               <span>
-              {val.value}
+              {val.value === "" ? "Nothing" : val.value}
               </span>
 
               <div>
                 {val.name}
             </div>
             </div>
-        </div>))}
+        </motion.div>))}
         
         
       </div>
