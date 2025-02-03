@@ -2,6 +2,8 @@ import React from "react";
 import BodyComponent from "../../components/BodyComponent/BodyComponent";
 import { motion } from "framer-motion";
 import records from "./Records.module.css";
+import NoRecords from "../../components/NoRecords/NoRecords";
+
 const Records = ({ data }) => {
 
     const container = {
@@ -26,7 +28,7 @@ const Records = ({ data }) => {
 
     return (
         <BodyComponent>
-          {data?.length === 0 && <div>No Records Yet! Wanna start a game?</div>}
+          {data?.length === 0 && <NoRecords/>}
           {data?.length > 0 &&
                     <motion.ul 
                     variants={container}

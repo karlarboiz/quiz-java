@@ -106,7 +106,7 @@ const TriviaModification = ()=>{
                             <NavLink 
                                 to={{ pathname: '/start-page', 
                                 state: { kwan:"kwankwan" } }} >
-                                    Go to profile</NavLink>
+                                    Start Page</NavLink>
                             {/* <Button type="submit"> Begin</Button> */}
                         </motion.div>}
                 </AnimatePresence>
