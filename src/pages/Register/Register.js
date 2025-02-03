@@ -34,8 +34,7 @@ const Register = () => {
         newForm.append("userinfo",new Blob([JSON.stringify(userInfo)], {
             type: "application/json",
           }));
-        
-        console.log(newForm.get("userinfo"))
+          
         const result = await fetch(`http://localhost:8080/quiz/api/register`, {
             method: "POST",
             body: newForm,
@@ -56,7 +55,7 @@ const Register = () => {
                 { status: 500 })
         }
         const resData = await result.json();
-        
+       
         setData(resData)
     }   
     
