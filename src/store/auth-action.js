@@ -24,11 +24,11 @@ export const fetchAuthProfile = () => {
         return data;
       };
 
-   
+    
   
       try {
         const authData = await fetchData();
-     
+      
         if (authData?.status === 500) {
           localStorage.clear();
           dispatch(

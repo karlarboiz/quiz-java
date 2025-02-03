@@ -55,7 +55,7 @@ const Register = () => {
                 { status: 500 })
         }
         const resData = await result.json();
-       
+        
         setData(resData)
     }   
     
